@@ -15,7 +15,7 @@ class Homepage extends Component {
             <>
                 <Header/>
                 <Wrapper>
-                    <h1>Приветики пистолетики!0103</h1>
+                    <h1>Приветики пистолетики!</h1>
                     {data.allWordpressPost.edges.map(({ node }) => (
                         <ul>
                             <li>
