@@ -26,8 +26,7 @@ const typography = new Typography({
     overrideThemeStyles: () =>({
         'p': {
             'line-height': '1.6',
-            'letter-spacing': '0.7',
-            'text-align': 'left'
+            'letter-spacing': '0.7'
         },
         'h1': {
             'margin-top': '0.67em'

@@ -31,6 +31,7 @@ export const LeftColumn = styled.div(`
 `)
 
 export const RightColumn = styled.div(`
+    width: 100%;
 `)
 
 
