@@ -1,28 +1,37 @@
-import React, { useEffect } from "react"
-import { graphql } from "gatsby"
-import PropTypes from "prop-types"
+import React, { useEffect } from 'react'
+import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import parse from 'html-react-parser';
 
-import { Wrapper } from "../styles/layout";
-import { Header } from "../components/header";
-import { Headlines, Date } from "../components/partials";
-import { useNoteResize } from "../utils/use-note-resize";
+import { Wrapper, PostWrapper, EntryContent , PostHeader} from '../styles/layout';
+import { Header } from '../components/header';
+import { ArticleDate } from '../components/date/article-date';
+import { replaceMedia } from '../utils/content-parser'
+
+const pluginOptions = {
+    wordPressUrl: `https://yepstepz.io/`,
+    uploadsUrl: `https://yepstepz.io/wp-content/uploads/`,
+};
 
 const Post = ({ data: { wordpressPost: post } }) => {
-
-    useNoteResize()
-
+    const {
+        content
+    } = post;
     return (
         <>
-            <Header title={post.title} />
-            <Wrapper>
-                {/*<h1>{post.title}</h1>*/}
-                <Headlines.H1>{post.title}</Headlines.H1>
-                {/*<Headlines.H1>Команда мечты: как мы снимаем напряжение и сближаем людей</Headlines.H1>*/}
-                <Date time={post.date} />
-                <div dangerouslySetInnerHTML={{ __html: post.content }} />
-            </Wrapper>
+            <Header title={post.title}/>
+            <PostHeader>
+                <h1>{post.title}</h1>
+                <ArticleDate time={post.date}/>
+            </PostHeader>
+            <PostWrapper>
+                <EntryContent>
+                    {parse(content, {replace: replaceMedia})}
+                </EntryContent>
+                {/*<EntryContent dangerouslySetInnerHTML={{__html: post.content}}/>*/}
+            </PostWrapper>
         </>
-    )
+    );
 }
 
 Post.propTypes = {
@@ -37,7 +46,10 @@ export const pageQuery = graphql`
     wordpressPost(id: { eq: $id }) {
       title
       content,
-      date
+      date,
+      featured_media {
+        source_url
+      }
     }
   }
 `

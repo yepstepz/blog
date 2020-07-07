@@ -2,29 +2,58 @@ import React from "react"
 import styled from "@emotion/styled"
 
 import {
-    LARGE_DISPLAY_MEDIA_QUERY,
-    DEFAULT_WIDTH,
-    DEFAULT_MEDIA_QUERY,
-    TABLET_WIDTH,
-    TABLET_MEDIA_QUERY,
-    MOBILE_WIDTH,
-    MOBILE_MEDIA_QUERY,
-} from "typography-breakpoint-constants"
+    MIN_MOBILE_MEDIA_QUERY,
+    MAX_TABLET_MEDIA_QUERY,
+    MAX_MOBILE_MEDIA_QUERY,
+    MIN_TABLET_MEDIA_QUERY,
+    MAX_DEFAULT_MEDIA_QUERY
+} from "../utils/breakpoint-constants";
 
 export const Wrapper = styled("main")`
-  margin: 0 auto 0 247px;
-  width: 1043px;
-  ${LARGE_DISPLAY_MEDIA_QUERY} {
-     margin: 0 auto;
-     padding: 0 40px;
+  width: 45rem;
+  margin: 0 auto;
+  ${MAX_TABLET_MEDIA_QUERY} {
+      max-width: 100%;
   }
-  ${DEFAULT_MEDIA_QUERY} {
-     max-width: ${DEFAULT_WIDTH};
+  ${MAX_MOBILE_MEDIA_QUERY} {
   }
-  ${TABLET_MEDIA_QUERY} {
-      max-width: ${TABLET_WIDTH};
+  ${MAX_DEFAULT_MEDIA_QUERY} {
+      width: 100%;
   }
-  ${MOBILE_MEDIA_QUERY} {
-      max-width: ${MOBILE_WIDTH};
-  }
+  
 `
+
+export const PostWrapper = styled("main")`
+  max-width: 870px;
+  margin: 0 auto;
+  ul {
+    text-indent: 10px;
+    list-style: none;
+    li:before { content: '∙'; margin-left: -20px; margin-right: 10px; } 
+  }
+  ${MAX_TABLET_MEDIA_QUERY} {
+      max-width: 100%;
+      padding: 0 10px;
+  }
+  ${MAX_MOBILE_MEDIA_QUERY} {
+  }
+  ${MAX_DEFAULT_MEDIA_QUERY} {
+      width: 100%;
+  }
+  
+`
+
+export const PostHeader = styled("section")(`
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+`)
+
+export const EntryContent = styled.div(`
+    &>* {
+        margin: 20px auto;
+        max-width: 740px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+`)

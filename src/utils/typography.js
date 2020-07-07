@@ -1,9 +1,7 @@
 import Typography from "typography"
-import { MOBILE_MEDIA_QUERY } from "typography-breakpoint-constants"
 
 const typography = new Typography({
     baseFontSize: "24px",
-    baseLineHeight: 1.67,
     headerFontFamily: [
         "Open Sans",
         "Arial",
@@ -25,16 +23,17 @@ const typography = new Typography({
     bodyWeight: 400,
     boldWeight: 700,
     scaleRatio: 2.4,
-    overrideStyles: ({ rhythm }) => ({
-        p: {
-            width: "653px"
+    overrideThemeStyles: () =>({
+        'p': {
+            'line-height': '1.6',
+            'letter-spacing': '0.7',
+            'text-align': 'justify'
         },
-        h2: {
-            marginBottom: rhythm(2),
-            marginTop: rhythm(2.8),
-            width: '80%'
+        'h1': {
+            'margin-top': '0.67em'
         }
     })
+
 })
 
 export default typography

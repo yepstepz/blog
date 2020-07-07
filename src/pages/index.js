@@ -2,10 +2,22 @@ import React, { Component } from "react"
 import { Link, graphql } from "gatsby"
 import { css, Global } from "@emotion/core"
 
-import { reset } from "../styles/reset"
-import { Wrapper } from "../styles/layout"
+import { truncate } from '../utils/truncate'
+import { Wrapper, List } from "../styles/layout"
 import { Header } from '../components/header'
-import { TwoColumnsText } from "../components/partials";
+import { ArticlesList } from '../components/main-articles-list'
+import { MainPageDate } from "../components/date/main-page-date";
+import { TagsComponent } from '../components/tags'
+import {
+    ArticlesRow,
+    LeftColumn,
+    RightColumn,
+    StyledTitle,
+    ArticlePreview,
+    ReadAll
+} from "../components/main-articles-list/single-article.styles";
+
+import { Articles } from '../components/main-articles-list'
 
 class Homepage extends Component {
     render() {
@@ -15,17 +27,7 @@ class Homepage extends Component {
             <>
                 <Header/>
                 <Wrapper>
-                    <h1>Приветики пистолетики!</h1>
-                    {data.allWordpressPost.edges.map(({ node }) => (
-                        <ul>
-                            <li>
-                                <Link to={node.slug}>
-                                    <h2>{node.title}</h2>
-                                </Link>
-                                <div dangerouslySetInnerHTML={{__html: node.excerpt}}/>
-                            </li>
-                        </ul>
-                    ))}
+                    <Articles posts={data.allWordpressPost.nodes} />
                 </Wrapper>
             </>
         )
@@ -35,25 +37,21 @@ class Homepage extends Component {
 export default Homepage
 
 export const pageQuery = graphql`
-  query {
-    allWordpressPage {
-      edges {
-        node {
-          id
-          title
-          excerpt
-          slug
-        }
+{
+  allWordpressPost {
+    nodes {
+      date
+      excerpt
+      path
+      slug
+      sticky
+      tags {
+        id
+        path
+        name
       }
-    }
-    allWordpressPost {
-      edges {
-        node {
-          title
-          excerpt
-          slug
-        }
-      }
+      title
     }
   }
+}
 `

@@ -27,14 +27,28 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
       allWordpressPost {
-        edges {
-          node {
+        nodes {
+          id
+          date
+          excerpt
+          path
+          slug
+          sticky
+          tags {
             id
-            slug
-            status
-            template
-            format
+            path
+            name
           }
+          title
+        }
+      }
+      allWordpressTag {
+        nodes {
+                id
+                name
+                path
+                slug
+                count
         }
       }
     }
@@ -46,7 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
 
     // Access query results via object destructuring
-    const { allWordpressPage, allWordpressPost } = result.data
+    const { allWordpressPage, allWordpressPost, allWordpressTag } = result.data
 
     const pageTemplate = path.resolve(`./src/templates/page.jsx`)
     // We want to create a detailed page for each
@@ -73,12 +87,23 @@ exports.createPages = async ({ graphql, actions }) => {
     // We want to create a detailed page for each
     // post node. We'll just use the WordPress Slug for the slug.
     // The Post ID is prefixed with 'POST_'
-    allWordpressPost.edges.forEach(edge => {
+    allWordpressPost.nodes.forEach(node => {
         createPage({
-            path: `/${edge.node.slug}/`,
+            path: `${node.path}`,
             component: slash(postTemplate),
             context: {
-                id: edge.node.id,
+                id: node.id,
+            },
+        })
+    })
+
+    const tagTemplate = path.resolve(`./src/templates/tag.jsx`)
+    allWordpressTag.nodes.forEach(node => {
+        createPage({
+            path: `${node.path}`,
+            component: slash(tagTemplate),
+            context: {
+                id: node.id,
             },
         })
     })
