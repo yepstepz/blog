@@ -6,10 +6,14 @@ import TopMenu from '../top-menu'
 import SEO from '../seo'
 import {wordpressStyles} from "../../styles/wordpress-styles";
 export const Header = ({
-    title = "default title"
+    title = "default title",
+    description="default description"
 }) => (
     <header>
-        <SEO title={title} />
+        <SEO
+            title={title}
+            description={description}
+        />
         <Global
             styles={css`
                ${wordpressStyles}

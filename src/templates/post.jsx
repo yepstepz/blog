@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import parse from 'html-react-parser';
 
@@ -19,8 +19,12 @@ const Post = ({ data: { wordpressPost: post } }) => {
     } = post;
     return (
         <>
-            <Header title={post.title}/>
+            <Header
+                title={post.title}
+                description={post.excerpt}
+            />
             <PostHeader>
+                <Link to={'/'}>Назад</Link>
                 <h1>{post.title}</h1>
                 <ArticleDate time={post.date}/>
             </PostHeader>

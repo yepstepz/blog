@@ -27,7 +27,7 @@ const typography = new Typography({
         'p': {
             'line-height': '1.6',
             'letter-spacing': '0.7',
-            'text-align': 'justify'
+            'text-align': 'left'
         },
         'h1': {
             'margin-top': '0.67em'
