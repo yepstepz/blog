@@ -1,0 +1,5 @@
+@import '../fonts/fonts.css';
+
+* {
+  font-family: 'Playfair Display Regular', sans-serif;
+}

@@ -1,0 +1,23 @@
+import React from "react"
+import { Global } from '@emotion/core'
+
+import { Header } from "../header"
+import Menu from "../menu"
+
+import { Wrapper } from './layout.styles'
+import { globalStyles } from './global.styles'
+
+import "../../assets/style.css"
+
+const Layout = ({ children }) => (
+    <Wrapper>
+    <Global styles={globalStyles} />
+    <div mb={10} mt={20}>
+        <Header />
+    </div>
+
+    <div>{children}</div>
+    </Wrapper>
+)
+
+export default Layout

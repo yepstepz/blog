@@ -1,110 +1,105 @@
+const { resolve } = require(`path`)
 const path = require(`path`)
-const { slash } = require(`gatsby-core-utils`)
+const glob = require(`glob`)
+const chunk = require(`lodash/chunk`)
+const { dd } = require(`dumper.js`)
 
-// Implement the Gatsby API “createPages”. This is
-// called after the Gatsby bootstrap is finished so you have
-// access to any information necessary to programmatically
-// create pages.
-// Will create pages for WordPress pages (route : /{slug})
-// Will create pages for WordPress posts (route : /post/{slug})
-exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions
-    // The “graphql” function allows us to run arbitrary
-    // queries against the local Gatsby GraphQL schema. Think of
-    // it like the site has a built-in database constructed
-    // from the fetched data that you can run queries against.
+const getTemplates = () => {
+  const sitePath = path.resolve(`./`)
+  return glob.sync(`./src/templates/**/*.js`, { cwd: sitePath })
+}
 
-    const result = await graphql(`
-    {
-      allWordpressPage {
-        edges {
-          node {
-            id
-            slug
-            status
-            template
-          }
-        }
-      }
-      allWordpressPost {
+//
+// @todo move this to gatsby-theme-wordpress
+exports.createPages = async ({ actions, graphql, reporter }) => {
+  const templates = getTemplates()
+
+  const {
+    data: {
+      allWpContentNode: { nodes: contentNodes },
+    },
+  } = await graphql(/* GraphQL */ `
+    query ALL_CONTENT_NODES {
+      allWpContentNode(
+        sort: { fields: modifiedGmt, order: DESC }
+        filter: { nodeType: { ne: "MediaItem" } }
+      ) {
         nodes {
+          nodeType
+          uri
           id
-          date
-          excerpt
-          path
-          slug
-          sticky
-          tags {
-            id
-            path
-            name
-          }
-          title
-        }
-      }
-      allWordpressTag {
-        nodes {
-                id
-                name
-                path
-                slug
-                count
         }
       }
     }
   `)
 
-    // Check for any errors
-    if (result.errors) {
-        console.error(result.errors)
+  const contentTypeTemplateDirectory = `./src/templates/single/`
+  const contentTypeTemplates = templates.filter((path) =>
+    path.includes(contentTypeTemplateDirectory)
+  )
+
+  await Promise.all(
+    contentNodes.map(async (node, i) => {
+      const { nodeType, uri, id } = node
+      // this is a super super basic template hierarchy
+      // this doesn't reflect what our hierarchy will look like.
+      // this is for testing/demo purposes
+      const templatePath = `${contentTypeTemplateDirectory}${nodeType}.js`
+
+      const contentTypeTemplate = contentTypeTemplates.find(
+        (path) => path === templatePath
+      )
+
+      if (!contentTypeTemplate) {
+        return
+      }
+
+      await actions.createPage({
+        component: resolve(contentTypeTemplate),
+        path: uri,
+        context: {
+          id,
+          nextPage: (contentNodes[i + 1] || {}).id,
+          previousPage: (contentNodes[i - 1] || {}).id,
+        },
+      })
+    })
+  )
+
+  // create the homepage
+  const {
+    data: { allWpPost },
+  } = await graphql(/* GraphQL */ `
+    {
+      allWpPost(sort: { fields: modifiedGmt, order: DESC }) {
+        nodes {
+          uri
+          id
+        }
+      }
     }
+  `)
 
-    // Access query results via object destructuring
-    const { allWordpressPage, allWordpressPost, allWordpressTag } = result.data
+  const perPage = 10
+  const chunkedContentNodes = chunk(allWpPost.nodes, perPage)
 
-    const pageTemplate = path.resolve(`./src/templates/page.jsx`)
-    // We want to create a detailed page for each
-    // page node. We'll just use the WordPress Slug for the slug.
-    // The Page ID is prefixed with 'PAGE_'
-    allWordpressPage.edges.forEach(edge => {
-        // Gatsby uses Redux to manage its internal state.
-        // Plugins and sites can use functions like "createPage"
-        // to interact with Gatsby.
-        createPage({
-            // Each page is required to have a `path` as well
-            // as a template component. The `context` is
-            // optional but is often necessary so the template
-            // can query data specific to each page.
-            path: `/${edge.node.slug}/`,
-            component: slash(pageTemplate),
-            context: {
-                id: edge.node.id,
-            },
-        })
+  await Promise.all(
+    chunkedContentNodes.map(async (nodesChunk, index) => {
+      const firstNode = nodesChunk[0]
+      const page = index + 1
+      const offset = perPage * index
+
+      await actions.createPage({
+        component: resolve(`./src/pages/index.js`),
+        path: page === 1 ? `/blog/` : `/blog/${page}/`,
+        context: {
+          firstId: firstNode.id,
+          page: page,
+          offset: offset,
+          totalPages: chunkedContentNodes.length,
+          perPage,
+        },
+      })
     })
-
-    const postTemplate = path.resolve(`./src/templates/post.jsx`)
-    // We want to create a detailed page for each
-    // post node. We'll just use the WordPress Slug for the slug.
-    // The Post ID is prefixed with 'POST_'
-    allWordpressPost.nodes.forEach(node => {
-        createPage({
-            path: `${node.path}`,
-            component: slash(postTemplate),
-            context: {
-                id: node.id,
-            },
-        })
-    })
-
-    const tagTemplate = path.resolve(`./src/templates/tag.jsx`)
-    allWordpressTag.nodes.forEach(node => {
-        createPage({
-            path: `${node.path}`,
-            component: slash(tagTemplate),
-            context: {
-                id: node.id,
-            },
-        })
-    })
+  )
 }

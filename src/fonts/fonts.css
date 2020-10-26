@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Playfair Display Regular';
+    src: url('./PlayfairDisplay/static/PlayfairDisplay-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans Semi Bold';
+    src: url('./OpenSans/OpenSans-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans Bold';
+    src: url('./OpenSans/OpenSans-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans Extra Bold';
+    src: url('./OpenSans/OpenSans-ExtraBold.ttf');
+}
