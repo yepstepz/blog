@@ -6,7 +6,7 @@ import { LeadMainPost } from '../components/lead-main-post'
 import { ArticleTile } from '../components/article-tile'
 import { MD, LG, SM } from '../utils/constants'
 
-import { ImportantArticleDashboardStyled } from './pages.styles'
+import { ImportantArticleDashboardStyled } from '../assets/pages.styles'
 
 export default ({data}) => {
     const {
