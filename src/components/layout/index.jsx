@@ -1,8 +1,7 @@
 import React from "react"
 import { Global } from '@emotion/core'
 
-import { Header } from "../header"
-import Menu from "../menu"
+import { Header } from '../header'
 
 import { Wrapper } from './layout.styles'
 import { globalStyles } from './global.styles'

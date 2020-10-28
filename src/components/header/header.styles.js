@@ -1,13 +1,15 @@
 import styled from '@emotion/styled'
 import { Link } from '@reach/router'
 
+import { divider } from '../partials/common.styles'
+
 export const HeaderWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center; 
     margin-bottom: 110px;
     ${({ theme }) => `
-        border-bottom: 2px solid ${theme.headerDivider};
+        ${divider(theme)};
     `}
 `
 

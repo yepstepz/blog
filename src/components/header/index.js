@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from '@reach/router'
 
 import { Logo, Menu, Item, ItemLink, HeaderWrapper } from './header.styles'
 

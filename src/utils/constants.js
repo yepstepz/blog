@@ -13,9 +13,16 @@ export const MAX_LAPTOP_MEDIA = `@media (max-width: ${LAPTOP_WIDTH}px)`
 export const MAX_TABLET_MEDIA = `@media (max-width: ${TABLET_WIDTH}px)`
 export const MAX_MOBILE_MEDIA = `@media (max-width: ${MOBILE_WIDTH}px)`
 
+export const SM = 'sm'
+export const MD = 'md'
+export const LG = 'lg'
+
 
 /*
 320px — 480px: Mobile devices.
 481px — 768px: iPads, Tablets.
 769px — 1024px: Small screens, laptops.
  */
+
+export const PODCASTS_TYPE = 'podcasts'
+export const POST_TYPE = 'post'

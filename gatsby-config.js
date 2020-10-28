@@ -54,6 +54,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-netlify-cache`,
-    `gatsby-plugin-emotion`
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-graphql-config`
   ],
 }
