@@ -1,9 +1,9 @@
-import React from "react"
+import React from 'react'
 
-import { Link } from "gatsby"
-import Img from "gatsby-image"
-import Layout from "../layout"
-import { normalizePath } from "../../utils/get-url-path"
+import { Link } from 'gatsby'
+import Img from 'gatsby-image'
+import { Layout } from '../layout'
+import { normalizePath } from '../../utils/get-url-path'
 
 function BlogPost({ data }) {
   const { nextPage, previousPage, page } = data

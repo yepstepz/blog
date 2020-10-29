@@ -7,6 +7,7 @@ export const ActionButtonCaptionStyled = styled.span`
     font-size: 20px;
     margin-left: 20px;
     display: inline-block;
+    transition: 0.3s all;
    ${({ size }) => size === LG &&`
         font-size: 30px;
         margin-right: 30px;
@@ -21,7 +22,6 @@ export const ActionButtonIconStyled = styled.span`
     width: 44px;
     height: 44px;
     transition: 0.3s all;
-    cursor: pointer;
     ${({ theme, size }) => `
         background: ${theme.buttonColor};
         ${size === LG ? `
@@ -42,6 +42,7 @@ export const ActionButtonStyled = styled.button`
     justify-content: flex-start;
     align-items: center;
     border: 0;
+    cursor: pointer;
     ${({ theme, size, podcastType }) => `
         &:hover {
             color: ${theme.buttonOnHover};

@@ -1,7 +1,7 @@
 import React from 'react'
 import {graphql} from 'gatsby'
 
-import Layout from '../components/layout'
+import { Layout } from '../components/layout'
 import { LeadMainPost } from '../components/lead-main-post'
 import { ArticleTile } from '../components/article-tile'
 import { MD, LG, SM } from '../utils/constants'
@@ -14,7 +14,6 @@ export default ({data}) => {
         otherStickyPosts,
         last4Posts
     } = data
-    console.log([...otherStickyPosts.edges, ...last4Posts.edges])
     return (
         <Layout>
             <LeadMainPost post={firstStickyPost.edges[0].node} />
@@ -41,7 +40,7 @@ export const query = graphql`
         ) {
             ...WpPost
         }
-        
+
         otherStickyPosts: allWpPost(
             sort: {fields: date, order: DESC},
             filter: {isSticky: {eq: true}},
@@ -50,7 +49,7 @@ export const query = graphql`
         ) {
             ...WpPost
         }
-        
+
         last4Posts: allWpPost(
             sort: {fields: date, order: DESC},
             filter: {isSticky: {ne: true}},
@@ -58,37 +57,7 @@ export const query = graphql`
         ) {
             ...WpPost
         }
-        
-    }
-    
-    fragment WpPost on WpPostConnection {
-        edges {
-            node {
-                categories {
-                    nodes {
-                        id
-                        name
-                        slug
-                        uri
-                    }
-                }
-                date
-                id
-                title
-                uri
-                isSticky
-                slug
-                tags {
-                    nodes {
-                        id
-                        name
-                        uri
-                        slug
-                    }
-                }
-                excerpt
-            }
-        }   
+
     }
 `
 

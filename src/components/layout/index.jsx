@@ -19,4 +19,6 @@ const Layout = ({ children }) => (
     </Wrapper>
 )
 
+export { Layout }
+
 export default Layout

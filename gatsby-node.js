@@ -80,6 +80,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
   `)
 
+    console.log(allWpPost)
+
   const perPage = 10
   const chunkedContentNodes = chunk(allWpPost.nodes, perPage)
 
@@ -102,4 +104,61 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       })
     })
   )
+
+    // create category page
+
+    const {
+      data: {
+          allWpCategory: { nodes: categoryNodes },
+          allWpTag: { nodes: tagNodes}
+      }
+    } = await graphql(/* GraphQL */ `
+    {
+      allWpCategory {
+        nodes {
+          id
+          name
+          uri
+        }
+      }
+      allWpTag {
+          nodes {
+          id
+          name
+          uri
+        }
+      }
+    }
+  `)
+
+    const categoryTypeTemplateFile = `./src/templates/single/Category.js`
+    const tagTypeTemplateFile = `./src/templates/single/Tag.js`
+
+    await Promise.all(
+        categoryNodes.map(async (node, i) => {
+            const { uri, id } = node
+
+            await actions.createPage({
+                component: resolve(categoryTypeTemplateFile),
+                path: uri,
+                context: {
+                    id
+                }
+            })
+        })
+    )
+
+    await Promise.all(
+        tagNodes.map(async (node, i) => {
+            const { uri, id } = node
+
+            await actions.createPage({
+                component: resolve(tagTypeTemplateFile),
+                path: uri,
+                context: {
+                    id
+                }
+            })
+        })
+    )
 }

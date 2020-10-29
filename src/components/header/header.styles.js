@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Link } from '@reach/router'
+import { Link } from 'gatsby'
 
 import { divider } from '../partials/common.styles'
 

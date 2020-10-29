@@ -9,13 +9,6 @@ export const query = graphql`
     page: wpPage(id: { eq: $id }) {
       title
       content
-      featuredImage {
-        node {
-          localFile {
-            ...HeroImage
-          }
-        }
-      }
     }
 
     nextPage: wpPage(id: { eq: $nextPage }) {

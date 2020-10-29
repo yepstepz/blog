@@ -6,13 +6,14 @@ import {
 } from './categories.styles'
 
 export const Category = ({
-    small,
+    size,
     name,
     uri,
-    id
+    id,
+    className
 }) => (
-    <CategoryWrapperStyled>
-        <CategoryLinkStyled href={uri} key={id} small={small}>
+    <CategoryWrapperStyled className={className}>
+        <CategoryLinkStyled href={uri} key={id} size={size}>
             {name}
         </CategoryLinkStyled>
     </CategoryWrapperStyled>
