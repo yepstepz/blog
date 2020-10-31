@@ -1,13 +1,12 @@
 import React from "react"
 import { graphql, Link } from 'gatsby'
-import { Flex, Box } from '@rebass/grid/emotion'
 import { css } from '@emotion/core'
 
 import { Layout } from '../../components/layout'
 import { ArticleTile } from '../../components/article-tile'
 import { Title } from '../../components/partials/title'
 import { LG } from '../../utils/constants'
-import { normalizePath } from '../../utils/get-url-path'
+import { ColumnStyled } from '../../components/partials/common.styles'
 
 export default ({ data }) => {
     const {
@@ -18,20 +17,17 @@ export default ({ data }) => {
     return (
         <Layout>
             <Title size={LG}>{catInfo.name}</Title>
-            <Flex
-                flexDirection={'column'}
+            <ColumnStyled
                 css={css`
-                    margin-top: 100px;
+                    margin-bottom: 100px;
                 `}
             >
                 {
                     catPagePosts.edges.map((post) =>
-                        <Box mb={90}>
-                            <ArticleTile {...post.node} size={LG} />
-                        </Box>
+                        <ArticleTile css={css` margin-top: 90px;`} {...post.node} size={LG} hideCategory />
                     )
                 }
-            </Flex>
+            </ColumnStyled>
         </Layout>
     );
 }

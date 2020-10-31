@@ -22,6 +22,11 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       description
       id
       link
+      mainPageSticky {
+        fieldGroupName
+        mainPageCategory
+        mainPageCategoryOrder
+      }
       name
       wpParent: parent {
         node {

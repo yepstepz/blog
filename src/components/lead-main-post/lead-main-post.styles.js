@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 
+import { Category } from '../partials/categories'
 import { divider } from '../partials/common.styles'
 
 export const LeadMainPostStyled = styled.article`
@@ -10,6 +11,10 @@ export const LeadMainPostStyled = styled.article`
     ${({theme}) => `
         ${divider(theme)};
     `}
+`
+
+export const LeadMainCategory = styled(Category)`
+    margin-bottom: 30px;
 `
 
 export const LeadMainContentStyled = styled.section`

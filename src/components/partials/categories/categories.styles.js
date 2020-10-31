@@ -2,9 +2,7 @@ import styled from '@emotion/styled'
 
 import { LG } from '../../../utils/constants'
 
-export const CategoryWrapperStyled = styled.div`
-  margin-bottom: 30px;
-`
+export const CategoryWrapperStyled = styled.div``
 
 export const CategoryLinkStyled = styled.a`
   text-decoration: none;

@@ -21,6 +21,11 @@ query PREVIEW_QUERY($id: ID!) {
     description
     id
     link
+    mainPageSticky {
+      fieldGroupName
+      mainPageCategory
+      mainPageCategoryOrder
+    }
     name
     wpParent: parent {
       node {

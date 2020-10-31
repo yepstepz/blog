@@ -1,28 +1,46 @@
 import styled from '@emotion/styled'
 
-import { ActionButtonStyled } from '../partials/action-button/action-button.styles'
+import { CategoryWrapperStyled } from '../partials/categories/categories.styles'
 import { ShortTextStyled } from '../partials/short-text/short-text.styles'
+import { TitleStyled } from '../partials/title/title.styles'
+import { ActionButtonIconStyled } from '../partials/action-button/action-button.styles'
 
 export const ArticleTileStyled = styled.article`
-    ${ActionButtonStyled} {
-        margin-top: 40px;
+    ${ShortTextStyled} {
+       min-height: 60px;
     }
+    ${({ width }) => `
+            width: 100%;
+            ${ width ? `max-width: ${width};` : ''}
+    `}
 `
 
 export const LargeArticleTileStyled = styled(ArticleTileStyled)`
-    min-width: 720px;
-    width: 720px;
-`
-
-export const MediumArticleTileStyled = styled(ArticleTileStyled)`
-    min-width: 540px;
-    width: 540px;
-    ${ ShortTextStyled } {
-        min-height: 60px;
+    ${ShortTextStyled} {
+       margin-bottom: 30px;
+    }
+    ${ CategoryWrapperStyled } {
+        margin-right: 10px;
     }
 `
 
-export const SmallArticleTileStyled = styled(ArticleTileStyled)`
-    min-width: 340px;
-    width: 340px;
+export const MediumArticleTileStyled = styled(ArticleTileStyled)`
+    ${ShortTextStyled} {
+       margin-bottom: 20px;
+    }
+`
+
+export const SmallArticleTileStyled = styled(ArticleTileStyled)``
+
+export const ExtraSmallArticleTileStyled = styled(ArticleTileStyled)`
+    &:hover {
+       ${({ theme }) => `
+          ${ TitleStyled } {
+            color: ${theme.buttonPodcastsOnHover};
+          }
+          ${ ActionButtonIconStyled } {
+            background: ${theme.buttonPodcastsOnHover};
+          }
+       `}
+    }
 `

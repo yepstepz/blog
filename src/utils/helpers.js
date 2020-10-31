@@ -16,3 +16,6 @@ export const truncate = (str, n) => {
     }
     return `${truncated.substr(0, truncated.lastIndexOf(' '))}...`
 }
+
+export const getPostFromScheme = (posts) => posts?.edges?.map(post => post.node)
+export const getCategoryFromScheme = (categories) => categories?.edges?.[0]?.node

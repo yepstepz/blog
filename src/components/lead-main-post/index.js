@@ -9,7 +9,8 @@ import { findTypeOfPost } from '../../utils/helpers'
 
 import {
     LeadMainPostStyled,
-    LeadMainContentStyled
+    LeadMainContentStyled,
+    LeadMainCategory
 } from './lead-main-post.styles'
 
 export const LeadMainPost = ({ post, type }) => {
@@ -24,7 +25,7 @@ export const LeadMainPost = ({ post, type }) => {
     return (
         <LeadMainPostStyled key={id}>
             <LeadMainContentStyled>
-                <Category {...categories.nodes[0]} />
+                <LeadMainCategory {...categories.nodes[0]} />
                 <Title href={uri} size={LG}>{title}</Title>
                 <ShortText text={excerpt} />
             </LeadMainContentStyled>

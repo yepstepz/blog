@@ -48,3 +48,15 @@ export const WpPost = graphql`
     }
   }
 `
+
+export const WpCategory = graphql`
+    fragment WpCategory on WpCategoryConnection {
+        edges {
+            node {
+                id
+                name
+                uri
+            }
+        }
+    }
+`

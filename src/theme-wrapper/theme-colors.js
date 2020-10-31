@@ -1,4 +1,5 @@
 export const LIGHT_THEME = 'light-theme'
+export const DARK_THEME = 'dark-theme'
 
 export const colors = {
     pink: '#DE4698',
@@ -14,6 +15,16 @@ export const themeColors = {
         headerDivider: colors.black,
         buttonColor: colors.black,
         buttonOnHover: colors.green,
-        buttonPodcastsOnHover: colors.pink
+        buttonPodcastsOnHover: colors.pink,
+        buttonIconColor: colors.white
+    },
+    [DARK_THEME]: {
+        background: colors.black,
+        mainFontColor: colors.white,
+        headerDivider: colors.white,
+        buttonColor: colors.white,
+        buttonOnHover: colors.green,
+        buttonPodcastsOnHover: colors.pink,
+        buttonIconColor: colors.black
     }
 }

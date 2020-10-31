@@ -2,7 +2,7 @@ import React from 'react'
 
 import { normalizePath } from '../../utils/get-url-path'
 
-import { Logo, Menu, Item, ItemLink, HeaderWrapper } from './header.styles'
+import { Logo, Menu, Item, ItemLinkStyled, HeaderWrapper } from './header.styles'
 
 export const Header = () => {
     return (
@@ -11,9 +11,9 @@ export const Header = () => {
                 <Logo to={normalizePath('/')}>Work'n'Talk</Logo>
 
                 <Menu>
-                    <Item><ItemLink to={normalizePath('/')} active>Главная</ItemLink></Item>
-                    <Item><ItemLink to={normalizePath('/posts')}>Блог</ItemLink></Item>
-                    <Item><ItemLink to={normalizePath('/podcasts')}>Подкасты</ItemLink></Item>
+                    <Item><ItemLinkStyled to={normalizePath('/')} active>Главная</ItemLinkStyled></Item>
+                    <Item><ItemLinkStyled to={normalizePath('/posts')}>Блог</ItemLinkStyled></Item>
+                    <Item><ItemLinkStyled to={normalizePath('/podcasts')}>Подкасты</ItemLinkStyled></Item>
                 </Menu>
             </HeaderWrapper>
         </header>

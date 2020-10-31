@@ -1,5 +1,5 @@
 export const globalStyles = `
     * {
-        margin: 0
+        margin: 0;
     }
 `

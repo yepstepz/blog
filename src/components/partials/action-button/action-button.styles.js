@@ -7,11 +7,10 @@ export const ActionButtonCaptionStyled = styled.span`
     font-size: 20px;
     margin-left: 20px;
     display: inline-block;
-    transition: 0.3s all;
-   ${({ size }) => size === LG &&`
+    ${({ size, theme }) => size === LG &&`
         font-size: 30px;
         margin-right: 30px;
-   `}
+    `}
 `
 
 export const ActionButtonIconStyled = styled.span`
@@ -21,15 +20,18 @@ export const ActionButtonIconStyled = styled.span`
     border-radius: 50%;
     width: 44px;
     height: 44px;
-    transition: 0.3s all;
     ${({ theme, size }) => `
         background: ${theme.buttonColor};
+        path {
+          fill: ${theme.buttonIconColor};
+        }
         ${size === LG ? `
+            transition: 0.3s all;
             width: 108px;
             height: 108px;
             max-width: 104px;
             max-height: 104px;
-        `: ''}
+        `: ''};
     `}
 `
 
@@ -44,6 +46,7 @@ export const ActionButtonStyled = styled.button`
     border: 0;
     cursor: pointer;
     ${({ theme, size, podcastType }) => `
+        color: ${theme.mainFontColor};
         &:hover {
             color: ${theme.buttonOnHover};
             ${podcastType ? `
@@ -65,3 +68,4 @@ export const ActionButtonStyled = styled.button`
         }
     `}
 `
+

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'emotion-theming'
 
-import { themeColors, LIGHT_THEME } from './theme-colors'
+import { themeColors, LIGHT_THEME, DARK_THEME } from './theme-colors'
 
 export const ThemeWrapper = ({ children, theme }) => {
     return (

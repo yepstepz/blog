@@ -33,7 +33,7 @@ export const Item = styled.li`
     }
 `
 
-export const ItemLink = styled(Link)`
+export const ItemLinkStyled = styled(Link)`
     display: inline-block;
     padding: 27px 0 17px 0;
     text-decoration: none;

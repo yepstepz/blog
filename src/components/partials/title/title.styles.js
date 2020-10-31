@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { SM, MD, LG } from '../../../utils/constants'
+import { XS, SM, MD, LG } from '../../../utils/constants'
 
 export const TitleWrapper = styled.a`
     text-decoration: none;
@@ -12,15 +12,28 @@ export const TitleWrapper = styled.a`
 
 export const TitleStyled = styled.h2`
     font-family: 'Open Sans Extra Bold', sans-serif;
-    margin-bottom: 30px;
     ${({ size }) => {
         switch (size) {
             case LG:
-                return `font-size: 60px;`
+                return `
+                    font-size: 60px;
+                    margin-bottom: 30px;
+                `
             case MD:
-                return `font-size: 40px;`
+                return `
+                    font-size: 40px;
+                    margin-bottom: 30px;
+                `
             case SM:
-                return `font-size: 30px;`
+                return `
+                    font-size: 30px;
+                    margin-bottom: 20px;
+                `
+            case XS:
+                return `
+                    font-size: 20px;
+                    margin-bottom: 0;
+                `
             default:
                 return `font-size: 30px;`
         }

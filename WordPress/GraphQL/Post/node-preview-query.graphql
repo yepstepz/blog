@@ -53,10 +53,6 @@ query PREVIEW_QUERY($id: ID!) {
     modifiedGmt
     pingStatus
     pinged
-    podcastLink {
-      fieldGroupName
-      podcastLink
-    }
     postFormats(first: 100) {
       nodes {
         id
@@ -64,6 +60,10 @@ query PREVIEW_QUERY($id: ID!) {
     }
     slug
     status
+    stickySettings {
+      fieldGroupName
+      stickyOrder
+    }
     tags(first: 100) {
       nodes {
         id

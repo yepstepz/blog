@@ -1,12 +1,12 @@
 import React from "react"
 import { graphql, Link } from 'gatsby'
-import { Flex, Box } from '@rebass/grid/emotion'
 import { css } from '@emotion/core'
 
 import { Layout } from '../../components/layout'
 import { ArticleTile } from '../../components/article-tile'
 import { Title } from '../../components/partials/title'
 import { LG } from '../../utils/constants'
+import { ColumnStyled } from '../../components/partials/common.styles'
 
 export default ({ data }) => {
     const {
@@ -17,20 +17,17 @@ export default ({ data }) => {
     return (
         <Layout>
             <Title size={LG}>#{tagInfo.name}</Title>
-            <Flex
-                flexDirection={'column'}
+            <ColumnStyled
                 css={css`
-                    margin-top: 100px;
+                    margin-bottom: 100px;
                 `}
             >
                 {
                     tagPagePosts.edges.map((post) =>
-                        <Box mb={90}>
-                            <ArticleTile {...post.node} size={LG} />
-                        </Box>
+                        <ArticleTile css={css` margin-top: 90px;`} {...post.node} size={LG} />
                     )
                 }
-            </Flex>
+            </ColumnStyled>
         </Layout>
     );
 }

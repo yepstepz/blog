@@ -1,19 +1,21 @@
 import React from 'react'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { css } from '@emotion/core'
 
 import { normalizePath } from '../../../utils/get-url-path'
+import { RowStyled } from '../common.styles'
 
 import { TagStyled } from './tags.styles'
 
 export const Tag = ({
     uri,
-    name
-}) => <TagStyled to={normalizePath(uri)}>#{name}</TagStyled>
+    name,
+    ...rest
+}) => <TagStyled to={normalizePath(uri)} {...rest}>#{name}</TagStyled>
 
 export const TagCollection = ({ tags }) => (
-    <Flex>
+    <RowStyled>
         {
-            tags.map((tag, i) => <Box ml={i && 10}><Tag {...tag} /></Box>)
+            tags.map((tag, i) =><Tag css={css`margin-right: 10px;`} {...tag} />)
         }
-    </Flex>
+    </RowStyled>
 )

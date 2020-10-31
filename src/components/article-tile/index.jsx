@@ -1,16 +1,16 @@
 import React from 'react'
 
-import { SM, MD, LG } from '../../utils/constants'
+import { XS, MD, LG } from '../../utils/constants'
 
 import { LargeArticleTile } from './lg-article-tile'
 import { MediumArticleTile } from './md-article-tile'
-import { SmallArticleTile} from './sm-article-tile'
+import { ExtraSmallArticleTile } from './xs-article-tile'
 
 export const ArticleTile = ({ size, ...rest }) => {
     if (size) {
         switch (size) {
-            case SM:
-                return <SmallArticleTile {...rest} />;
+            case XS:
+                return <ExtraSmallArticleTile {...rest} />
             case MD:
                 return <MediumArticleTile {...rest} />;
             case LG:

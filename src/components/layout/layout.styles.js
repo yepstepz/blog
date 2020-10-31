@@ -33,3 +33,9 @@ export const Wrapper = styled.main`
         width: ${DESKTOP_WIDTH}px;
     }
 `
+
+export const BackgroundWrapper = styled.div`
+    ${({ theme }) => `
+        background: ${theme.background};
+    `}
+`

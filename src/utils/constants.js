@@ -16,6 +16,7 @@ export const MAX_MOBILE_MEDIA = `@media (max-width: ${MOBILE_WIDTH}px)`
 export const SM = 'sm'
 export const MD = 'md'
 export const LG = 'lg'
+export const XS = 'xs'
 
 
 /*

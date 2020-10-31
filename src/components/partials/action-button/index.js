@@ -10,21 +10,31 @@ import {
     ActionButtonCaptionStyled
 } from './action-button.styles'
 
-const getIconByType = (type) => isPodcastsType(type) ? <Ic24Speaker/> : <Ic24Stack/>
+const getIconByType = (type) => isPodcastsType(type) ? <Ic24Speaker /> : <Ic24Stack/>
 const getCaptionByType = (type) => isPodcastsType(type) ? 'Слушать' : 'Читать'
+
+export const ActionButtonIcon = ({
+     size,
+     type
+}) => (
+    <ActionButtonIconStyled
+        size={size}
+    >
+        {
+            getIconByType(type)
+        }
+    </ActionButtonIconStyled>
+)
 
 export const ActionButton = ({ type, size }) => (
     <ActionButtonStyled
         podcastType={isPodcastsType(type)}
         size={size}
     >
-        <ActionButtonIconStyled
+        <ActionButtonIcon
             size={size}
-        >
-            {
-                getIconByType(type)
-            }
-        </ActionButtonIconStyled>
+            type={type}
+        />
         <ActionButtonCaptionStyled
             size={size}
         >
