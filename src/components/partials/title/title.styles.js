@@ -12,7 +12,7 @@ export const TitleWrapper = styled.a`
 
 export const TitleStyled = styled.h2`
     font-family: 'Open Sans Extra Bold', sans-serif;
-    ${({ size }) => {
+    ${({ size, hideShortText }) => {
         switch (size) {
             case LG:
                 return `
@@ -27,7 +27,7 @@ export const TitleStyled = styled.h2`
             case SM:
                 return `
                     font-size: 30px;
-                    margin-bottom: 20px;
+                    margin-bottom: ${hideShortText ? '40px' : '30px'};
                 `
             case XS:
                 return `

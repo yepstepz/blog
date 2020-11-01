@@ -4,3 +4,7 @@ node_modules
 public
 
 .wordpress-cache
+
+.env.development
+.env.development.local
+*.local

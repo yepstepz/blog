@@ -9,7 +9,14 @@
 import React from 'react';
 
 import { ThemeWrapper } from './src/theme-wrapper'
+import { EpisodeProvider } from './src/components/context/episode-provider.context'
+import { Player } from './src/components/player'
 
 export const wrapRootElement = ({ element }) => (
-    <ThemeWrapper>{element}</ThemeWrapper>
+    <ThemeWrapper>
+        <EpisodeProvider>
+            {element}
+            <Player />
+        </EpisodeProvider>
+    </ThemeWrapper>
 );

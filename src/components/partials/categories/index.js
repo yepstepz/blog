@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { normalizePath } from '../../../utils/get-url-path'
+
 import {
     CategoryWrapperStyled,
     CategoryLinkStyled
@@ -13,7 +15,7 @@ export const Category = ({
     className
 }) => (
     <CategoryWrapperStyled className={className}>
-        <CategoryLinkStyled href={uri} key={id} size={size}>
+        <CategoryLinkStyled href={normalizePath(uri)} key={id} size={size}>
             {name}
         </CategoryLinkStyled>
     </CategoryWrapperStyled>

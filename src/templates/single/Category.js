@@ -24,7 +24,7 @@ export default ({ data }) => {
             >
                 {
                     catPagePosts.edges.map((post) =>
-                        <ArticleTile css={css` margin-top: 90px;`} {...post.node} size={LG} hideCategory />
+                        <ArticleTile css={css` margin-top: 90px;`} {...post.node} articleTileSize={LG} hideCategory />
                     )
                 }
             </ColumnStyled>

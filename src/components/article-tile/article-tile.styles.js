@@ -30,8 +30,6 @@ export const MediumArticleTileStyled = styled(ArticleTileStyled)`
     }
 `
 
-export const SmallArticleTileStyled = styled(ArticleTileStyled)``
-
 export const ExtraSmallArticleTileStyled = styled(ArticleTileStyled)`
     &:hover {
        ${({ theme }) => `

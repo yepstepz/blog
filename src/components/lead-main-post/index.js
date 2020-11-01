@@ -1,11 +1,10 @@
 import React from 'react'
 
-import { Category } from '../partials/categories'
 import { ActionButton } from '../partials/action-button'
 import { Title } from '../partials/title'
 import { ShortText } from '../partials/short-text'
 import { LG } from '../../utils/constants'
-import { findTypeOfPost } from '../../utils/helpers'
+import { isPodcastsType } from '../../utils/helpers'
 
 import {
     LeadMainPostStyled,
@@ -13,23 +12,36 @@ import {
     LeadMainCategory
 } from './lead-main-post.styles'
 
-export const LeadMainPost = ({ post, type }) => {
+export const LeadMainPost = (props) => {
     const {
         uri,
+        postType,
         id,
         title,
         categories,
-        excerpt
-    } = post
+        excerpt,
+        handleClick,
+        articleTileSize,
+        number,
+        season
+    } = props
 
     return (
         <LeadMainPostStyled key={id}>
             <LeadMainContentStyled>
-                <LeadMainCategory {...categories.nodes[0]} />
+                { categories ?
+                    <LeadMainCategory {...categories.nodes[0]} /> :
+                    <LeadMainCategory
+                        name="Подкасты"
+                        uri={'/podcasts'}
+                        id={id}
+                    />
+                }
+                { isPodcastsType(postType) && <div>Сезон {season.number}, эпизод {number}</div>}
                 <Title href={uri} size={LG}>{title}</Title>
                 <ShortText text={excerpt} />
             </LeadMainContentStyled>
-            <ActionButton type={type || findTypeOfPost(categories)} size={LG} />
+            <ActionButton onClick={handleClick} postType={postType} articleTileSize={articleTileSize} href={uri} />
         </LeadMainPostStyled>
     )
 }

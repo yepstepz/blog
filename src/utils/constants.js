@@ -27,3 +27,5 @@ export const XS = 'xs'
 
 export const PODCASTS_TYPE = 'podcasts'
 export const POST_TYPE = 'post'
+export const MAIN_POST_TYPE = 'main-post-type'
+export const MAIN_PODCAST_TYPE = 'main-podcast-type'

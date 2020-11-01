@@ -60,3 +60,39 @@ export const WpCategory = graphql`
         }
     }
 `
+
+export const Podcast = graphql`
+    fragment Podcast on SimplecastPodcastEpisodeConnection {
+        edges {
+            node {
+                slug
+                status
+                title
+                description
+                simplecastId
+                enclosureUrl
+                href
+                number
+                season {
+                    number
+                }
+            }
+        }
+    }
+`
+
+export const SinglePodcast = graphql`
+    fragment SinglePodcast on SimplecastPodcastEpisode {
+                slug
+                status
+                title
+                description
+                simplecastId
+                enclosureUrl
+                href
+                number
+                season {
+                    number
+                }
+    }
+`

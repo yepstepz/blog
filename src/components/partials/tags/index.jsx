@@ -12,10 +12,11 @@ export const Tag = ({
     ...rest
 }) => <TagStyled to={normalizePath(uri)} {...rest}>#{name}</TagStyled>
 
-export const TagCollection = ({ tags }) => (
-    <RowStyled>
-        {
-            tags.map((tag, i) =><Tag css={css`margin-right: 10px;`} {...tag} />)
-        }
-    </RowStyled>
+export const TagCollection = ({ tags, id }) => (
+
+        <RowStyled>
+            {
+                tags.map((tag, i) => <Tag key={`tag-${i}-${id}`} css={css`margin-right: 10px;`} {...tag} />)
+            }
+        </RowStyled>
 )

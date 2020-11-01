@@ -7,7 +7,7 @@ import { LeadMainPost } from '../components/lead-main-post'
 import { getPostFromScheme } from '../utils/helpers'
 import { ColumnStyled}  from '../components/partials/common.styles';
 import { ArticleTile } from '../components/article-tile';
-import { LG } from '../utils/constants';
+import { LG, MAIN_POST_TYPE } from '../utils/constants';
 import { PageSection } from '../components/dashboard-parts/page-section'
 
 export default ({ data }) => {
@@ -16,11 +16,9 @@ export default ({ data }) => {
         otherPosts
     } = data
 
-    console.log(getPostFromScheme(mainPost))
-
     return (
         <Layout>
-            <LeadMainPost post={getPostFromScheme(mainPost)[0]} />
+            <ArticleTile {...getPostFromScheme(mainPost)[0]} postType={MAIN_POST_TYPE} />
             <PageSection>
                 <ColumnStyled
                     css={css`
@@ -29,7 +27,7 @@ export default ({ data }) => {
                 >
                     {
                         getPostFromScheme(otherPosts).map((post) =>
-                            <ArticleTile css={css` margin-top: 90px;`} {...post} size={LG} hideCategory />
+                            <ArticleTile css={css` margin-top: 90px;`} {...post} articleTileSize={LG} hideCategory />
                         )
                     }
                 </ColumnStyled>

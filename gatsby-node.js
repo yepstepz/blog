@@ -80,8 +80,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
   `)
 
-    console.log(allWpPost)
-
   const perPage = 10
   const chunkedContentNodes = chunk(allWpPost.nodes, perPage)
 
@@ -155,6 +153,51 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             await actions.createPage({
                 component: resolve(tagTypeTemplateFile),
                 path: uri,
+                context: {
+                    id
+                }
+            })
+        })
+    )
+
+    // create podcast page
+
+    const {
+      data: {
+          allSimplecastPodcastEpisode: {
+              nodes: podcastNodes
+          }
+      }
+    } = await graphql(/* GraphQL */ `
+    {
+      allSimplecastPodcastEpisode {
+            nodes {
+                slug
+                id
+                status
+                title
+                description
+                simplecastId
+                enclosureUrl
+                href
+                number
+                season {
+                    number
+                }
+            }
+      }
+    }
+  `)
+
+    const podcastTypeTemplateFile = `./src/templates/single/Podcast.js`
+
+    await Promise.all(
+        podcastNodes.map(async (node, i) => {
+            const { slug, id } = node
+
+            await actions.createPage({
+                component: resolve(podcastTypeTemplateFile),
+                path: `/podcasts/${slug}`,
                 context: {
                     id
                 }

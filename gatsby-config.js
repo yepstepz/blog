@@ -2,9 +2,9 @@ require("dotenv").config({
   path: `.env.GATSBY_CONCURRENT_DOWNLOAD`,
 })
 
-// require .env.development or .env.production
+// require .env.development.local or .env.production
 require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
+  path: `.env.${process.env.NODE_ENV}.local`,
 })
 
 module.exports = {
@@ -55,6 +55,13 @@ module.exports = {
     },
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-emotion`,
-    `gatsby-plugin-graphql-config`
+    `gatsby-plugin-graphql-config`,
+    {
+      resolve: 'gatsby-source-simplecast',
+      options: {
+        token: process.env.PODCAST_TOKEN,
+        podcastId: 'a5e421cb-d76b-44e5-8f77-9ed8e574b578',
+      },
+    },
   ],
 }

@@ -24,7 +24,7 @@ export default ({ data }) => {
             >
                 {
                     tagPagePosts.edges.map((post) =>
-                        <ArticleTile css={css` margin-top: 90px;`} {...post.node} size={LG} />
+                        <ArticleTile css={css` margin-top: 90px;`} {...post.node} articleTileSize={LG} />
                     )
                 }
             </ColumnStyled>

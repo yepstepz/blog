@@ -3,14 +3,13 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
 import { Layout } from '../components/layout'
-import { LeadMainPost } from '../components/lead-main-post'
 import { RowStyled, ColumnStyled } from '../components/partials/common.styles'
 import { ArticleTile } from '../components/article-tile'
-import { MD, LG, SM, XS } from '../utils/constants'
-import { getPostFromScheme, getCategoryFromScheme } from '../utils/helpers'
-
+import { MD, LG, XS, PODCASTS_TYPE, MAIN_PODCAST_TYPE, MAIN_POST_TYPE } from '../utils/constants'
+import { getPostFromScheme, getCategoryFromScheme, getPodcastFromScheme } from '../utils/helpers'
 import { PageSection } from '../components/dashboard-parts/page-section'
 import { PageSectionCategory } from '../components/dashboard-parts/page-category'
+import { normalizePath } from "../utils/get-url-path";
 
 export default ({data}) => {
     const {
@@ -24,22 +23,28 @@ export default ({data}) => {
         secondStickyCatPostsScheme,
         thirdStickyCatNameScheme,
         thirdStickyCatPostsScheme,
+        allPodcastEpisode,
+        lastPodcastEpisode
     } = data
-    console.log(getPostFromScheme(podcastsCatScheme)[0].categories.nodes[0])
+    const leadPost = lastPodcastEpisode?.edges?.length ? getPodcastFromScheme(lastPodcastEpisode)[0]: getPostFromScheme(firstStickyPostScheme)[0]
     return (
         <Layout>
-            <LeadMainPost post={getPostFromScheme(firstStickyPostScheme)[0]} />
+            <ArticleTile
+                postType={lastPodcastEpisode?.edges?.length ? MAIN_PODCAST_TYPE: MAIN_POST_TYPE}
+                {...leadPost}
+            />
             <PageSection pd="80px 0 40px">
                 <RowStyled ai="flex-start" jc="flex-start">
                     {
                         [...getPostFromScheme(otherStickyPostsScheme), ...getPostFromScheme(last4PostsScheme)].slice(0, 4).map((post, i) => (
                                 <ArticleTile
+                                    key={post.id}
                                     css={css`
                                         margin-bottom: 80px;
                                         margin-right: ${i % 2 ? 0 : 100}px;
                                     `}
                                     width="540px"
-                                    size={LG}
+                                    articleTileSize={LG}
                                     {...post}
                                 />
                             ))
@@ -53,7 +58,8 @@ export default ({data}) => {
                         {
                             getPostFromScheme(firstStickyCatPostsScheme).map((post, i) => (
                                     <ArticleTile
-                                        size={MD}
+                                        key={post.id}
+                                        articleTileSize={MD}
                                         css={css`
                                             margin-top: ${i !== 0 ? '80px' : 0};
                                         `}
@@ -64,12 +70,14 @@ export default ({data}) => {
                         }
                     </ColumnStyled>
                     <ColumnStyled ai="flex-start" flex="0 0 300px">
-                        <PageSectionCategory size={LG} {...getPostFromScheme(podcastsCatScheme)[0].categories.nodes[0]} />
+                        <PageSectionCategory size={LG} name="Подкасты" uri={normalizePath('/podcasts')} />
                         {
-                            getPostFromScheme(podcastsCatScheme).map((post) => {
+                            getPodcastFromScheme(allPodcastEpisode).map((post) => {
                                 return (
                                     <ArticleTile
-                                        size={XS}
+                                        key={post.id}
+                                        articleTileSize={XS}
+                                        postType={PODCASTS_TYPE}
                                         css={css`
                                             margin-bottom: 45px;
                                         `}
@@ -89,12 +97,13 @@ export default ({data}) => {
                         getPostFromScheme(secondStickyCatPostsScheme).map((post, i) => {
                             return (
                                 <ArticleTile
+                                    key={post.id}
                                     css={css`
                                         margin-bottom: 90px;
                                         margin-right: ${i % 2 ? 0 : 100}px;
                                     `}
                                     width="540px"
-                                    size={MD}
+                                    articleTileSize={MD}
                                     {...post}
                                 />
                             );
@@ -109,13 +118,14 @@ export default ({data}) => {
                         getPostFromScheme(thirdStickyCatPostsScheme).map((post, i) => {
                             return (
                                 <ArticleTile
+                                    key={post.id}
                                     css={css`
                                         margin-bottom: 80px;
                                         margin-left: ${i % 3 ? 60 : 0}px;
                                     `}
-                                    showShortText={false}
+                                    hideShortText
                                     width="340px"
-                                    size={MD}
+                                    articleTileSize={MD}
                                     {...post}
                                 />
                             );
@@ -130,9 +140,9 @@ export default ({data}) => {
 export const query = graphql`
     query {
         firstStickyPostScheme: allWpPost(
-            sort: {fields: date, order: DESC}, 
+            sort: {fields: date, order: DESC},
             filter: {
-                isSticky: {eq: true}, 
+                isSticky: {eq: true},
                 stickySettings: {stickyOrder: {eq: 1}},
             },
             limit: 1
@@ -143,12 +153,12 @@ export const query = graphql`
         otherStickyPostsScheme: allWpPost(
             filter: {
                 isSticky: {eq: true}
-            }, 
-            limit: 4, 
+            },
+            limit: 4,
             sort: {
-                fields: stickySettings___stickyOrder, 
+                fields: stickySettings___stickyOrder,
                 order: ASC
-            }, 
+            },
             skip: 1
         ) {
             ...WpPost
@@ -161,7 +171,7 @@ export const query = graphql`
         ) {
             ...WpPost
         }
-        
+
         podcastsCatScheme: allWpPost(
             filter: {
                 categories: {
@@ -171,7 +181,7 @@ export const query = graphql`
                         }
                     }
                 }
-            }, 
+            },
             limit: 5,
             sort: { fields: date, order: DESC }
         ) {
@@ -181,21 +191,21 @@ export const query = graphql`
         firstStickyCatNameScheme: allWpCategory(
             filter: {
                 mainPageSticky: {
-                    mainPageCategory: { eq: true }, 
-                    mainPageCategoryOrder: { eq: 1 } 
+                    mainPageCategory: { eq: true },
+                    mainPageCategoryOrder: { eq: 1 }
                 }
             }
         ) {
             ...WpCategory
         }
-        
+
         firstStickyCatPostsScheme: allWpPost(
             filter: {
                 categories: {
                     nodes: {
                         elemMatch: {
                             mainPageSticky: {
-                                mainPageCategory: { eq: true }, 
+                                mainPageCategory: { eq: true },
                                 mainPageCategoryOrder: { eq: 1 }
                             }}
                     }
@@ -261,9 +271,18 @@ export const query = graphql`
         ) {
             ...WpPost
         }
-        
-        
 
+        allPodcastEpisode: allSimplecastPodcastEpisode(filter: {status: {eq: "published"}}) {
+            ...Podcast
+        }
+        
+        lastPodcastEpisode:   allSimplecastPodcastEpisode(
+            filter: { status: {eq: "published"} }, 
+            sort: { fields: daysSinceRelease, order: ASC }, 
+            limit: 1
+        ) {
+            ...Podcast
+        }
     }
 `
 
