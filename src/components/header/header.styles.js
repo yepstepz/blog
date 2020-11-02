@@ -25,9 +25,11 @@ export const Logo = styled(Link)`
 export const Menu = styled.ul`
     display: flex;
     list-style: none;
+    margin-left: auto;
+    margin-right: 28px;
 `
 
-export const Item = styled.li`
+export const ItemWrapperStyled = styled.li`
     &:not(:last-child) {
         margin-right: 38px;
     }
@@ -48,4 +50,15 @@ export const ItemLinkStyled = styled(Link)`
     ${({ active, theme }) => active && `
         border-color: ${theme.mainFontColor};
     `}
+`
+
+export const ThemeTogglerStyled = styled.button`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  padding: 0;
+  border: 0;
+  ${({ theme }) => `
+        background: ${theme.mainFontColor};
+  `}
 `

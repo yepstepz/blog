@@ -16,8 +16,11 @@ export const ArticleTileStyled = styled.article`
 `
 
 export const LargeArticleTileStyled = styled(ArticleTileStyled)`
+    ${ TitleStyled } {
+        margin-bottom: 35px;
+    }
     ${ShortTextStyled} {
-       margin-bottom: 30px;
+        margin-bottom: 40px;
     }
     ${ CategoryWrapperStyled } {
         margin-right: 10px;
@@ -25,8 +28,11 @@ export const LargeArticleTileStyled = styled(ArticleTileStyled)`
 `
 
 export const MediumArticleTileStyled = styled(ArticleTileStyled)`
+    ${ TitleStyled } {
+        margin-bottom: 25px;
+    }
     ${ShortTextStyled} {
-       margin-bottom: 20px;
+       margin-bottom: 30px;
     }
 `
 

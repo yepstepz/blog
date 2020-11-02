@@ -69,7 +69,13 @@ export default ({data}) => {
                                 ))
                         }
                     </ColumnStyled>
-                    <ColumnStyled ai="flex-start" flex="0 0 300px">
+                    <ColumnStyled
+                        ai="flex-start"
+                        flex="0 0 300px"
+                        css={css`
+                            margin-right: 60px;
+                        `}
+                    >
                         <PageSectionCategory size={LG} name="Подкасты" uri={normalizePath('/podcasts')} />
                         {
                             getPodcastFromScheme(allPodcastEpisode).map((post) => {
@@ -90,7 +96,7 @@ export default ({data}) => {
                     </ColumnStyled>
                 </RowStyled>
             </PageSection>
-            <PageSection>
+            <PageSection pd="80px 0 40px">
                 <PageSectionCategory size={LG} {...getCategoryFromScheme(secondStickyCatNameScheme)} />
                 <RowStyled ai="flex-start" jc="flex-start">
                     {

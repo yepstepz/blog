@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { ThemeProvider } from 'emotion-theming'
 
-import { themeColors, LIGHT_THEME, DARK_THEME } from './theme-colors'
+import { ThemeContext } from '../components/context/theme-wrapper.context'
 
-export const ThemeWrapper = ({ children, theme }) => {
+import { themeColors, LIGHT_THEME } from './theme-colors'
+
+export const ThemeWrapper = ({ children }) => {
+    const [themeColor, setThemeColor] = useState(LIGHT_THEME)
+
+    const handleThemeChange = (theme) => {
+        console.log('theme', theme)
+        setThemeColor(theme)
+    }
+
     return (
-        <ThemeProvider theme={themeColors[LIGHT_THEME]}>
-            { children }
-        </ThemeProvider>
+        <ThemeContext.Provider
+            value={{
+                handleThemeChange,
+                themeColor
+            }}
+        >
+            <ThemeProvider theme={themeColors[themeColor] || themeColor[LIGHT_THEME]}>
+                { children }
+            </ThemeProvider>
+        </ThemeContext.Provider>
     )
 }

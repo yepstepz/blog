@@ -10,7 +10,8 @@ export const ActionButtonCaptionStyled = styled.span`
     display: inline-block;
     ${({ postType }) => isMain(postType) &&`
         font-size: 30px;
-        margin-right: 30px;
+        margin-right: 10px;
+        margin-left: 40px;
     `}
 `
 
