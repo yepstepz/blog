@@ -27,7 +27,7 @@ jobs:
       # build
       - run:
           name: Compile gatsbyjs site
-          command: $PODCAST_TOKEN gatsby build
+          command: PODCAST_TOKEN=$PODCAST_TOKEN gatsby build
 
       - persist_to_workspace:
           root: .
