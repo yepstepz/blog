@@ -5,7 +5,7 @@ import { css } from '@emotion/core'
 
 import { Layout } from '../../components/layout'
 import { normalizePath } from '../../utils/get-url-path'
-import { LAYOUT_POST_PAGE } from '../../utils/constants'
+import { LAYOUT_POST_PAGE, MIN_LAPTOP_MEDIA, MAX_LAPTOP_MEDIA } from '../../utils/constants'
 import { replaceMedia } from '../../utils/content-parser'
 import { RowStyled, ColumnStyled } from '../../components/partials/common.styles'
 
@@ -21,10 +21,15 @@ export default ({ data }) =>  {
               <ColumnStyled css={css`
                   flex: 0 0 90%;
                   align-items: flex-start;
+                  ${MAX_LAPTOP_MEDIA} {
+                    flex: 0 0 100%;
+                  }
               `}>
                   <h1>{ title }</h1>
                   <section className="content" css={css`
-                      padding-right: 100px;
+                      ${MIN_LAPTOP_MEDIA} {
+                          padding-right: 100px;
+                      }
                   `}>
                       { parse(content ?? '', {replace: replaceMedia}) }
                   </section>

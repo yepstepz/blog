@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 
+import { MAX_LAPTOP_MEDIA } from '../../utils/constants'
+
 export const divider = (theme) => `
     border-bottom: 2px solid ${theme.headerDivider};
 `
@@ -19,7 +21,6 @@ export const ColumnStyled = styled.div`
     ${({ width, ai, flex }) => `
         width: ${width ? width : 'auto'};
         align-items: ${ai ? ai : 'center'};
-        flex: ${flex ? flex : '0 0 auto'};
     `}
 `
 
@@ -105,5 +106,19 @@ export const postStyles = (theme) => `
       font-size: 25px;
       margin: 60px 0 40px;
       color: ${theme.mainFontColor};
+    }
+    
+    ${MAX_LAPTOP_MEDIA} {
+        h1 {
+            margin: 0 0 40px;
+        }
+        
+        h2 {
+            margin: 60px 0 40px;
+        }
+        
+        h3 {
+            margin: 40px 0 20px;
+        }
     }
 `

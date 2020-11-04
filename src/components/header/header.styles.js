@@ -2,15 +2,21 @@ import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 
 import { divider } from '../partials/common.styles'
+import { TABLET_WIDTH, MAX_TABLET_MEDIA } from '../../utils/constants'
 
 export const HeaderWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center; 
     margin-bottom: 55px;
+    position: relative;
+    min-height: 64px;
     ${({ theme }) => `
         ${divider(theme)};
     `}
+    ${MAX_TABLET_MEDIA} {
+      margin-bottom: 80px;
+    }
 `
 
 export const Logo = styled(Link)`
@@ -27,6 +33,12 @@ export const Menu = styled.ul`
     list-style: none;
     margin-left: auto;
     margin-right: 28px;
+    
+    ${MAX_TABLET_MEDIA} {
+        position: absolute;
+        top: 100%;
+        padding: 0;
+    }
 `
 
 export const ItemWrapperStyled = styled.li`
@@ -53,12 +65,12 @@ export const ItemLinkStyled = styled(Link)`
 `
 
 export const ThemeTogglerStyled = styled.button`
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  padding: 0;
-  border: 0;
-  ${({ theme }) => `
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    padding: 0;
+    border: 0;
+    ${({ theme }) => `
         background: ${theme.mainFontColor};
-  `}
+    `}
 `

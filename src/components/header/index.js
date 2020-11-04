@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { normalizePath } from '../../utils/get-url-path'
 import { ThemeContext } from '../context/theme-wrapper.context'
@@ -24,7 +24,7 @@ export const Header = () => {
     return (
         <header>
             <HeaderWrapper>
-                <Logo to={normalizePath('/')}>Work'n'Talk</Logo>
+                <Logo to={normalizePath('/')}>WORK IN PROGRESS</Logo>
                 <Menu>
                     <ItemLink path={normalizePath('/')} name="Главная" />
                     <ItemLink path={normalizePath('/posts')} name="Блог" />

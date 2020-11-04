@@ -9,7 +9,7 @@ import { MD, LG, XS, PODCASTS_TYPE, MAIN_PODCAST_TYPE, MAIN_POST_TYPE } from '..
 import { getPostFromScheme, getCategoryFromScheme, getPodcastFromScheme } from '../utils/helpers'
 import { PageSection } from '../components/dashboard-parts/page-section'
 import { PageSectionCategory } from '../components/dashboard-parts/page-category'
-import { normalizePath } from "../utils/get-url-path";
+import { normalizePath } from '../utils/get-url-path'
 
 export default ({data}) => {
     const {
@@ -43,7 +43,7 @@ export default ({data}) => {
                                         margin-bottom: 80px;
                                         margin-right: ${i % 2 ? 0 : 100}px;
                                     `}
-                                    width="540px"
+                                    tileWidth="540px"
                                     articleTileSize={LG}
                                     {...post}
                                 />
@@ -63,7 +63,7 @@ export default ({data}) => {
                                         css={css`
                                             margin-top: ${i !== 0 ? '80px' : 0};
                                         `}
-                                        width="720px"
+                                        tileWidth="720px"
                                         {...post}
                                     />
                                 ))
@@ -87,7 +87,7 @@ export default ({data}) => {
                                         css={css`
                                             margin-bottom: 45px;
                                         `}
-                                        width="300px"
+                                        tileWidth="300px"
                                         {...post}
                                     />
                                 );
@@ -108,7 +108,7 @@ export default ({data}) => {
                                         margin-bottom: 90px;
                                         margin-right: ${i % 2 ? 0 : 100}px;
                                     `}
-                                    width="540px"
+                                    tileWidth="540px"
                                     articleTileSize={MD}
                                     {...post}
                                 />
@@ -130,7 +130,7 @@ export default ({data}) => {
                                         margin-left: ${i % 3 ? 60 : 0}px;
                                     `}
                                     hideShortText
-                                    width="340px"
+                                    tileWidth="340px"
                                     articleTileSize={MD}
                                     {...post}
                                 />

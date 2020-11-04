@@ -1,8 +1,8 @@
 import React from 'react';
-import Highlight from 'react-highlight.js'
-import { Global, css } from '@emotion/core'
+import { css } from '@emotion/core'
+import { useTheme } from "emotion-theming";
 
-import EditorTheme from 'highlight.js/styles/solarized-dark.css'
+import { HighlightStyled } from './code-highlighter.styles'
 
 
 const MyComponent = ({
@@ -10,18 +10,16 @@ const MyComponent = ({
     title = 'Hello World in Javascript',
     description = 'This code will log hello world in the console.',
     children
-    }) => {
+}) => {
 
+    const { type } = useTheme()
     return (
         <div css={css`
             margin: 40px 0;
         `}>
-            <Global styles={`
-                ${EditorTheme};
-            `}/>
-            <Highlight language={language}>
+            <HighlightStyled className={`highlight-${type}`} language={language}>
                 {children}
-            </Highlight>
+            </HighlightStyled>
         </div>
     )
 

@@ -17,3 +17,8 @@
     font-family: 'Open Sans Extra Bold';
     src: url('./OpenSans/OpenSans-ExtraBold.ttf');
 }
+
+@font-face {
+    font-family: 'JetBrainsMono';
+    src: url('./JetBrainsMono-Regular.ttf');
+}

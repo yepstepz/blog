@@ -1,18 +1,20 @@
 import styled from '@emotion/styled'
 
-import { LG, MAIN_POST_TYPE, MAIN_PODCAST_TYPE } from '../../../utils/constants'
-import { isPodcastsType, isMain } from '../../../utils/helpers'
+import { isMain } from '../../../utils/helpers'
+import { MIN_LAPTOP_MEDIA } from '../../../utils/constants'
 
 export const ActionButtonCaptionStyled = styled.span`
     font-family: 'Open Sans Bold', sans-serif;
     font-size: 20px;
     margin-left: 20px;
     display: inline-block;
-    ${({ postType }) => isMain(postType) &&`
-        font-size: 30px;
-        margin-right: 10px;
-        margin-left: 40px;
-    `}
+    ${ MIN_LAPTOP_MEDIA } {
+        ${({ postType }) => isMain(postType) &&`
+            font-size: 30px;
+            margin-right: 10px;
+            margin-left: 40px;
+        `}
+    }
 `
 
 export const ActionButtonCaptionPodcastStyled = styled(ActionButtonCaptionStyled)``
@@ -30,13 +32,15 @@ export const ActionButtonIconStyled = styled.span`
         path {
           fill: ${theme.buttonIconColor};
         }
-        ${isMain(postType) ? `
-            transition: 0.3s all;
-            width: 108px;
-            height: 108px;
-            max-width: 104px;
-            max-height: 104px;
-        `: ''};
+        ${ MIN_LAPTOP_MEDIA } {
+            ${isMain(postType) ? `
+                transition: 0.3s all;
+                width: 108px;
+                height: 108px;
+                max-width: 104px;
+                max-height: 104px;
+            `: ''};
+        }
     `}
 `
 
