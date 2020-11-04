@@ -1,5 +1,4 @@
 import React from 'react'
-import { Flex } from '@rebass/grid/emotion'
 import {css} from '@emotion/core'
 
 import { divider } from '../partials/common.styles'
