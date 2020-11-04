@@ -164,22 +164,21 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
     const {
       data: {
-          allSimplecastPodcastEpisode: {
+          allSimplecastPodcastEpisodePage: {
               nodes: podcastNodes
           }
       }
     } = await graphql(/* GraphQL */ `
     {
-      allSimplecastPodcastEpisode {
+      allSimplecastPodcastEpisodePage {
             nodes {
-                slug
                 id
+                longDescription
+                slug
                 status
                 title
                 description
-                simplecastId
                 enclosureUrl
-                href
                 number
                 season {
                     number
@@ -199,7 +198,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
                 component: resolve(podcastTypeTemplateFile),
                 path: `/podcasts/${slug}`,
                 context: {
-                    id
+                    id,
+                    nextPage: (podcastNodes[i + 1] || {}).id,
+                    previousPage: (podcastNodes[i - 1] || {}).id
                 }
             })
         })

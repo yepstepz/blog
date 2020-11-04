@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { ThemeProvider } from 'emotion-theming'
 
 import { ThemeContext } from '../components/context/theme-wrapper.context'
@@ -9,7 +9,6 @@ export const ThemeWrapper = ({ children }) => {
     const [themeColor, setThemeColor] = useState(LIGHT_THEME)
 
     const handleThemeChange = (theme) => {
-        console.log('theme', theme)
         setThemeColor(theme)
     }
 

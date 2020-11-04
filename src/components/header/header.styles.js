@@ -7,7 +7,7 @@ export const HeaderWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center; 
-    margin-bottom: 110px;
+    margin-bottom: 55px;
     ${({ theme }) => `
         ${divider(theme)};
     `}

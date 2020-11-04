@@ -5,6 +5,7 @@ import { Title } from '../partials/title'
 import { ShortText } from '../partials/short-text'
 import { LG } from '../../utils/constants'
 import { isPodcastsType } from '../../utils/helpers'
+import { EpisodeNumberStyled } from '../partials/common.styles'
 
 import {
     LeadMainPostStyled,
@@ -37,7 +38,7 @@ export const LeadMainPost = (props) => {
                         id={id}
                     />
                 }
-                { isPodcastsType(postType) && <div>Сезон {season.number}, эпизод {number}</div>}
+                { isPodcastsType(postType) && <EpisodeNumberStyled>Сезон {season.number}, эпизод {number}</EpisodeNumberStyled>}
                 <Title href={uri} size={LG}>{title}</Title>
                 <ShortText text={excerpt} />
             </LeadMainContentStyled>

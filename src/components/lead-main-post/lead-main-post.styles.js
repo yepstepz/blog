@@ -8,6 +8,7 @@ export const LeadMainPostStyled = styled.article`
     justify-content: space-between;
     align-items: center;
     padding-bottom: 150px;
+    padding-top: 55px;
     ${({theme}) => `
         ${divider(theme)};
     `}

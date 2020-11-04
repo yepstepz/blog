@@ -69,9 +69,7 @@ export const Podcast = graphql`
                 status
                 title
                 description
-                simplecastId
                 enclosureUrl
-                href
                 number
                 season {
                     number
@@ -82,17 +80,17 @@ export const Podcast = graphql`
 `
 
 export const SinglePodcast = graphql`
-    fragment SinglePodcast on SimplecastPodcastEpisode {
-                slug
-                status
-                title
-                description
-                simplecastId
-                enclosureUrl
-                href
-                number
-                season {
-                    number
-                }
+    fragment SinglePodcast on SimplecastPodcastEpisodePage {
+        id
+        longDescription
+        slug
+        status
+        title
+        description
+        enclosureUrl
+        number
+        season {
+            number
+        }
     }
 `

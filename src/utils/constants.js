@@ -18,6 +18,13 @@ export const MD = 'md'
 export const LG = 'lg'
 export const XS = 'xs'
 
+export const H1 = 'h1'
+export const H2 = 'h2'
+export const H3 = 'h3'
+
+export const LAYOUT_POST_PAGE = 'layout-post-page'
+export const isPostPage = (type) => type === LAYOUT_POST_PAGE
+
 
 /*
 320px — 480px: Mobile devices.

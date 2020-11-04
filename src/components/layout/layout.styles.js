@@ -34,7 +34,7 @@ export const Wrapper = styled.main`
     }
 `
 
-export const BackgroundWrapper = styled.div`
+export const BackgroundWrapperStyles = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh;

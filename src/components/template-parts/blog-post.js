@@ -12,11 +12,6 @@ function BlogPost({ data }) {
   return (
     <Layout>
         {title}
-
-      {!!featuredImage?.node?.remoteFile?.childImageSharp &&
-        <Img fluid={featuredImage.node.remoteFile.childImageSharp.fluid} />
-      }
-
       <p dangerouslySetInnerHTML={{ __html: content }} />
 
       <br />

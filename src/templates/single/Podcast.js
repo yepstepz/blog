@@ -8,7 +8,7 @@ import { Title } from '../../components/partials/title'
 import { LG } from '../../utils/constants'
 import { ColumnStyled } from '../../components/partials/common.styles'
 import { PODCASTS_TYPE } from '../../utils/constants'
-import { ActionButton } from '../../components/partials/action-button'
+import { EpisodeNumberStyled } from '../../components/partials/common.styles'
 
 export default ({ data }) => {
     const {
@@ -16,13 +16,13 @@ export default ({ data }) => {
     } = data
     return (
         <Layout>
-            <Title size={LG}>{podcastEpisode.title}</Title>
-            Здесь будет также дайджест, to be continued...
+            <Title size={LG}>{ podcastEpisode.title }</Title>
             <ColumnStyled
                 css={css`
                     margin-bottom: 100px;
                 `}
             >
+                <div dangerouslySetInnerHTML={{ __html: podcastEpisode.longDescription}} />
                 <ArticleTile css={css` margin-top: 90px;`} {...podcastEpisode} articleTileSize={LG} postType={PODCASTS_TYPE} hideCategory hideTitle />
             </ColumnStyled>
         </Layout>
@@ -31,7 +31,7 @@ export default ({ data }) => {
 
 export const query = graphql`
     query podcast($id: String!) {
-        podcastEpisode: simplecastPodcastEpisode(id: {eq: $id}) {
+        podcastEpisode: simplecastPodcastEpisodePage(id: {eq: $id}) {
             ...SinglePodcast
         }
     }
