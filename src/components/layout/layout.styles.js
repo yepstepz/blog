@@ -17,7 +17,6 @@ import {
 export const Wrapper = styled.main`
     margin: 0 auto;
     ${MAX_MOBILE_MEDIA} {
-        width: 100%;
         padding: 0 20px;
     }
     ${MIN_MOBILE_MEDIA} {

@@ -24,6 +24,10 @@ export const ColumnStyled = styled.div`
     `}
 `
 
+export const GridStyled = styled.div`
+    display: grid;
+`
+
 export const EpisodeNumberStyled = styled.div`
     ${({ theme }) => `
         color: ${theme.mainFontColor};
@@ -65,6 +69,15 @@ export const postStyles = (theme) => `
         color: #616161;
         font-style: italic;
         font-size: 14px;
+    }
+    
+    .wp-block-embed__wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        iframe {
+            margin: 0 auto;
+        }
     }
     
     iframe {

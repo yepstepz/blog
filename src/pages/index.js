@@ -5,10 +5,12 @@ import { css } from '@emotion/core'
 import { Layout } from '../components/layout'
 import { RowStyled, ColumnStyled } from '../components/partials/common.styles'
 import { ArticleTile } from '../components/article-tile'
-import { MD, LG, XS, PODCASTS_TYPE, MAIN_PODCAST_TYPE, MAIN_POST_TYPE } from '../utils/constants'
+import { MD, LG, XS, PODCASTS_TYPE, MAIN_PODCAST_TYPE, MAIN_POST_TYPE, MAX_LAPTOP_MEDIA } from '../utils/constants'
 import { getPostFromScheme, getCategoryFromScheme, getPodcastFromScheme } from '../utils/helpers'
 import { PageSection } from '../components/dashboard-parts/page-section'
 import { PageSectionCategory } from '../components/dashboard-parts/page-category'
+import { SectionFloorTiles } from '../components/dashboard-parts/section-floor-tiles'
+import { SectionRowTiles } from '../components/dashboard-parts/section-row-tiles'
 import { normalizePath } from '../utils/get-url-path'
 
 export default ({data}) => {
@@ -33,27 +35,20 @@ export default ({data}) => {
                 postType={lastPodcastEpisode?.edges?.length ? MAIN_PODCAST_TYPE: MAIN_POST_TYPE}
                 {...leadPost}
             />
-            <PageSection pd="80px 0 40px">
-                <RowStyled ai="flex-start" jc="flex-start">
-                    {
-                        [...getPostFromScheme(otherStickyPostsScheme), ...getPostFromScheme(last4PostsScheme)].slice(0, 4).map((post, i) => (
-                                <ArticleTile
-                                    key={post.id}
-                                    css={css`
-                                        margin-bottom: 80px;
-                                        margin-right: ${i % 2 ? 0 : 100}px;
-                                    `}
-                                    tileWidth="540px"
-                                    articleTileSize={LG}
-                                    {...post}
-                                />
-                            ))
-                    }
-                </RowStyled>
-            </PageSection>
+            <SectionFloorTiles
+                tiles={[...getPostFromScheme(otherStickyPostsScheme), ...getPostFromScheme(last4PostsScheme)].slice(0, 4)}
+                articleTileSize={LG}
+            />
             <PageSection>
                 <RowStyled ai="flex-start" js="flex-start">
-                    <ColumnStyled ai="flex-start">
+                    <ColumnStyled
+                        ai="flex-start"
+                        css={css`
+                            ${ MAX_LAPTOP_MEDIA } {
+                              margin-bottom: 60px;
+                            }
+                        `}
+                    >
                         <PageSectionCategory size={LG} {...getCategoryFromScheme(firstStickyCatNameScheme)} />
                         {
                             getPostFromScheme(firstStickyCatPostsScheme).map((post, i) => (
@@ -74,9 +69,16 @@ export default ({data}) => {
                         flex="0 0 300px"
                         css={css`
                             margin-right: 60px;
+                            ${ MAX_LAPTOP_MEDIA } {
+                              margin-right: 0;
+                            }
                         `}
                     >
-                        <PageSectionCategory size={LG} name="Подкасты" uri={normalizePath('/podcasts')} />
+                        <PageSectionCategory
+                            size={LG}
+                            name="Подкасты"
+                            uri={normalizePath('/podcasts')}
+                        />
                         {
                             getPodcastFromScheme(allPodcastEpisode).map((post) => {
                                 return (
@@ -96,49 +98,16 @@ export default ({data}) => {
                     </ColumnStyled>
                 </RowStyled>
             </PageSection>
-            <PageSection pd="80px 0 40px">
-                <PageSectionCategory size={LG} {...getCategoryFromScheme(secondStickyCatNameScheme)} />
-                <RowStyled ai="flex-start" jc="flex-start">
-                    {
-                        getPostFromScheme(secondStickyCatPostsScheme).map((post, i) => {
-                            return (
-                                <ArticleTile
-                                    key={post.id}
-                                    css={css`
-                                        margin-bottom: 90px;
-                                        margin-right: ${i % 2 ? 0 : 100}px;
-                                    `}
-                                    tileWidth="540px"
-                                    articleTileSize={MD}
-                                    {...post}
-                                />
-                            );
-                        })
-                    }
-                </RowStyled>
-            </PageSection>
-            <PageSection pd="80px 0 40px">
-                <PageSectionCategory size={LG} {...getCategoryFromScheme(thirdStickyCatNameScheme)} />
-                <RowStyled ai="flex-start" jc="flex-start">
-                    {
-                        getPostFromScheme(thirdStickyCatPostsScheme).map((post, i) => {
-                            return (
-                                <ArticleTile
-                                    key={post.id}
-                                    css={css`
-                                        margin-bottom: 80px;
-                                        margin-left: ${i % 3 ? 60 : 0}px;
-                                    `}
-                                    hideShortText
-                                    tileWidth="340px"
-                                    articleTileSize={MD}
-                                    {...post}
-                                />
-                            );
-                        })
-                    }
-                </RowStyled>
-            </PageSection>
+            <SectionFloorTiles
+                tiles={getPostFromScheme(secondStickyCatPostsScheme)}
+                articleTileSize={MD}
+                category={getCategoryFromScheme(secondStickyCatNameScheme)}
+            />
+            <SectionRowTiles
+                tiles={getPostFromScheme(thirdStickyCatPostsScheme)}
+                category={getCategoryFromScheme(thirdStickyCatNameScheme)}
+                articleTileSize={MD}
+            />
         </Layout>
     );
 }

@@ -15,38 +15,26 @@ export default ({ data }) =>  {
 
   return (
       <Layout layoutType={LAYOUT_POST_PAGE}>
-          <RowStyled css={css`
-              align-items: flex-start;
+          <h1>{ title }</h1>
+          <section className="content" css={css`
+              ${MIN_LAPTOP_MEDIA} {
+                  padding-right: 100px;
+              }
           `}>
-              <ColumnStyled css={css`
-                  flex: 0 0 90%;
-                  align-items: flex-start;
-                  ${MAX_LAPTOP_MEDIA} {
-                    flex: 0 0 100%;
-                  }
-              `}>
-                  <h1>{ title }</h1>
-                  <section className="content" css={css`
-                      ${MIN_LAPTOP_MEDIA} {
-                          padding-right: 100px;
-                      }
-                  `}>
-                      { parse(content ?? '', {replace: replaceMedia}) }
-                  </section>
+              { parse(content ?? '', {replace: replaceMedia}) }
+          </section>
 
-                  <br />
-                  {!!nextPage && (
-                      <Link to={normalizePath(nextPage.uri)}>Next: {nextPage.title}</Link>
-                  )}
-                  <br />
-                  {!!previousPage && (
-                      <Link to={normalizePath(previousPage.uri)}>
-                          Previous: {previousPage.title}
-                      </Link>
-                  )}
-                  <br />
-              </ColumnStyled>
-          </RowStyled>
+          <br />
+          {!!nextPage && (
+              <Link to={normalizePath(nextPage.uri)}>Next: {nextPage.title}</Link>
+          )}
+          <br />
+          {!!previousPage && (
+              <Link to={normalizePath(previousPage.uri)}>
+                  Previous: {previousPage.title}
+              </Link>
+          )}
+          <br />
       </Layout>
   )
 }

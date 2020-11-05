@@ -12,6 +12,6 @@ export const PageSectionCategory = (props) => (
 const PageSectionCategoryStyled = styled(Category)`
     margin-bottom: 60px;
     ${ MAX_LAPTOP_MEDIA } {
-      margin-top: 60px;
+      margin-bottom: 40px;
     }
 `
