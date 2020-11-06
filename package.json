@@ -8,7 +8,7 @@
     "email": "tyler@gatsbyjs.com"
   },
   "scripts": {
-    "develop": "gatsby develop",
+    "develop": "rm -rf .cache && ENABLE_GATSBY_REFRESH_ENDPOINT=true gatsby develop",
     "clean": "gatsby clean",
     "build": "gatsby build",
     "clean-develop": "gatsby clean && gatsby develop",
