@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react'
 import { css } from '@emotion/core'
-import { useTheme } from "emotion-theming";
 
 import { HighlightStyled } from './code-highlighter.styles'
+import { ThemeContext } from '../../../components/context/theme-wrapper.context'
 
 
 const MyComponent = ({
@@ -12,12 +12,12 @@ const MyComponent = ({
     children
 }) => {
 
-    const { type } = useTheme()
+    const { themeColor } = useContext(ThemeContext)
     return (
         <div css={css`
             margin: 40px 0;
         `}>
-            <HighlightStyled className={`highlight-${type}`} language={language}>
+            <HighlightStyled className={`highlight-${themeColor}`} language={language}>
                 {children}
             </HighlightStyled>
         </div>

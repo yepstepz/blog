@@ -77,6 +77,8 @@ export const postStyles = (theme) => `
         align-items: center;
         iframe {
             margin: 0 auto;
+            width: 100%;
+            max-width: 640px;
         }
     }
     
