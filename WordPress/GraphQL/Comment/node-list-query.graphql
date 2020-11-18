@@ -27,6 +27,8 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           id
         }
       }
+      parentDatabaseId
+      parentId
       replies(first: 100) {
         nodes {
           id

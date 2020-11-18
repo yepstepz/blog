@@ -95,7 +95,6 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     srcSet
     status
     template {
-      templateFile
       templateName
       __typename
     }

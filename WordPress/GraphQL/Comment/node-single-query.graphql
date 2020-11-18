@@ -26,6 +26,8 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
         id
       }
     }
+    parentDatabaseId
+    parentId
     replies(first: 100) {
       nodes {
         id

@@ -70,7 +70,6 @@ query PREVIEW_QUERY($id: ID!) {
     slug
     status
     template {
-      templateFile
       templateName
       __typename
     }

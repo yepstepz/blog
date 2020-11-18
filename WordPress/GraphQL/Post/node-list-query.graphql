@@ -71,7 +71,6 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         }
       }
       template {
-        templateFile
         templateName
         __typename
       }

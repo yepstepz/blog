@@ -26,6 +26,8 @@ query PREVIEW_QUERY($id: ID!) {
         id
       }
     }
+    parentDatabaseId
+    parentId
     replies(first: 100) {
       nodes {
         id
