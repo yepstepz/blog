@@ -1,0 +1,25 @@
+.blockFooterInner {
+  padding: calc(var(--default-size) * 15) 0;
+}
+
+.socials {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.socials__icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  fill: var(--main-font);
+}
+
+.socials__item:not(:last-child) {
+  margin-right: calc(var(--default-size) * 4);
+}
+
+.copyright {
+  text-align: center;
+  padding-top: calc(var(--default-size) * 4);
+}

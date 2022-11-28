@@ -1,0 +1,42 @@
+import ArticlesList from '@components/ArticlesList';
+import Layout from '@components/Layout';
+import MainArticle from '@components/MainArticle';
+
+import { getAllPosts } from "../lib/posts"
+
+export default function Post({ posts }) {
+  const mainArticle = posts[0]
+  const latestArticles = posts.slice(1)
+
+  return (
+    <Layout>
+      <section className="main-article">
+        <div className="inner">
+          <MainArticle {...mainArticle} />
+        </div>
+      </section>
+      <section className="latest-articles">
+        <div className="inner">
+          <div className="block-theme inner--sm">
+            <h2 className="headline headline--second">Что почитать <span className="text text--violet">ещё</span>:</h2>
+          </div>
+          <ArticlesList posts={latestArticles} />
+        </div>
+      </section>
+    </Layout>
+  );
+}
+
+export async function getStaticProps() {
+  const posts = getAllPosts([
+    "title",
+    "description",
+    "slug",
+    "content",
+    "image"
+  ])
+
+  return {
+    props: { posts },
+  }
+}
