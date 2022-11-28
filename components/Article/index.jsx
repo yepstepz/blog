@@ -1,14 +1,11 @@
 import Link from "next/link"
+import Tags from '@components/Partials/Tags';
 
-export default function Article({ slug, title, description }) {
+export default function Article({ slug, title, description, tags }) {
   return (
       <article>
         <div className="block-info block-info--sm inner--sm">
-          <ul className="tags">
-            <li className="tags__item tag tag--blue"><a href="/tag">#Раз</a></li>
-            <li className="tags__item tag tag--violet"><a href="/tag">#Два</a></li>
-            <li className="tags__item tag tag--orange"><a href="/tag">#Три</a></li>
-          </ul>
+          <Tags tags={tags} />
         </div>
         <div className="block-headline inner--sm">
           <h3 className="headline headline--third">{title}</h3>

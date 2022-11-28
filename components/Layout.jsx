@@ -1,11 +1,8 @@
 import Header from '@components/Header'
 import Footer from '@components/Footer'
+import ResponsiveImage from './Partials/Images';
 import { MDXProvider } from '@mdx-js/react';
 import Image from 'next/image';
-
-const ResponsiveImage = (props) => (
-  <Image alt={props.alt} layout="responsive" {...props} />
-);
 
 const components = {
   img: ResponsiveImage,

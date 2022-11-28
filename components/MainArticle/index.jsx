@@ -1,27 +1,22 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
-import styles from "./MainArticle.module.css"
+import Tags from '@components/Partials/Tags';
+import ResponsiveImage from '@components/Partials/Images';
 
-const ResponsiveImage = (props) => (
-  <div className={styles.postImage}>
-    <Image alt={props.alt} layout='fill' {...props} />
-  </div>
-);
+import styles from './MainArticle.module.css'
 
-export default function MainArticle({ title, description, slug, image }) {
+export default function MainArticle({ title, description, slug, image, tags }) {
   return (
     <article>
       <div className="block-headline inner--sm">
-        <ul className="tags">
-          <li className="tags__item tag tag--blue"><a href="/tag">#Раз</a></li>
-          <li className="tags__item tag tag--violet"><a href="/tag">#Два</a></li>
-          <li className="tags__item tag tag--orange"><a href="/tag">#Три</a></li>
-        </ul>
+        <Tags tags={tags} />
         <h1 className="headline headline--main">{title}</h1>
       </div>
-      <div className="inner--sm" style={{ position: 'relative' }}>
-        <ResponsiveImage src={image} />
+      <div className={`inner--sm ${styles.postImage}`} style={{ position: 'relative' }}>
+        <ResponsiveImage 
+          src={image}
+          layout="fill"
+        />
       </div>
       <div className="block-content inner--sm">
         <p className="body">

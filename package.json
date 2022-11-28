@@ -7,11 +7,6 @@
     "build": "next build",
     "export": "next export"
   },
-  "browser": {
-    "fs": false,
-    "path": false,
-    "os": false
-  },
   "dependencies": {
     "@mdx-js/loader": "^2.1.5",
     "@mdx-js/react": "^2.1.5",

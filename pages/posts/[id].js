@@ -1,34 +1,23 @@
-import Header from '@components/Header'
-import Footer from '@components/Footer'
+import Layout from '@components/Layout'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-// import SyntaxHighlighter from 'react-syntax-highlighter'
-
-// import { getPostData, getAllPostIds } from '../../lib/posts'
 
 export default function Post({ frontMatter: { title, date }, mdxSource }) {
-
   return (
-    <>
-      <Header />
-      <main class="content page">
-        <div class="inner">
-          <div class="page__headline block-headline block-headline--center inner--sm">
-            <h1 class="headline headline--main">{ title }</h1>
-            <div class="page__caption body--secondary">
-              <span> Updated { date }</span>
-            </div>
-          </div>
-          <div class="page__content block-article inner--sm">
-            <MDXRemote {...mdxSource} />
-          </div>
+    <Layout>
+      <div class="page__headline block-headline block-headline--center inner--sm">
+        <h1 class="headline headline--main">{title}</h1>
+        <div class="page__caption body--secondary">
+          <span> Updated {date}</span>
         </div>
-      </main>
-      <Footer />
-    </>
+      </div>
+      <div class="page__content block-article inner--sm">
+        <MDXRemote {...mdxSource} />
+      </div>
+    </Layout>
   );
 }
 
@@ -39,7 +28,7 @@ export const getStaticPaths = async () => {
       id: filename.replace('.mdx', '')
     }
   }))
-  
+
   return {
     paths,
     fallback: false

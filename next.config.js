@@ -21,6 +21,12 @@ module.exports = withMDX({
         port: '',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'myoctocat.com',
+        port: '',
+        pathname: '/assets/images/**'
+      }
     ],
   },
 })
