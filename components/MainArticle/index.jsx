@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Tags from '@components/Partials/Tags';
 import ResponsiveImage from '@components/Partials/Images';
 
-import styles from './MainArticle.module.css'
+import styles from './MainArticlePage.module.css'
 
 export default function MainArticle({ title, description, slug, image, tags }) {
   return (

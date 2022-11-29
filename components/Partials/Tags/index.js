@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import { css } from 'glamor'
 
-import styles from './Tags.module.css'
+import styles from './TagPage.module.css'
 import { colors } from "./tags-colors"
 
 const tagStyles = (tag) => css({
@@ -17,6 +17,7 @@ export default function Tags ({ tags }) {
       {
         tags?.map((tag) => (
           <li
+            key={tag}
             className={cn(
               styles.tags__item, 
               styles.tag,
