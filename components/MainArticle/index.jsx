@@ -12,21 +12,28 @@ export default function MainArticle({ title, description, slug, image, tags }) {
         <Tags tags={tags} />
         <h1 className="headline headline--main">{title}</h1>
       </div>
-      <div className={`inner--sm ${styles.postImage}`} style={{ position: 'relative' }}>
-        <ResponsiveImage 
-          src={image}
-          layout="fill"
-        />
-      </div>
+      {
+        image &&
+        <div className={`inner--sm ${styles.postImage}`} style={{ position: 'relative' }}>
+          <ResponsiveImage
+            src={image}
+            layout="fill"
+            priority
+          />
+        </div>
+      }
       <div className="block-content inner--sm">
         <p className="body">
           {description}
         </p>
       </div>
       <div className="block-buttons inner--sm">
-        <Link href={`/posts/${slug}`}>
-          <span className="button">Нажимай</span>
-        </Link>
+        <Link
+            href={`/posts/${slug}`}
+            legacyBehavior
+          >
+            <a className="button">Нажимай</a>
+          </Link>
       </div>
     </article>
   )

@@ -15,14 +15,18 @@ export default function Post({ posts }) {
           <MainArticle {...mainArticle} />
         </div>
       </section>
-      <section className="latest-articles">
-        <div className="inner">
-          <div className="block-theme inner--sm">
-            <h2 className="headline headline--second">Что почитать <span className="text text--violet">ещё</span>:</h2>
-          </div>
-          <ArticlesList posts={latestArticles} />
-        </div>
-      </section>
+      {
+        latestArticles.length !== 0 && (
+          <section className="latest-articles">
+            <div className="inner">
+              <div className="block-theme inner--sm">
+                <h2 className="headline headline--second">Что почитать <span className="text text--violet">ещё</span>:</h2>
+              </div>
+              <ArticlesList posts={latestArticles} />
+            </div>
+          </section>
+        )
+      }
     </Layout>
   );
 }

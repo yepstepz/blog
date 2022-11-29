@@ -1,0 +1,14 @@
+.tags {
+  display: flex;
+  list-style: none;
+  position: relative;
+  left: calc(var(--default-size) * 2 * -1);
+  margin: 0;
+  padding: 0;
+}
+
+.tag a {
+  padding: calc(var(--default-size) * 2);
+  text-decoration: none;
+  display: inline-block;
+}

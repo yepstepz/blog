@@ -4,18 +4,21 @@ import { MDXRemote } from 'next-mdx-remote'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import remarkGfm from "remark-gfm";
 
 export default function Post({ frontMatter: { title, date }, mdxSource }) {
   return (
     <Layout>
-      <div class="page__headline block-headline block-headline--center inner--sm">
-        <h1 class="headline headline--main">{title}</h1>
-        <div class="page__caption body--secondary">
-          <span> Updated {date}</span>
+      <div className="page">
+        <div class="page__headline block-headline block-headline--center inner--sm">
+          <h1 class="headline headline--main">{title}</h1>
+          <div class="page__caption body--secondary">
+            <span> Пост создан {date}</span>
+          </div>
         </div>
-      </div>
-      <div class="page__content block-article inner--sm">
-        <MDXRemote {...mdxSource} />
+        <div class="page__content block-article inner--sm">
+          <MDXRemote {...mdxSource} />
+        </div>
       </div>
     </Layout>
   );
@@ -39,7 +42,11 @@ export const getStaticProps = async ({ params: { id } }) => {
   const markdownWithMeta = fs.readFileSync(path.join('posts',
     id + '.mdx'), 'utf-8')
   const { data: frontMatter, content } = matter(markdownWithMeta)
-  const mdxSource = await serialize(content)
+  const mdxSource = await serialize(content,  {
+    mdxOptions: {
+      remarkPlugins: [remarkGfm]
+    }
+  })
   return {
     props: {
       frontMatter,

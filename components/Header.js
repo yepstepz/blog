@@ -1,4 +1,4 @@
-export default function Header({ title }) {
+export default function Header() {
   return (
     <header className="outer-header">
         <div className="inner inner-header inner--sm">
