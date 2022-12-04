@@ -19,8 +19,14 @@ export const colors = {
   },
   tech: {
     light: {
-      color: 'var(--tag-3)',
-      hoverBg: 'var(--tag-3-hover-bg)'
+      color: '#0A97B0',
+      hoverBg: '#FAEEE7'
+    }
+  },
+  work: {
+    light: {
+      color: '#F54291',
+      hoverBg: '#FAEEE7'
     }
   }
 }

@@ -20,6 +20,7 @@
   --light-blue-color: #e3efff;
   --cyan-blue-color: #73abff;
   --subtle-blue-color: #f6f8fa;
+  --deep-blue-color: #3b47a8;
 
   --green-color: #6CBB47;
   --light-green-color: #E2F1DA;
@@ -33,16 +34,16 @@
   --main-font: var(--black-color);
   --bg-color: var(--white-color);
 
-  --accent-color: var(--blue-color);
+  --accent-color: var(--soft-violet);
 
   --blockquote-bg-color: var(--subtle-blue-color);
 
 
-  --button-color: var(--cyan-blue-color);
-  --button-color-active: var(--blue-color);
+  --button-color: var(--accent-color);
+  --button-color-active: var(--accent-color);
 
-  --read-link-color: var(--cyan-blue-color);
-  --read-link-color-active: var(--blue-color);
+  --read-link-color: var(--accent-color);
+  --read-link-color-active: var(--accent-color);
 
   --tag-1: #A36FE6;
   --tag-1-hover-bg: #d3bfec;
@@ -80,7 +81,6 @@ blockquote {
   border-left: 0.25rem solid var(--accent-color);
   background-color: var(--blockquote-bg-color);
   color: #24292f;
-  font-size: calc(var(--default-size) * 5);
 }
 
 .page blockquote > p {
@@ -171,7 +171,7 @@ hr {
 }
 
 .body {
-  font-size: calc(var(--default-size) * 5);
+  font-size: calc(var(--default-size) * 4.5);
   line-height: 1.6;
 }
 
@@ -238,7 +238,7 @@ hr {
 
 .text--blue {
   background:  var(--light-blue-color);
-  color: var(--cyan-blue-color);
+  color: var(--deep-blue-color);
 }
 
 .block-theme {
@@ -292,8 +292,8 @@ hr {
 }
 
 .page {
-  font-size: calc(var(--default-size) * 5);
-  line-height: 1.6;
+  font-size: calc(var(--default-size) * 4.5);
+  line-height: 1.5;
 }
 
 .page__headline {
@@ -312,5 +312,7 @@ hr {
 }
 
 sup a, .data-footnote-backref {
-  color: var(--cyan-blue-color);
+  font-size: calc(var(--default-size) * 3);
+  color: var(--accent-color);
+
 }
