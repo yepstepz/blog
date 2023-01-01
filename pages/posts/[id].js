@@ -6,9 +6,15 @@ import path from 'path'
 import matter from 'gray-matter'
 import remarkGfm from "remark-gfm";
 
-export default function Post({ frontMatter: { title, date }, mdxSource }) {
+export default function Post({ frontMatter: { title, date, description, image, }, mdxSource, url }) {
   return (
-    <Layout>
+    <Layout
+      title={title}
+      description={description}
+      url={url}
+      image={image}
+      type="article"
+    >
       <div className="page">
         <div class="page__headline block-headline block-headline--center inner--sm">
           <h1 class="headline headline--main">{title}</h1>
@@ -39,6 +45,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params: { id } }) => {
+  const url = 'https://yepstepz.io/' +path.join('posts', id)
   const markdownWithMeta = fs.readFileSync(path.join('posts',
     id + '.mdx'), 'utf-8')
   const { data: frontMatter, content } = matter(markdownWithMeta)
@@ -51,7 +58,8 @@ export const getStaticProps = async ({ params: { id } }) => {
     props: {
       frontMatter,
       id,
-      mdxSource
+      mdxSource,
+      url
     }
   }
 }

@@ -39,7 +39,9 @@ export async function getStaticProps() {
     "content",
     "image",
     "tags",
-    "date"
+    "date",
+    "imageAlign",
+    "imageWidth"
   ])
 
   return {
