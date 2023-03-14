@@ -32,7 +32,8 @@ export const getStaticProps = async ({ params: { id } }) => {
   const posts = getAllPosts([
     "tags",
     "title",
-    "description"
+    "description",
+    "date"
   ])
   .filter((file) => file.tags?.includes(id) || false)
 
