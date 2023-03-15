@@ -368,3 +368,8 @@ sup a, .data-footnote-backref {
   justify-content: space-between;
   padding: calc(var(--default-size) * 15) calc(var(--default-size) * 7);
 }
+
+.video {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
