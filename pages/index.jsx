@@ -9,7 +9,11 @@ export default function Post({ posts }) {
   const latestArticles = posts.slice(1)
 
   return (
-    <Layout>
+    <Layout 
+      title="Главная страница | Блог yepstepz.io"
+      description="Пишу про себя, фронтенд и книги."
+      image="/title-image.png"
+    >
       <section className="main-article">
         <div className="inner">
           <MainArticle {...mainArticle} />

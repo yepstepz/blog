@@ -45,23 +45,22 @@
   --read-link-color: var(--accent-color);
   --read-link-color-active: var(--accent-color);
 
-  --tag-1: #A36FE6;
-  --tag-1-hover-bg: #d3bfec;
-
-  --tag-2: #F668C6;
-  --tag-2-hover-bg: #ffcfef;
-
-  --tag-3: #FF779B;
-  --tag-3-hover-bg: #f7adc1;
-
-  --tag-4: #FF9E74;
-  --tag-4-hover-bg: #fdc8b0;
-
-  --tag-5: #FFCC5F;
-  --tag-5-hover-bg: #fde3ab;
-
-  --tag-6: #F9F871;
-  --tag-6-hover-bg: #f7f7cc;
+  --ochre: #c8a200;
+  --coral-red: #fc402e;
+  --misty-rose: #ffe4e1;
+  --burnt-orange: #fa6200;
+  --white: #ffffff;
+  --light-salmon: #ffa07a;
+  --rust: #7f2a0a;
+  --medium-orchid: #ba55d3;
+  --dark-violet: #9400d3;
+  --pale-canary: #fff59d;
+  --hot-pink: #ff69b4;
+  --dodger-blue: #3ca5ec;
+  --teal: #007f7f;
+  --light-cyan: #e0ffff;
+  --pure-apple: #6ab04c;
+  --light-lime: #e3f1bb;
 }
 
 body {

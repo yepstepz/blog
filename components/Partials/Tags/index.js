@@ -7,6 +7,7 @@ import { colors } from "./tags-colors"
 const tagStyles = (tag) => css({
   color: colors[tag]?.light.color || 'var(--main-font)',
   ':hover': {
+    color: colors[tag]?.light.hoverColor || colors[tag]?.light.color,
     background: colors[tag]?.light.hoverBg || '',
   }
 })

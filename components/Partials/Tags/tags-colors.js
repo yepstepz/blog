@@ -1,32 +1,49 @@
 export const colors = {
   life: {
     light: {
-      color: 'var(--tag-1)',
-      hoverBg: 'var(--tag-1-hover-bg)'
+      color: 'var(--medium-orchid)', 
+      hoverColor: 'var(--white)', 
+      hoverBg: 'var(--medium-orchid)'
     }
   },
   me: {
     light: {
-      color: 'var(--tag-2)',
-      hoverBg: 'var(--tag-2-hover-bg)'
+      color: 'var(--pure-apple)', 
+      hoverBg: 'var(--light-lime)'
     }
   },
   javascript: {
     light: {
-      color: 'var(--tag-3)',
-      hoverBg: 'var(--tag-3-hover-bg)'
+      color: 'var(--ochre)',
+      hoverColor: 'var(--dark-violet)', 
+      hoverBg: 'var(--pale-canary)'
     }
   },
   tech: {
     light: {
-      color: '#0A97B0',
-      hoverBg: '#FAEEE7'
+      color: 'var(--burnt-orange)', 
+      hoverColor: 'var(--white)', 
+      hoverBg: 'var(--burnt-orange)'
     }
   },
   work: {
     light: {
-      color: '#F54291',
-      hoverBg: '#FAEEE7'
+      color: 'var(--hot-pink)', 
+      hoverColor: 'var(--white)', 
+      hoverBg: 'var(--hot-pink)'
+    }
+  },
+  movies: {
+    light: {
+      color: 'var(--dodger-blue)', 
+      hoverColor: 'var(--white)', 
+      hoverBg: 'var(--dodger-blue)'
+    }
+  },
+  books: {
+    light: {
+      color: 'var(--teal)', 
+      hoverBg: 'var(--light-cyan)'
     }
   }
 }
