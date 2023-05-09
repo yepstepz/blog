@@ -40,7 +40,7 @@ export const colors = {
       hoverBg: 'var(--dodger-blue)'
     }
   },
-  books: {
+  bookshelf: {
     light: {
       color: 'var(--teal)', 
       hoverBg: 'var(--light-cyan)'
