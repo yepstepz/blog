@@ -42,6 +42,7 @@ export async function getStaticProps() {
     "slug",
     "content",
     "image",
+    "blurImage",
     "tags",
     "date",
     "imageAlign",

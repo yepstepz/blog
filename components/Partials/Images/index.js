@@ -1,20 +1,26 @@
-import Image from 'next/image'
-import React from 'react'
+import Image from 'next/future/image';
+import React from 'react';
 
-export default function ResponsiveImage(props) {
-  const {
-    width,
-    height,
-    layout,
-    alt
-  } = props
-  return (
-    <Image
-      width={width || "100%"}
-      height={height || "100%"}
+import styles from './Images.module.css';
+
+export default function (props = {}) {
+  const { src, aspectRatio = "4/3", flexGrow, alt, style, fromList, onClick } = props;
+
+  const widthProps = props.width ? { width: props.width } : { fill: true };
+  const Component = () => (
+      <Image
+      src={src}
       alt={alt}
-      layout={layout || 'responsive'}
-      {...props}
+      {...widthProps}
+      style={style}
+      className={styles.postImage}
     />
+  )
+  const Wrapper = fromList ? 'li' : 'div';
+
+  return (
+    <Wrapper onClick={onClick} className={styles.wrapperPostImage} style={{ aspectRatio, flexGrow }}>
+      {<Component/>}
+    </Wrapper>
   )
 }

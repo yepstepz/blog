@@ -3,6 +3,7 @@
   height: 350px;
   position: relative;
   margin: 16px auto;
+  display: flex;
 }
 
 .postImage img {

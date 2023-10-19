@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
 import Tags from '@components/Partials/Tags';
-import ResponsiveImage from '@components/Partials/Images';
+import Image from '@components/Partials/Images';
 
 import styles from './MainArticlePage.module.css'
 
-export default function MainArticle({ title, description, slug, image, tags, imageWidth }) {
+export default function MainArticle({ title, description, slug, image, tags, imageWidth, blurImage }) {
   return (
     <article>
       <div className="block-headline inner--sm">
@@ -22,10 +22,13 @@ export default function MainArticle({ title, description, slug, image, tags, ima
             width: imageWidth
           }}
         >
-          <ResponsiveImage
+          <Image
             src={image}
+            placeholder={blurImage ? 'blur' : undefined}
+            blurDataURL={blurImage}
             layout="fill"
             priority
+            aspectRatio="16/9"
           />
         </div>
       }
