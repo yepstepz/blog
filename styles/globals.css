@@ -63,6 +63,11 @@
   --light-lime: #e3f1bb;
 }
 
+#__next {
+  overflow: hidden;
+  position: relative;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -132,18 +137,47 @@ hr {
   list-style: none;
 }
 
+.navigation__button {
+  display: none;
+  border: none;
+  padding: calc(var(--default-size) * 1) calc(var(--default-size) * 2);
+  margin: 0;
+  background: none;
+}
+
 .top-menu-item {
   margin-left: calc(var(--default-size) * 7);
 }
 
-.top-menu-item a {
+.top-menu-close {
+  display: none;
+}
+
+.top-menu-close button {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  width: 100%;
+}
+
+.top-menu-close button:after {
+  display: inline-block;
+  color: var(--accent-color);
+  content: "\00d7"; /* This will render the 'X' */
+  margin-top: calc(var(--default-size) * 3);
+}
+
+.top-menu-item a,
+.navigation__button {
   color: var(--accent-color);
   text-decoration: none;
   padding: calc(var(--default-size) * 1) calc(var(--default-size) * 2);
 }
 
 .top-menu-item--active a,
-.top-menu-item:hover a {
+.top-menu-item:hover a,
+.navigation__button:active {
     background:  var(--light-blue-color);
 }
 
@@ -342,14 +376,47 @@ sup a, .data-footnote-backref {
   .inner {
     padding: calc(var(--default-size) * 4) calc(var(--default-size) * 7);
   }
-  .inner--sm {
-    max-width: calc(var(--default-size) * 85);
-  }
-}
 
-@media (max-width: 414px) {
   .inner--sm {
     max-width: calc(var(--default-size) * 80);
+  }
+
+  .top-menu {
+    overflow: hidden;
+    right: -140px;
+    transition: all 0.250s ease-out;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    background: var(--white);
+    box-shadow: calc(var(--default-size) * 3) 0px calc(var(--default-size) * 5) var(--black-color);
+    z-index: 1;
+  }
+
+  .top-menu-close {
+    display: block;
+  }
+
+  .top-menu--opened {
+    right: 0;
+  }
+
+  .top-menu__item {
+    margin: 0;
+    text-align: center;
+  }
+
+  .top-menu__item a {
+    padding: calc(var(--default-size) * 3) calc(var(--default-size) * 5);
+    display: block;
+    margin: 0;
+  }
+
+  .navigation__button {
+    display: block;
   }
 }
 

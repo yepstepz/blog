@@ -30,14 +30,16 @@ blurImage: /the-uk-london-23/0-blur.jpg
 WHSmith, Boots, наружным рекламам на английском языке, каждая из которых почему-то пытается с тобой пошутить. 
 
 
-<Gallery>
-  <Image
-    fill={true}
-    src="/the-uk-london-23/1.jpeg"
-    alt="Смешная реклама пива с улыбающимся барашком и надписью 'Take the Nothern line, but go South'"
-    aspectRatio="4/1"
-  />
-</Gallery>
+<Gallery
+  images={[
+    {
+      fill: true,
+      src: "/the-uk-london-23/1.jpeg",
+      alt: "Смешная реклама пива с улыбающимся барашком и надписью 'Take the Nothern line, but go South'",
+      aspectRatio: "4/1"
+    }
+  ]}
+/>
 
 
 Из наблюдений: почему-то ожидала, что карты Google – основное приложение, через
@@ -66,45 +68,48 @@ WHSmith, Boots, наружным рекламам на английском яз
 я совсем древний человек. Кстати, подсолнухи Ван Гога, которые были облиты краской активистами в рамках акции против климатических
 изменений, живы, здоровы, радуют глаз.
 
-<Gallery>
-  <Image
-    fill={true} 
-    style={{ 
-      objectFit: "contain"
-    }}
-    src="/the-uk-london-23/2.JPG"
-    alt="Улица с висящими в воздухе распечатанными картинками и надписями 'National Gallery'"
-  />
-</Gallery>
+<Gallery images={[
+    {
+      fill: true,
+      style: { 
+        objectFit: "contain"
+      },
+      src: "/the-uk-london-23/2.JPG",
+      alt: "Улица с висящими в воздухе распечатанными картинками и надписями 'National Gallery'"
+    }
+  ]}
+/>
 
 
 Мы посетили район Сохо, некий местный Арбат (извините если задергалось лицо при этом сравнении), нарядный и пастельно-неоновый.
 Про неон и пастель неточно, говорят, декорации меняются постоянно.
 
-<Gallery>
-  <Image 
-    src="/the-uk-london-23/3-1.jpeg" 
-    aspectRatio="4/3"
-    alt="Улица района Сохо с неоновыми лампочками и магазином косметики"
-  />
-  <Image 
-    src="/the-uk-london-23/3-2.jpeg" 
-    aspectRatio="1/1"
-    flexGrow={1/2}
-    alt="Улица района Сохо с неоновыми надписями"
-  />
-</Gallery>
+<Gallery images={[
+    {
+      src: "/the-uk-london-23/3-1.jpeg",
+      aspectRatio: "4/3",
+      alt: "Улица района Сохо с неоновыми лампочками и магазином косметики"
+    },
+    {
+      src: "/the-uk-london-23/3-2.jpeg" ,
+      aspectRatio: "1/1",
+      flexGrow: 1/2,
+      alt: "Улица района Сохо с неоновыми надписями"
+    }
+  ]}
+/>
 
 Также мы заехали в район the City of London, где можно посмотреть на мост Миллениум (который в фильмах о Гарри Поттере шатали Пожиратели Смерти),
 собор Святого Павла и Лондонский мост.
 
-<Gallery>
-  <Image
-    fill={true} 
-    src="/the-uk-london-23/4.jpeg"
-    alt="Вид на Лондонский мост"
-  />
-</Gallery>
+<Gallery images={[
+    {
+      fill: true,
+      src: "/the-uk-london-23/4.jpeg",
+      alt: "Вид на Лондонский мост"
+    }
+  ]}
+/>
 
 Отдельный хайлайт заслуживает the Tower of London, где мы пытались послушать экскурсовода, который так бодро говорил
 по-английски, что понимали мы процентов двадцать. Но мы и не великие мастера аудирования, правда. Есть, куда стремиться! 
@@ -120,18 +125,19 @@ WHSmith, Boots, наружным рекламам на английском яз
 чтобы отдать дань Поттериане. Трейлер нас заинтересовал настолько, что мы ухватили последние билеты на сеанс, 
 который должен был состояться на следующий день. Потом узнали, что спектакль занимает по времени целый день!
 
-<iframe className="video" width="560" height="315" src="https://www.youtube.com/embed/yIVkVj08OmQ?si=ZPZK2f1bIs1JeyiZ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+<iframe loading="lazy" className="video" width="560" height="315" src="https://www.youtube.com/embed/yIVkVj08OmQ?si=ZPZK2f1bIs1JeyiZ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
 
 Я читала пьесу (в переводе), и, откровенно говоря, кринжанула. Однако, друзья приободрили нас, что постановка смотрится бодро,
 даже если у тебя нет особой любви к сиквелу.
 
-<Gallery>
-  <Image
-    fill={true} 
-    src="/the-uk-london-23/5.jpeg"
-    alt="Вид на сцену постановки 'Проклятое Дитя'"
-  />
-</Gallery>
+<Gallery images={[
+    {
+      fill: true,
+      src: "/the-uk-london-23/5.jpeg",
+      alt: "Вид на сцену постановки 'Проклятое Дитя'"
+    }
+  ]}
+/>
 
 И так оно и получилось. Мы смеялись в тех местах, где в текстовом варианте пьесы, как мне казалось, плохо шутили. Мы хлопали и удивлялись. 
 Представляете, театр настолько продвинутая штука, что можно показать дуэль на палочках?! И все светится, вспыхивает,
@@ -167,16 +173,17 @@ WHSmith, Boots, наружным рекламам на английском яз
 - китайская доставка,
 - ...
 
-<Gallery>
-  <Image
-    fill={true} 
-    style={{ 
-      objectFit: "contain"
-    }}
-    src="/the-uk-london-23/6.jpg"
-    alt="Стол с галетами"
-  />
-</Gallery>
+<Gallery images={[
+    {
+      fill: true,
+      style: { 
+        objectFit: "contain"
+      },
+      src: "/the-uk-london-23/6.jpg",
+      alt: "Стол с галетами"  
+    }
+  ]}
+/>
 
 Все стоит приличных денег, от 10 фунтов по курсу 120 рублей за фунт.
 
