@@ -496,6 +496,6 @@ sup a, .data-footnote-backref {
   width: 100%;
 }
 
-a:visited {
+a, a:visited {
   color: var(--accent-color);
 }
