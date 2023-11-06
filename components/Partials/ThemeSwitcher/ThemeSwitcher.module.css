@@ -16,7 +16,7 @@
 }
 
 .Toggler:before {
-  content: '🌞';
+  content: '';
   position: absolute;
   height: 16px;
   width: 16px;
@@ -33,11 +33,22 @@
   justify-content: center;
 }
 
-label:has(.Checkbox:checked):before {
-  content: '🌚';
+label:has(.Checkbox:focus-visible) {
+  outline: 1px solid var(--outline-border);
+}
+
+.TogglerActive::before {
+  content: '';
   transform: translateX(16px);
 }
 
-label:has(.Checkbox:focus-visible) {
-  outline: 1px solid var(--outline-border);
+.TogglerWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.TogglerEmotion {
+  margin-left: 4px;
+  line-height: 1;
+  font-size: 15px;
 }
