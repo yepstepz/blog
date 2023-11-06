@@ -147,6 +147,10 @@ blockquote {
   margin: 0;
 }
 
+pre {
+  overflow-y: scroll;
+}
+
 hr {
   border-bottom: 0.25rem solid var(--accent-color);
   margin: calc(var(--default-size) * 15) auto;
