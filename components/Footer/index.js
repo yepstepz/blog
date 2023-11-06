@@ -36,7 +36,7 @@ export default function Footer() {
                     </a>
                 </li>
             </ul>
-            <p className={styles.copyright}>© 2022 — developed by <a className="text text--blue" href="https://yepstepz.io">yepstepz</a></p>
+            <p className={styles.copyright}>© 2023 — developed by <a className="text text--violet" href="https://yepstepz.io">yepstepz</a></p>
         </div>
     </footer>
   )

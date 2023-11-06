@@ -1,0 +1,46 @@
+.Button {
+  background-color: var(--accent-color);
+  width: calc(var(--default-size) * 6);
+  height: 3px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+
+.Button::after, .Button::before {
+  content: '';
+}
+
+.Button, .Button::after, .Button::before {
+  background-color: var(--accent-color);
+  width: calc(var(--default-size) * 6);
+  height: 3px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.Button::after {
+  transform: translateY(3px);
+}
+
+.Button::before {
+  transform: translateY(-6px);
+}
+
+.ButtonOpened {
+  background-color: transparent;
+}
+
+.ButtonOpened::after {
+  transform: translateY(-3px) rotate(45deg);
+}
+
+.ButtonOpened::before {
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 414px) {
+  .Button, .Button::after, .Button::before {
+    display: block;
+  }
+}

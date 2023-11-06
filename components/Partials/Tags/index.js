@@ -9,6 +9,12 @@ const tagStyles = (tag) => css({
   ':hover': {
     color: colors[tag]?.light.hoverColor || colors[tag]?.light.color,
     background: colors[tag]?.light.hoverBg || '',
+  },
+  ':visited': {
+    color: colors[tag]?.light.color || 'var(--main-font)',
+  },
+  ':visited:hover': {
+    color: colors[tag]?.light.hoverColor || colors[tag]?.light.color,
   }
 })
 
