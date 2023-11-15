@@ -13,6 +13,7 @@ export default function Post({ posts }) {
       title="Главная страница | Блог yepstepz.io"
       description="Пишу про себя, фронтенд и книги."
       image="/title-image.png"
+      url="https://yepstepz.io"
     >
       <section className="main-article">
         <div className="inner">

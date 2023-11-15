@@ -5,7 +5,11 @@ import { getAllPosts } from "lib/posts"
 
 export default function Articles ({ posts }) {
   return (
-    <Layout>
+    <Layout
+      title="Все статьи | Блог yepstepz.io"
+      description="Посмотреть все статьи из блога"
+      url="https://yepstepz.io/articles"
+    >
       <ArticlesList posts={posts} />
     </Layout>
   )

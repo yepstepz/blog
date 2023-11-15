@@ -2,7 +2,6 @@ import Header from '@components/Header'
 import Footer from '@components/Footer'
 import { MDXProvider } from '@mdx-js/react';
 import Head from 'next/head';
-import { Analytics } from './Partials/Analytics';
 
 import { ThemeProvider } from './ThemeProvider';
 
@@ -20,7 +19,10 @@ export default function Layout ({ children, title, description, image, type, url
             key="desc"
           />
           <meta property="og:title" content={title} />
-          <meta property="og:type" content={type} />
+          {
+            type &&
+            <meta property="og:type" content={type} />
+          }
           <meta property="og:url" content={url} />
           <meta property="og:site_name" content="Блог yepstepz.io" />
           {
