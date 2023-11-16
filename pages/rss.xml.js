@@ -1,5 +1,4 @@
 import { getAllPosts } from "../lib/posts";
-import RSS from 'rss';
 
 function generateRss(posts) {
   const site_url =
@@ -7,29 +6,30 @@ function generateRss(posts) {
     ? "https://yepstepz.io"
     : "http://localhost:3000";
 
-  const feedOptions = {
-    title: "Blog posts by yepstepz | RSS Feed",
-    description: "Hi! My name is Tatiana (yepstepz). I write + code",
-    site_url: site_url,
-    feed_url: `${site_url}/rss.xml`,
-    image_url: `${site_url}/favicons/favicon-16x16.png`,
-    pubDate: new Date(),
-    copyright: `All rights reserved ${new Date().getFullYear()}`,
-  };
+  return `
+  <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+        <channel>
+            <atom:link href="${site_url}/rss.xml" rel="self" type="application/rss+xml" />
+            <title>Blog posts by yepstepz | RSS Feed</title>
+            <link>${site_url}</link>
+            <language>ru-ru</language>
+            <description>Hi! My name is Tatiana (yepstepz). I write + code</description>
 
-  const feed = new RSS(feedOptions);
-
-  posts.forEach((post) => {
-    feed.item({
-     title: post.title,
-     description: post.description,
-     url: `${site_url}/posts/${post.slug}`,
-     date: post.date,
-     author: 'Tatiana Leonteva'
-    });
-  });
-
-  return feed.xml();
+            <pubDate>${(new Date).toUTCString()}</pubDate>
+            ${posts.map(({ title, slug, date, description }) => `
+              <item>
+                  <title>${title}</title>
+                  <link>${site_url}/posts/${slug}</link>
+                  <pubDate>${(new Date(date)).toUTCString()}</pubDate>
+                  <description>
+                      <![CDATA[${description}]]>
+                  </description>
+                  <guid>${site_url}/posts/${slug}</guid>
+              </item>
+            `).join('')}
+        </channel>
+    </rss>
+  `;
 }
 
 function Rss() {
@@ -43,7 +43,8 @@ export async function getServerSideProps({ res }) {
     "description",
     "date",
     "slug",
-    "url"
+    "url",
+    "lastEdit"
   ]);
 
   // // We generate the XML sitemap with the posts data
