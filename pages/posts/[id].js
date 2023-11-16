@@ -53,7 +53,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { id } }) => {
-  const url = 'https://yepstepz.io/' +path.join('posts', id)
+  const url = 'https://yepstepz.io/' + path.join('posts', id)
   const markdownWithMeta = fs.readFileSync(path.join('posts',
     id + '.mdx'), 'utf-8')
   const { data: frontMatter, content } = matter(markdownWithMeta)
