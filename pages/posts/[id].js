@@ -7,6 +7,7 @@ import matter from 'gray-matter';
 import remarkGfm from "remark-gfm";
 import Image from '@components/Partials/Images';
 import Gallery from '@components/Partials/Gallery';
+import { Plate } from '@components/Partials/Plate';
 
 
 const components = {
@@ -14,7 +15,7 @@ const components = {
   Gallery
 };
 
-export default function Post({ frontMatter: { title, date, description, image }, mdxSource, url }) {
+export default function Post({ frontMatter: { title, date, description, image, published }, mdxSource, url }) {
   return (
     <Layout
       title={title}
@@ -28,6 +29,9 @@ export default function Post({ frontMatter: { title, date, description, image },
           <h1 className="headline headline--main">{title}</h1>
           <div className="page__caption body--secondary">
             <span> Пост создан {date}</span>
+            {
+              !published && <Plate title="Черновик" />
+            }
           </div>
         </div>
         <div className="page__content block-article inner--sm">

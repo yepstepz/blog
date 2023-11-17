@@ -1,0 +1,4 @@
+Sitemap: https://yepstepz.io/sitemap.xml
+
+User-agent: *
+Allow: /

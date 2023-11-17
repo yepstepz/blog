@@ -31,24 +31,6 @@
 
   --default-size: 4px;
 
-  --main-font: var(--black-color);
-  --bg-color: var(--white);
-
-  --accent-color: var(--soft-violet);
-  --accent-color-hover: var(--magnolia-color);
-
-  --blockquote-bg-color: var(--subtle-blue-color);
-  --blockquote-font-color: var(--bunker-color);
-
-
-  --button-color: var(--accent-color);
-  --button-color-active: var(--accent-color);
-
-  --read-link-color: var(--accent-color);
-  --read-link-color-active: var(--accent-color);
-
-  --page-caption: #656565;
-
   --ochre: #c8a200;
   --coral-red: #fc402e;
   --misty-rose: #ffe4e1;
@@ -73,6 +55,7 @@
 
 html[data-theme='light'] {
   --main-font: var(--black-color);
+  --main-font-inverted: #f7f8f8;
   --bg-color: var(--white);
   --bg-color-secondary: var(--white-secondary);
 
@@ -97,6 +80,7 @@ html[data-theme='light'] {
 
 html[data-theme='dark'] {
   --main-font: #f7f8f8;
+  --main-font-inverted: var(--black-color);
   --bg-color: var(--dark-cyan);
   --bg-color-secondary: #29383f;
 
@@ -156,6 +140,12 @@ hr {
   margin: calc(var(--default-size) * 15) auto;
 }
 
+.icon {
+  height: 1em;
+  line-height: 1;
+  vertical-align: text-bottom;
+}
+
 .inner {
   padding: calc(var(--default-size) * 8) calc(var(--default-size) * 14);
   margin-left: auto;
@@ -185,6 +175,14 @@ hr {
   padding: calc(var(--default-size) * 1) calc(var(--default-size) * 2);
   background: var(--accent-color);
   color: var(--bg-color);
+}
+
+.df {
+  display: flex;
+}
+
+.ac {
+  align-items: center;
 }
 
 .top-menu {

@@ -1,11 +1,15 @@
 import Link from "next/link"
 import Tags from '@components/Partials/Tags';
+import { Plate } from "@components/Partials/Plate";
 
-export default function Article({ slug, title, description, tags }) {
+export default function Article({ slug, title, description, tags, published }) {
   return (
       <article>
         <div className="block-info block-info--sm inner--sm">
-          <Tags tags={tags} />
+          <div className='df ac'>
+            { !published && <Plate title="Черновик" /> }
+            <Tags tags={tags} />
+          </div>
         </div>
         <div className="block-headline inner--sm">
           <h3 className="headline headline--third">{title}</h3>

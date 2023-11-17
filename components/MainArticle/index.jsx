@@ -2,14 +2,18 @@ import Link from 'next/link';
 
 import Tags from '@components/Partials/Tags';
 import Image from '@components/Partials/Images';
+import { Plate } from '@components/Partials/Plate';
 
 import styles from './MainArticlePage.module.css'
 
-export default function MainArticle({ title, description, slug, image, tags, imageWidth, blurImage }) {
+export default function MainArticle({ title, description, slug, image, tags, imageWidth, blurImage, published }) {
   return (
     <article>
       <div className="block-headline inner--sm">
-        <Tags tags={tags} />
+        <div className='df ac'>
+          { !published && <Plate title="Черновик" /> }
+          <Tags tags={tags} />
+        </div>
         <h1 className="headline headline--main">{title}</h1>
       </div>
       <div className="block-headline inner--sm">
