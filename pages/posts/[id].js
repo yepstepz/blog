@@ -8,14 +8,19 @@ import remarkGfm from "remark-gfm";
 import Image from '@components/Partials/Images';
 import Gallery from '@components/Partials/Gallery';
 import { Plate } from '@components/Partials/Plate';
-
+import rehypeStarryNight from "@microflash/rehype-starry-night"
 
 const components = {
   Image,
   Gallery
 };
 
-export default function Post({ frontMatter: { title, date, description, image, published }, mdxSource, url }) {
+export default function Post({
+  frontMatter: { title, date, description, image, published }, 
+  mdxSource, 
+  url,
+  snippetData
+}) {
   return (
     <Layout
       title={title}
@@ -23,6 +28,7 @@ export default function Post({ frontMatter: { title, date, description, image, p
       url={url}
       image={image}
       type="article"
+      snippetData={JSON.stringify(snippetData)}
     >
       <div className="page">
         <div className="page__headline block-headline block-headline--center inner--sm">
@@ -60,10 +66,30 @@ export const getStaticProps = async ({ params: { id } }) => {
   const url = 'https://yepstepz.io/' + path.join('posts', id)
   const markdownWithMeta = fs.readFileSync(path.join('posts',
     id + '.mdx'), 'utf-8')
-  const { data: frontMatter, content } = matter(markdownWithMeta)
+  const { data: frontMatter, content } = matter(markdownWithMeta);
+  const { date, lastEdit, title, image = '', description } = frontMatter;
+
+  const formattedDate = new Date(date).toISOString();
+  const formattedLastEdit = lastEdit ? new Date(lastEdit).toISOString() : '';
+
+  const snippetData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    ...image ? {"image": [ image ]} : {},
+    "datePublished": formattedDate,
+    ...formattedLastEdit ? {"dateModified": formattedLastEdit} : {},
+    "author": [{
+      "@type": "Person",
+      "name": "Tatiana Leonteva",
+    }]
+  }
+
   const mdxSource = await serialize(content,  {
     mdxOptions: {
-      remarkPlugins: [remarkGfm]
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypeStarryNight]
     }
   })
   return {
@@ -71,7 +97,8 @@ export const getStaticProps = async ({ params: { id } }) => {
       frontMatter,
       id,
       mdxSource,
-      url
+      url,
+      snippetData
     }
   }
 }

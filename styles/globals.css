@@ -28,6 +28,10 @@
   --magnolia-color: #f8f0ff;
   --dark-cyan: #212a2e;
 
+  --highlight-background-color: hsl(0, 0%, 100%);
+  --highlight-border-color: hsl(208, 21%, 86%);
+  --highlight-code-highlight: hsl(208, 19%, 82%);
+
 
   --default-size: 4px;
 
@@ -51,6 +55,7 @@
 
   --outline-border: #51a7e8;
 }
+
 
 
 html[data-theme='light'] {
@@ -100,7 +105,13 @@ html[data-theme='dark'] {
 
   --toggler-bg: var(--accent-color);
   --toggler-border: var(--accent-color);
+
+  --highlight-background-color: hsl(240, 20%, 2%);
+  --highlight-border-color: hsl(208, 21%, 12%);
+  --highlight-code-highlight: hsl(208, 19%, 13%);
 }
+
+@import url(./code/theme.css);
 
 #__next {
   overflow: hidden;

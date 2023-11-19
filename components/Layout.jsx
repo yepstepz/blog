@@ -5,7 +5,7 @@ import Head from 'next/head';
 
 import { ThemeProvider } from './ThemeProvider';
 
-export default function Layout ({ children, title, description, image, type, url }) {
+export default function Layout ({ children, title, description, image, type, url, snippetData }) {
   return (
     <MDXProvider>
       <ThemeProvider>
@@ -36,6 +36,13 @@ export default function Layout ({ children, title, description, image, type, url
           {
             url &&
             <link rel="canonical" href={url} />
+          }
+          {
+            snippetData &&
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: snippetData }}
+            />
           }
         </Head>
         <Header />
