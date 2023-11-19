@@ -508,3 +508,7 @@ sup a, .data-footnote-backref {
 a, a:visited {
   color: var(--accent-color);
 }
+
+code {
+  font-size: calc(var(--default-size) * 3);
+}
