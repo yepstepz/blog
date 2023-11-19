@@ -33,6 +33,10 @@ export default function Layout ({ children, title, description, image, type, url
           <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
           <link rel="manifest" href="/site.webmanifest"></link>
+          <link rel="webmention" href="https://webmention.io/yepstepz.io/webmention" />
+          <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
+          <link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
+          <link rel="microsub" href="https://aperture.p3k.io/microsub/907" />
           {
             url &&
             <link rel="canonical" href={url} />
