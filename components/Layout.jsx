@@ -34,6 +34,7 @@ export default function Layout ({ children, title, description, image, type, url
           <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
           <link rel="manifest" href="/site.webmanifest"></link>
           <link rel="webmention" href="https://webmention.io/yepstepz.io/webmention" />
+          <link rel="pingback" href="https://webmention.io/yepstepz.io/xmlrpc" />
           <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
           <link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
           <link rel="alternate" href="https://yepstepz.io/rss.xml" type="application/rss+xml" title="Blog posts by yepstepz | RSS Feed"></link>
