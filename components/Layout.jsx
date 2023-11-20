@@ -36,7 +36,7 @@ export default function Layout ({ children, title, description, image, type, url
           <link rel="webmention" href="https://webmention.io/yepstepz.io/webmention" />
           <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
           <link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
-          <link rel="microsub" href="https://aperture.p3k.io/microsub/907" />
+          <link rel="alternate" href="https://yepstepz.io/rss.xml" type="application/rss+xml" title="Blog posts by yepstepz | RSS Feed"></link>
           {
             url &&
             <link rel="canonical" href={url} />

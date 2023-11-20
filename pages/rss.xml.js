@@ -14,7 +14,7 @@ function generateRss(posts) {
             <link>${site_url}</link>
             <language>ru-ru</language>
             <description>Hi! My name is Tatiana (yepstepz). I write + code</description>
-
+            <ttl>60</ttl>
             <pubDate>${(new Date).toUTCString()}</pubDate>
             ${posts.map(({ title, slug, date, description }) => `
               <item>
