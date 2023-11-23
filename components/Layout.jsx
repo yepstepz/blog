@@ -2,6 +2,12 @@ import Header from '@components/Header';
 import Footer from '@components/Footer';
 import { MDXProvider } from '@mdx-js/react';
 import Head from 'next/head';
+import { Inter } from '@next/font/google'
+import cs from 'classnames';
+
+const inter = Inter({
+  variable: '--font-inter',
+})
 
 import { ThemeProvider } from './ThemeProvider';
 
@@ -74,7 +80,7 @@ export default function Layout({
           )}
         </Head>
         <Header />
-        <main className="content">{children}</main>
+        <main className={cs('content', inter.variable)}>{children}</main>
         <Footer />
       </ThemeProvider>
     </MDXProvider>
