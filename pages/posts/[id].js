@@ -77,9 +77,9 @@ export const getStaticProps = async ({ params: { id } }) => {
     "@type": "BlogPosting",
     "headline": title,
     "description": description,
-    ...image ? {"image": [ image ]} : {},
+    ...(image ? {"image": [ image ]} : {}),
     "datePublished": formattedDate,
-    ...formattedLastEdit ? {"dateModified": formattedLastEdit} : {},
+    ...(formattedLastEdit ? {"dateModified": formattedLastEdit} : {}),
     "author": [{
       "@type": "Person",
       "name": "Tatiana Leonteva",
