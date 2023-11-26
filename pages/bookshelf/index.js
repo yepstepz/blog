@@ -19,6 +19,18 @@ export default function Post({
 }) {
   return (
     <Layout>
+      <h1 className='inner--sm'>Читаю</h1>
+      <p className='inner--sm'>
+        На этой страничке выгрузка из моего аккаунта <a rel="nofollow noopener" target="_blank" href="https://www.goodreads.com/yepstepz">Goodreads</a>. 
+        Здесь данные с 2023 года, плюс моя оценка книги.
+      </p>
+      <p className='inner--sm'>
+        Обновляется нечасто, при каждой пересборке статики.
+      </p>
+      <p className='inner--sm'>
+        Четверка для меня практически наивысшая оценка, выше только те книги,
+        которыми я зачиталась настолько что забыла про время и день недели.
+      </p>
       {
         keysForYears.map((year) => (
           <section className='inner--sm'>
@@ -38,7 +50,7 @@ export default function Post({
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const booksFromRSS = await getAllBooks();
   const DATE_FROM = new Date('2023', '00', '01')
 

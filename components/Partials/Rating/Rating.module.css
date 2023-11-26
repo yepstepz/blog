@@ -1,0 +1,28 @@
+.rating {
+  display: flex;
+  position: relative;
+  width: min-content;
+}
+
+.star {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.star path {
+  fill: gold;
+}
+
+.cover {
+  background: var(--bg-color);
+  height: 100%;
+  overflow: hidden;
+  mix-blend-mode: color;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+}
