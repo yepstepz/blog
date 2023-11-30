@@ -89,3 +89,7 @@
 	width: 1em;
 	height: 1em;
 }
+
+.highlight code {
+  font-size: calc(var(--default-size) * 3);
+}

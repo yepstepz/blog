@@ -16,6 +16,7 @@ export default ({ images }) => {
       <Component className={styles.gallery}>
         {images?.map((props, i) => (
           <Image
+            key={props.src}
             {...props}
             onClick={() => setOpen(i)}
             fromList={images.length > 1}
