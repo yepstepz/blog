@@ -4,22 +4,22 @@ import { MDXRemote } from 'next-mdx-remote';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import remarkGfm from "remark-gfm";
+import remarkGfm from 'remark-gfm';
 import Image from '@components/Partials/Images';
 import Gallery from '@components/Partials/Gallery';
 import { Plate } from '@components/Partials/Plate';
-import rehypeStarryNight from "@microflash/rehype-starry-night"
+import rehypeStarryNight from '@microflash/rehype-starry-night';
 
 const components = {
   Image,
-  Gallery
+  Gallery,
 };
 
 export default function Post({
-  frontMatter: { title, date, description, image, published }, 
-  mdxSource, 
+  frontMatter: { title, date, description, image, published },
+  mdxSource,
   url,
-  snippetData
+  snippetData,
 }) {
   return (
     <Layout
@@ -35,9 +35,7 @@ export default function Post({
           <h1 className="headline headline--main">{title}</h1>
           <div className="page__caption body--secondary">
             <span> Пост создан {date}</span>
-            {
-              !published && <Plate title="Черновик" />
-            }
+            {!published && <Plate title="Черновик" />}
           </div>
         </div>
         <div className="page__content block-article inner--sm">
@@ -46,26 +44,28 @@ export default function Post({
       </div>
     </Layout>
   );
-};
+}
 
 export const getStaticPaths = async () => {
   const files = fs.readdirSync(path.join('posts'));
-  const paths = files.map(filename => ({
+  const paths = files.map((filename) => ({
     params: {
-      id: filename.replace('.mdx', '')
-    }
+      id: filename.replace('.mdx', ''),
+    },
   }));
 
   return {
     paths,
-    fallback: false
-  }
+    fallback: false,
+  };
 };
 
 export const getStaticProps = async ({ params: { id } }) => {
-  const url = 'https://yepstepz.io/' + path.join('posts', id)
-  const markdownWithMeta = fs.readFileSync(path.join('posts',
-    id + '.mdx'), 'utf-8')
+  const url = 'https://yepstepz.io/' + path.join('posts', id);
+  const markdownWithMeta = fs.readFileSync(
+    path.join('posts', id + '.mdx'),
+    'utf-8'
+  );
   const { data: frontMatter, content } = matter(markdownWithMeta);
   const { date, lastEdit, title, image = '', description } = frontMatter;
 
@@ -73,32 +73,34 @@ export const getStaticProps = async ({ params: { id } }) => {
   const formattedLastEdit = lastEdit ? new Date(lastEdit).toISOString() : '';
 
   const snippetData = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": title,
-    "description": description,
-    ...(image ? {"image": [ image ]} : {}),
-    "datePublished": formattedDate,
-    ...(formattedLastEdit ? {"dateModified": formattedLastEdit} : {}),
-    "author": [{
-      "@type": "Person",
-      "name": "Tatiana Leonteva",
-    }]
-  }
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: description,
+    ...(image ? { image: [image] } : {}),
+    datePublished: formattedDate,
+    ...(formattedLastEdit ? { dateModified: formattedLastEdit } : {}),
+    author: [
+      {
+        '@type': 'Person',
+        name: 'Tatiana Leonteva',
+      },
+    ],
+  };
 
-  const mdxSource = await serialize(content,  {
+  const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
-      rehypePlugins: [rehypeStarryNight]
-    }
-  })
+      rehypePlugins: [rehypeStarryNight],
+    },
+  });
   return {
     props: {
       frontMatter,
       id,
       mdxSource,
       url,
-      snippetData
-    }
-  }
-}
+      snippetData,
+    },
+  };
+};

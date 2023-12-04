@@ -1,4 +1,4 @@
-import Script from 'next/script'
+import Script from 'next/script';
 
 export const Analytics = () => (
   <>
@@ -16,4 +16,4 @@ export const Analytics = () => (
       `}
     </Script>
   </>
-)
+);

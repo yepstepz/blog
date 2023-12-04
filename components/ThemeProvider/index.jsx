@@ -1,12 +1,12 @@
-import { createContext, useState, useEffect, useRef } from "react"
+import { createContext, useState, useEffect, useRef } from 'react';
 
 const LIGHT = 'light';
 const DARK = 'dark';
 
 export const ThemeProviderContext = createContext({
   theme: '',
-  toggleTheme: () => {}
-})
+  toggleTheme: () => {},
+});
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(LIGHT);
@@ -16,7 +16,7 @@ export const ThemeProvider = ({ children }) => {
     let currentTheme = theme;
     if (firstLoad.current === null) {
       firstLoad.current = true;
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         currentTheme = DARK;
         setTheme(currentTheme);
       }
@@ -25,7 +25,6 @@ export const ThemeProvider = ({ children }) => {
       if (currentStorageTheme && currentTheme !== currentStorageTheme) {
         currentTheme = currentStorageTheme;
         setTheme(currentStorageTheme);
-
       }
     }
     document.documentElement.setAttribute('data-theme', currentTheme);
@@ -36,15 +35,17 @@ export const ThemeProvider = ({ children }) => {
       const nextTheme = prevTheme === LIGHT ? DARK : LIGHT;
       localStorage.setItem('theme', nextTheme);
       return nextTheme;
-    })
-  }
+    });
+  };
 
   return (
-    <ThemeProviderContext.Provider value={{
-      theme,
-      toggleTheme
-    }}>
-      { children }
+    <ThemeProviderContext.Provider
+      value={{
+        theme,
+        toggleTheme,
+      }}
+    >
+      {children}
     </ThemeProviderContext.Provider>
-  )
-}
+  );
+};

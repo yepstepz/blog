@@ -1,15 +1,20 @@
-import { useContext } from "react"
-import cn from "classnames";
+import { useContext } from 'react';
+import cn from 'classnames';
 import styles from './ThemeSwitcher.module.css';
 
-import { ThemeProviderContext } from "@components/ThemeProvider";
+import { ThemeProviderContext } from '@components/ThemeProvider';
 
 export const ThemeSwitcher = () => {
   const { theme, toggleTheme } = useContext(ThemeProviderContext);
 
   return (
     <div className={styles.TogglerWrapper}>
-      <label className={cn(styles.Toggler, theme === 'dark' ? styles.TogglerActive : '')}>
+      <label
+        className={cn(
+          styles.Toggler,
+          theme === 'dark' ? styles.TogglerActive : ''
+        )}
+      >
         <input
           className={styles.Checkbox}
           type="checkbox"
@@ -21,5 +26,5 @@ export const ThemeSwitcher = () => {
         {theme === 'dark' ? '🌚' : '🌞'}
       </span>
     </div>
-  )
-}
+  );
+};
