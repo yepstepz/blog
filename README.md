@@ -11,21 +11,21 @@ yarn dev
 ```
 
 TODO
-[x] add prettier
-[] fix images manually
-[] fix mobile padding
-[] add "prettier" for .mdx
-[] add "read more" to each article
-[] add english language switcher
-[] add Notes page
-[] add Bookshelf page
-[] add webmentions
-[] /articles to /posts 301 redirect
-[] make main page more compact
-[] add Notes to the Main
-[] add main page for tags
-[] add CDN for Images
-[] add E2E tests
-[] add reading-time
-[] move theme-colors to actual folder theme/colors.js
-[] add remark-typography 
+- [x] add prettier
+- [ ] fix images manually
+- [ ] fix mobile padding
+- [ ] add "prettier" for .mdx
+- [ ] add "read more" to each article
+- [ ] add english language switcher
+- [ ] add Notes page
+- [ ] add Bookshelf page
+- [ ] add webmentions
+- [ ] /articles to /posts 301 redirect
+- [ ] make main page more compact
+- [ ] add Notes to the Main
+- [ ] add main page for tags
+- [ ] add CDN for Images
+- [ ] add E2E tests
+- [ ] add reading-time
+- [ ] move theme-colors to actual folder theme/colors.js
+- [ ] add remark-typography 
