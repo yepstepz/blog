@@ -7,13 +7,13 @@
 
 .wrapperPostImage {
   flex-grow: 1;
-  position: relative; 
-  list-style: none; 
+  position: relative;
+  list-style: none;
   overflow: hidden;
 }
 
 @media (max-width: 414px) {
-  .wrapperPostImage  {
+  .wrapperPostImage {
     flex: 1 1 50%;
     margin-bottom: 10px;
   }

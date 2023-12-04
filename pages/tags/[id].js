@@ -1,6 +1,6 @@
-import Layout from '@components/Layout'
-import ArticlesList from "@components/ArticlesList"
-import { getAllPosts } from "lib/posts"
+import Layout from '@components/Layout';
+import ArticlesList from '@components/ArticlesList';
+import { getAllPosts } from 'lib/posts';
 
 export default function Tag({ posts, id }) {
   return (
@@ -11,41 +11,38 @@ export default function Tag({ posts, id }) {
     >
       <ArticlesList posts={posts} />
     </Layout>
-  )
+  );
 }
 
 export const getStaticPaths = async () => {
-  const paths = getAllPosts([
-    "tags"
-  ])
-  .map((file) => file.tags || [])
-  .flat()
-  .map((tagName) => ({
+  const paths = getAllPosts(['tags'])
+    .map((file) => file.tags || [])
+    .flat()
+    .map((tagName) => ({
       params: {
-        id: tagName
-      }
-  }))
+        id: tagName,
+      },
+    }));
 
   return {
     paths,
-    fallback: false
-  }
-}
+    fallback: false,
+  };
+};
 
 export const getStaticProps = async ({ params: { id } }) => {
   const posts = getAllPosts([
-    "tags",
-    "title",
-    "description",
-    "date",
-    "slug"
-  ])
-  .filter((file) => file.tags?.includes(id) || false)
+    'tags',
+    'title',
+    'description',
+    'date',
+    'slug',
+  ]).filter((file) => file.tags?.includes(id) || false);
 
-  return { 
+  return {
     props: {
       id,
-      posts
-    }
-   }
-}
+      posts,
+    },
+  };
+};

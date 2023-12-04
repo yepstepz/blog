@@ -1,15 +1,15 @@
 import React from 'react';
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
 
-import Image from '../Images'
+import Image from '../Images';
 
-import styles from "./Gallery.module.css";
+import styles from './Gallery.module.css';
 
 export default ({ images }) => {
   const [open, setOpen] = React.useState(-1);
 
-  const Component = images?.length > 1 ? 'ul' : 'div'
+  const Component = images?.length > 1 ? 'ul' : 'div';
 
   return (
     <>
@@ -31,4 +31,4 @@ export default ({ images }) => {
       />
     </>
   );
-}
+};

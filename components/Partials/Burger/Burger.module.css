@@ -8,11 +8,14 @@
   display: none;
 }
 
-.Button::after, .Button::before {
+.Button::after,
+.Button::before {
   content: '';
 }
 
-.Button, .Button::after, .Button::before {
+.Button,
+.Button::after,
+.Button::before {
   background-color: var(--accent-color);
   width: calc(var(--default-size) * 6);
   height: 3px;
@@ -40,7 +43,9 @@
 }
 
 @media (max-width: 414px) {
-  .Button, .Button::after, .Button::before {
+  .Button,
+  .Button::after,
+  .Button::before {
     display: block;
   }
 }

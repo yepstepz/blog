@@ -1,10 +1,10 @@
-import { getAllPosts } from "../lib/posts";
+import { getAllPosts } from '../lib/posts';
 
 function generateRss(posts) {
   const site_url =
-  process.env.NODE_ENV === "production"
-    ? "https://yepstepz.io"
-    : "http://localhost:3000";
+    process.env.NODE_ENV === 'production'
+      ? 'https://yepstepz.io'
+      : 'http://localhost:3000';
 
   return `
   <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
@@ -15,8 +15,10 @@ function generateRss(posts) {
             <language>ru-ru</language>
             <description>Hi! My name is Tatiana (yepstepz). I write + code</description>
             <ttl>60</ttl>
-            <pubDate>${(new Date).toUTCString()}</pubDate>
-            ${posts.map(({ title, slug, date, description }) => `
+            <pubDate>${new Date().toUTCString()}</pubDate>
+            ${posts
+              .map(
+                ({ title, slug, date, description }) => `
               <item>
                   <title>${title}</title>
                   <link>${site_url}/posts/${slug}</link>
@@ -26,7 +28,9 @@ function generateRss(posts) {
                   </description>
                   <guid>${site_url}/posts/${slug}</guid>
               </item>
-            `).join('')}
+            `
+              )
+              .join('')}
         </channel>
     </rss>
   `;
@@ -38,13 +42,13 @@ function Rss() {
 
 export async function getServerSideProps({ res }) {
   const posts = getAllPosts([
-    "tags",
-    "title",
-    "description",
-    "date",
-    "slug",
-    "url",
-    "lastEdit"
+    'tags',
+    'title',
+    'description',
+    'date',
+    'slug',
+    'url',
+    'lastEdit',
   ]);
 
   // // We generate the XML sitemap with the posts data
