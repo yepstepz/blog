@@ -22,7 +22,7 @@ function generateRss(posts) {
               <item>
                   <title>${title}</title>
                   <link>${site_url}/posts/${slug}</link>
-                  <pubDate>${(new Date(date)).toUTCString()}</pubDate>
+                  <pubDate>${new Date(date).toUTCString()}</pubDate>
                   <description>
                       <![CDATA[${description}]]>
                   </description>

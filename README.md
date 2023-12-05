@@ -29,3 +29,7 @@ TODO
 - [ ] add reading-time
 - [ ] move theme-colors to actual folder theme/colors.js
 - [ ] add remark-typography 
+
+TODO notes
+- [ ] in-reply-to
+- [ ] u-like-of
