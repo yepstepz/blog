@@ -45,7 +45,7 @@ export default function Layout({
           <link rel="manifest" href="/site.webmanifest"></link>
           <link
             rel="webmention"
-            href="https://webmention.io/yepstepz.io/webmention"
+            href={process.env.NEXT_PUBLIC_WEBMENTION_ENDPOINT}
           />
           <link
             rel="pingback"
