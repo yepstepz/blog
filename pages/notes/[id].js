@@ -66,7 +66,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { id } }) => {
-  const url = 'https://yepstepz.io/' + path.join('posts', id);
+  const url = 'https://yepstepz.io/' + path.join(CATEGORY, id);
   const markdownWithMeta = fs.readFileSync(
     path.join(CATEGORY, id + '.mdx'),
     'utf-8'
