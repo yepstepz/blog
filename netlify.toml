@@ -1,3 +1,8 @@
 [build]
   command = "npm run build"
   publish = ".next"
+
+[[redirects]]
+  from = "/notes/01-hello-note"
+  to = "/"
+  status = 401
