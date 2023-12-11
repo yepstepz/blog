@@ -75,7 +75,7 @@ export default function Layout({
           )}
         </Head>
         <Header />
-        <main className={cs('content', inter.variable)}>{children}</main>
+        <main className={cs('content')}>{children}</main>
         <Footer />
       </ThemeProvider>
     </MDXProvider>

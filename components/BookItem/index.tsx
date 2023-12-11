@@ -7,6 +7,7 @@ import type { BookItemType } from './types'
 
 export const BookItem = ({ data, as }: { data: BookItemType, as: React.FC<any> | string })  => {
   const ComponentWrapper = as || 'section';
+
   return (
     <ComponentWrapper className={style.card}>
       <div className={style.image}>
@@ -18,11 +19,16 @@ export const BookItem = ({ data, as }: { data: BookItemType, as: React.FC<any> |
         />
       </div>
       <div className={style.info}>
-        <div className={style.title}>{data.title}</div>
+        <a rel="noopener noreferer" href={data.link} className={style.title}>{data.title}</a>
         <div className={style.author}>{data.author_name}</div>
-        <div>
-          <Rating avgRating={data.user_rating} />
-        </div>
+        {
+          data.user_rating !== '0' ? (
+            <div>
+              <span className={style.caption}>Моя оценка:</span>
+              <Rating avgRating={data.user_rating} />
+            </div>
+          ): null
+        }
       </div>
     </ComponentWrapper>
   );

@@ -11,13 +11,16 @@ const Star = () => (
 )
 
 export const Rating = ({ avgRating }) => {
-  const stars = Array(5).fill(<Star />)
   const rating = parseFloat(avgRating)
   const perc = (rating * 100) / 5;
 
   return (
     <div className={style.rating} role="img" aria-label="Rating: 3 out of 5 stars">
-     {stars}
+     <Star key="1" />
+     <Star key="2" />
+     <Star key="3" />
+     <Star key="4" />
+     <Star key="5" />
      <div className={style.cover} style={{ transform: `translateX(${perc}%)` }}></div>
     </div>
   )

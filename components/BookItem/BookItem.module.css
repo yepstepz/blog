@@ -5,10 +5,7 @@
 }
 
 .image {
-  width: calc(var(--default-size) * 32);
-  height: calc(var(--default-size) * 49);
   padding: 10px 10px 10px 0;
-  flex: 0 0 calc(var(--default-size) * 32);
 }
 
 .image img {
@@ -21,14 +18,18 @@
   justify-content: center;
   padding-left: calc(var(--default-size) * 3);
   flex-direction: column;
+  max-width: calc(var(--default-size) * 100);;
 }
 
 .title {
   font-weight: 500;
-  padding-bottom: calc(var(--default-size) * 2);
+  padding-bottom: var(--default-size);
+}
+
+.author, .caption {
+  color: var(--page-caption);
 }
 
 .author {
-  color: var(--page-caption);
-  padding-bottom: calc(var(--default-size) * 2);
+  padding-bottom: var(--default-size);
 }
