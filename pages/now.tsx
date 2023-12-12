@@ -28,7 +28,7 @@ export default function Now({
       url="https://yepstepz.io/now"
     >
       <div className="page__content block-article inner--sm h-entry">
-        <HCard visible={false} />
+        <HCard isAuthor={true} visible={false} />
         <h1 className="p-name">Что я делаю сейчас?</h1>
         <i>
           Последний раз обновлено:{' '}
