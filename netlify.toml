@@ -6,3 +6,8 @@
   from = "/notes/01-hello-note"
   to = "/"
   status = 410
+
+[[redirects]]
+  from = "/articles"
+  to = "/posts"
+  status = 301

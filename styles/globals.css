@@ -28,10 +28,6 @@
   --magnolia-color: #f8f0ff;
   --dark-cyan: #212a2e;
 
-  --highlight-background-color: hsl(0, 0%, 100%);
-  --highlight-border-color: hsl(208, 21%, 86%);
-  --highlight-code-highlight: hsl(208, 19%, 82%);
-
   --default-size: 4px;
 
   --ochre: #c8a200;
@@ -53,6 +49,9 @@
   --light-lime: #e3f1bb;
 
   --outline-border: #51a7e8;
+
+  --azure: #f5f6f6;
+  --night-rider: #343434;
 }
 
 html[data-theme='light'] {
@@ -77,6 +76,12 @@ html[data-theme='light'] {
 
   --toggler-bg: var(--accent-color);
   --toggler-border: var(--accent-color);
+
+  --highlight-background-color: hsl(0, 0%, 100%);
+  --highlight-border-color: hsl(208, 21%, 86%);
+  --highlight-code-highlight: hsl(208, 19%, 82%);
+
+  --card-bg: var(--azure);
 }
 
 html[data-theme='dark'] {
@@ -105,6 +110,8 @@ html[data-theme='dark'] {
   --highlight-background-color: hsl(240, 20%, 2%);
   --highlight-border-color: hsl(208, 21%, 12%);
   --highlight-code-highlight: hsl(208, 19%, 13%);
+
+  --card-bg: var(--night-rider);
 }
 
 @import url(./code/theme.css);
@@ -120,7 +127,7 @@ body {
 }
 
 html {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), sans-serif;
   color: var(--main-font);
   background-color: var(--bg-color);
 }

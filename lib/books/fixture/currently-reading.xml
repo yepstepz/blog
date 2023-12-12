@@ -1,0 +1,63 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <xhtml:meta xmlns:xhtml="http://www.w3.org/1999/xhtml" name="robots" content="noindex" />
+    <title>Tatyana's bookshelf: currently-reading</title>
+    <copyright><![CDATA[Copyright (C) 2023 Goodreads Inc. All rights reserved.]]>
+    </copyright>
+    <link><![CDATA[https://www.goodreads.com/review/list_rss/63977345?shelf=currently-reading]]></link>
+    <atom:link href="https://www.goodreads.com/review/list_rss/63977345?shelf=currently-reading" rel="self" type="application/rss+xml"/>
+    <description><![CDATA[Tatyana's bookshelf: currently-reading]]></description>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 04 Dec 2023 03:09:28 -0800</lastBuildDate>
+    <ttl>60</ttl>
+    <image>
+      <title>Tatyana's bookshelf: currently-reading</title>
+      <link><![CDATA[https://www.goodreads.com/review/list_rss/63977345?shelf=currently-reading]]></link>
+      <width>144</width>
+      <height>41</height>
+      <url>https://www.goodreads.com/images/layout/goodreads_logo_144.jpg</url>
+    </image>
+    
+  <item>
+    <guid><![CDATA[https://www.goodreads.com/review/show/6023172644?utm_medium=api&utm_source=rss]]></guid>
+    <pubDate><![CDATA[Mon, 04 Dec 2023 03:09:28 -0800]]></pubDate>
+    <title>The Design of Everyday Things</title>
+    <link><![CDATA[https://www.goodreads.com/review/show/6023172644?utm_medium=api&utm_source=rss]]></link>
+    <book_id>18872940</book_id>
+    <book_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388315129l/18872940._SX50_.jpg]]></book_image_url>
+    <book_small_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388315129l/18872940._SX50_.jpg]]></book_small_image_url>
+    <book_medium_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388315129l/18872940._SX98_.jpg]]></book_medium_image_url>
+    <book_large_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388315129l/18872940.jpg]]></book_large_image_url>
+    <book_description><![CDATA[Anyone who designs anything to be used by humans -- from physical objects to computer programs to conceptual tools -- must read this book, and it is an equally tremendous read for anyone who has to use anything created by another human. It could forever change how you experience and interact with your physical surroundings, open your eyes to the perversity of bad design and the desirability of good design, and raise your expectations about how things <i>should</i> be designed.<br /><br />B &amp; W photographs and illustrations throughout.]]></book_description>
+    <book id="18872940">
+      <num_pages>370</num_pages>
+    </book>
+    <author_name>Donald A. Norman</author_name>
+    <isbn/>
+    <user_name>Tatyana</user_name>
+    <user_rating>0</user_rating>
+    <user_read_at/>
+    <user_date_added><![CDATA[Mon, 04 Dec 2023 03:09:28 -0800]]></user_date_added>
+    <user_date_created><![CDATA[Mon, 04 Dec 2023 03:09:28 -0800]]></user_date_created>
+    <user_shelves>currently-reading</user_shelves>
+    <user_review/>
+    <average_rating>4.24</average_rating>
+    <book_published>1988</book_published>
+    <description>
+      <![CDATA[
+      <a href="https://www.goodreads.com/book/show/18872940-the-design-of-everyday-things?utm_medium=api&amp;utm_source=rss"><img alt="The Design of Everyday Things" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388315129l/18872940._SX50_.jpg" /></a><br/>
+                                      author: Donald A. Norman<br/>
+                                      name: Tatyana<br/>
+                                      average rating: 4.24<br/>
+                                      book published: 1988<br/>
+                                      rating: 0<br/>
+                                      read at: <br/>
+                                      date added: 2023/12/04<br/>
+                                      shelves: currently-reading<br/>
+                                      review: <br/><br/>
+                                      ]]>
+    </description>
+  </item>
+
+  </channel>
+</rss>

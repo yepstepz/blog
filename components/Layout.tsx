@@ -2,6 +2,7 @@ import Header from '@components/Header';
 import Footer from '@components/Footer';
 import { MDXProvider } from '@mdx-js/react';
 import Head from 'next/head';
+import cs from 'classnames';
 
 import { ThemeProvider } from './ThemeProvider';
 
@@ -9,10 +10,10 @@ export default function Layout({
   children,
   title,
   description,
-  image,
-  type,
+  image = '',
+  type = '',
   url,
-  snippetData,
+  snippetData = '',
 }) {
   return (
     <MDXProvider>
@@ -74,7 +75,7 @@ export default function Layout({
           )}
         </Head>
         <Header />
-        <main className="content">{children}</main>
+        <main className={cs('content')}>{children}</main>
         <Footer />
       </ThemeProvider>
     </MDXProvider>

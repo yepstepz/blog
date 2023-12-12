@@ -25,10 +25,10 @@ export default function Header() {
               <Burger onClick={() => setOpen(!open)} isOpen={open} />
             </li>
             <li className="top-menu__item top-menu-item">
-              <a href="/posts/about-me">Обо мне</a>
+              <a href="/posts">Все статьи</a>
             </li>
             <li className="top-menu__item top-menu-item">
-              <a href="/articles">Все статьи</a>
+              <a href="/now">Я сейчас</a>
             </li>
             <li className="top-menu__item top-menu-item mobile-theme-switcher">
               <ThemeSwitcher />
