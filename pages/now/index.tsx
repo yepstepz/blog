@@ -40,9 +40,9 @@ export default function Now({
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const markdownWithMeta = fs.readFileSync(
-    join(process.cwd(), 'pages', 'now', 'now.mdx'),
+    join(process.cwd(), 'mdx-landings', 'now.mdx'),
     'utf-8'
   );
   const { data: frontMatter, content } = matter(markdownWithMeta);

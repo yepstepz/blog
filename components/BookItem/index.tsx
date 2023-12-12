@@ -34,3 +34,5 @@ export const BookItem = ({
     </ComponentWrapper>
   );
 };
+
+export default BookItem;

@@ -1,6 +1,5 @@
 import React from 'react';
-import cs from 'classnames';
-import { BookItem } from '@components/BookItem';
+import BookItem from '@components/BookItem';
 import style from './BookList.module.css';
 
 export const BookList = ({ bookList }) => {
