@@ -20,7 +20,12 @@ export const BookItem = ({
         <Image src={data.book_large_image_url} alt="" width="50" height="80" />
       </div>
       <div className={style.info}>
-        <a rel="noopener noreferer" href={data.link} className={style.title}>
+        <a
+          rel="noopener noreferer"
+          target="_blank"
+          href={data.link}
+          className={style.title}
+        >
           {data.title}
         </a>
         <div className={style.author}>{data.author_name}</div>
