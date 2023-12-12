@@ -10,10 +10,10 @@ export default function Layout({
   children,
   title,
   description,
-  image,
-  type,
+  image = '',
+  type = '',
   url,
-  snippetData,
+  snippetData = '',
 }) {
   return (
     <MDXProvider>

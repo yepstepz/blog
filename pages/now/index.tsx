@@ -11,19 +11,30 @@ import rehypeStarryNight from '@microflash/rehype-starry-night';
 import { getBooks } from '../../lib/books';
 
 const components = {
-  BookItem
-}
+  BookItem,
+};
 
-export default function Now ({ frontMatter: { date }, mdxSource, lastReadBook, currentBook, }) {
+export default function Now({
+  frontMatter: { date },
+  mdxSource,
+  lastReadBook,
+  currentBook,
+}) {
   return (
     <Layout
       title="Now"
       description="Page about me"
-      url='https://yepstepz.io/now'
+      url="https://yepstepz.io/now"
     >
       <div className="page__content block-article inner--sm">
-        <i>Последний раз обновлено: <time dateTime={date}>{date}</time></i>
-        <MDXRemote {...mdxSource} components={components} scope={{ lastReadBook, currentBook }} />
+        <i>
+          Последний раз обновлено: <time dateTime={date}>{date}</time>
+        </i>
+        <MDXRemote
+          {...mdxSource}
+          components={components}
+          scope={{ lastReadBook, currentBook }}
+        />
       </div>
     </Layout>
   );
@@ -47,15 +58,13 @@ export const getStaticProps = async () => {
   let currentBook = {};
 
   try {
-    await getBooks()
-      .then((data) => {
-        lastReadBook = JSON.parse(data)?.rss?.channel?.item[0];
-      })
+    await getBooks().then((data) => {
+      lastReadBook = JSON.parse(data)?.rss?.channel?.item[0];
+    });
 
-    await getBooks('currently-reading')
-      .then((data) => {
-        currentBook = JSON.parse(data)?.rss?.channel?.item;
-      })
+    await getBooks('currently-reading').then((data) => {
+      currentBook = JSON.parse(data)?.rss?.channel?.item;
+    });
   } catch (e) {
     throw new Error(e);
   }
@@ -68,4 +77,4 @@ export const getStaticProps = async () => {
       currentBook,
     },
   };
-}
+};

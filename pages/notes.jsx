@@ -12,13 +12,15 @@ export default function Notes({ notes }) {
       description="Посмотреть все заметки из блога"
       url="https://yepstepz.io/notes"
     >
-      { notes.map((note) => <Note {...note} />) }
+      {notes.map((note) => (
+        <Note {...note} />
+      ))}
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const notes = getAllItems(['content', 'slug', 'tags', 'date'], 'notes')
+  const notes = getAllItems(['content', 'slug', 'tags', 'date'], 'notes');
 
   for (let note of notes) {
     const { content } = note;
