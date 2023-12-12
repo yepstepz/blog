@@ -5,7 +5,9 @@
 }
 
 .image {
-  padding: 10px 10px 10px 0;
+  padding-right: 10px;
+  width: 70px;
+  height: 112px;
 }
 
 .image img {

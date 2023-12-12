@@ -7,6 +7,7 @@ import matter from 'gray-matter';
 import remarkGfm from 'remark-gfm';
 import { BookItem } from '@components/BookItem';
 import rehypeStarryNight from '@microflash/rehype-starry-night';
+import { HCard } from 'microformats/h-card';
 
 import { getBooks } from '../lib/books';
 
@@ -26,15 +27,22 @@ export default function Now({
       description="Page about me"
       url="https://yepstepz.io/now"
     >
-      <div className="page__content block-article inner--sm">
+      <div className="page__content block-article inner--sm h-entry">
+        <HCard visible={false} />
+        <h1 className="p-name">Что я делаю сейчас?</h1>
         <i>
-          Последний раз обновлено: <time dateTime={date}>{date}</time>
+          Последний раз обновлено:{' '}
+          <time className="dt-published" dateTime={date}>
+            {date}
+          </time>
         </i>
-        <MDXRemote
-          {...mdxSource}
-          components={components}
-          scope={{ lastReadBook, currentBook }}
-        />
+        <div className="e-content">
+          <MDXRemote
+            {...mdxSource}
+            components={components}
+            scope={{ lastReadBook, currentBook }}
+          />
+        </div>
       </div>
     </Layout>
   );

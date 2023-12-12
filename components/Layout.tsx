@@ -3,6 +3,7 @@ import Footer from '@components/Footer';
 import { MDXProvider } from '@mdx-js/react';
 import Head from 'next/head';
 import cs from 'classnames';
+import { HCard } from 'microformats/h-card';
 
 import { ThemeProvider } from './ThemeProvider';
 
@@ -75,7 +76,10 @@ export default function Layout({
           )}
         </Head>
         <Header />
-        <main className={cs('content')}>{children}</main>
+        <main className={cs('content')}>
+          <HCard visible={false} />
+          {children}
+        </main>
         <Footer />
       </ThemeProvider>
     </MDXProvider>
