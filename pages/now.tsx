@@ -8,7 +8,7 @@ import remarkGfm from 'remark-gfm';
 import { BookItem } from '@components/BookItem';
 import rehypeStarryNight from '@microflash/rehype-starry-night';
 
-import { getBooks } from '../../lib/books';
+import { getBooks } from '../lib/books';
 
 const components = {
   BookItem,
@@ -40,7 +40,7 @@ export default function Now({
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const markdownWithMeta = fs.readFileSync(
     join(process.cwd(), 'mdx-landings', 'now.mdx'),
     'utf-8'
