@@ -6,44 +6,35 @@ import path from 'path';
 import matter from 'gray-matter';
 import remarkGfm from 'remark-gfm';
 import rehypeStarryNight from '@microflash/rehype-starry-night';
+import { HCard } from 'microformats/h-card';
+import { BridgyEndpoints } from 'microformats/bridgy-endpoints';
+import { Star, Rating } from 'components/Partials/Rating';
+import { GithubStar } from 'microformats/u-like-of/github';
+import { TimePublished } from 'microformats/dt-published';
 
-const components = {};
+const components = {
+  Star,
+  Rating,
+  GithubStar
+};
 
 export default function Note({
-  frontMatter: { title, date, description, image },
+  frontMatter: { title, date, description, image, toMastodon, toGithub },
   mdxSource,
   url,
 }) {
   return (
     <Layout title={title} description={description} url={url} image={image}>
       <article className="note h-entry inner--sm">
-        <time class="dt-published" datetime={date}>
-          {new Date(date).toDateString()}
-        </time>
-        {/* h-card inside h-entry = i am the author */}
-        <div className="h-card p-author">
-          {/* h-card__u-url = the homepage of the site */}
-          {/* h-card__u-photo = my name  */}
-          <img
-            width="48"
-            height="48"
-            className="title-avatar u-photo"
-            src="/avatar.jpeg"
-          />
-          <a className="u-url" href="https://yepstepz.io/">
-            {/* h-card__p-name = my name */}
-            <span className="p-name">Tatiana Leonteva</span>
-          </a>
-        </div>
+        <HCard isAuthor={true} />
         <div style={{ display: 'none' }}>
-          <a href="https://brid.gy/publish/mastodon"></a>
-          {/* h-entry__canonical URL */}
+          <BridgyEndpoints toMastodon={toMastodon} toGithub={toGithub} />
           <a href={url} className="u-url"></a>
         </div>
-        {/* h-entry__e-content denotes the body of the post */}
         <div className="e-content">
           <MDXRemote {...mdxSource} components={components} />
         </div>
+        <TimePublished date={date} align='right' />
       </article>
     </Layout>
   );
