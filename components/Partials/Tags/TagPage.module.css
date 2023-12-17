@@ -15,7 +15,7 @@
 
 .tagsSm a {
   padding: 0 var(--default-size);
-  font-size: calc(var(--default-size) * 3.5);
+  font-size: calc(var(--default-size) * 4);
 }
 
 .tagsRight {

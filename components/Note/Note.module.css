@@ -1,6 +1,10 @@
 .wrapper {
   font-size: calc(var(--default-size) * 4.5);
   line-height: 1.6;
+  padding: calc(var(--default-size) * 4) calc(var(--default-size) * 6);
+  border-radius: calc(var(--default-size) * 2);
+  background: var(--embedded-bg);
+
 }
 
 .wrapperList {
@@ -34,7 +38,7 @@
   text-align: right;
   display: flex;
   align-items: center;
-  font-size: calc(var(--default-size) * 3.5);
+  font-size: calc(var(--default-size) * 4);
   justify-content: flex-end;
   margin-top: calc(var(--default-size) * 4);
   line-height: 1.2;
