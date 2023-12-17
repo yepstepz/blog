@@ -6,10 +6,10 @@ import Image from 'next/image';
 import type { BookItemType } from './types';
 
 export const BookItem = ({
-  data,
+  data = {},
   as,
 }: {
-  data: BookItemType;
+  data?: BookItemType;
   as: React.FC<any> | string;
 }) => {
   const ComponentWrapper = as || 'section';
@@ -17,7 +17,14 @@ export const BookItem = ({
   return (
     <ComponentWrapper className={style.card}>
       <div className={style.image}>
-        <Image src={data.book_large_image_url} alt="" width="50" height="80" />
+        {data.book_large_image_url && (
+          <Image
+            src={data.book_large_image_url}
+            alt=""
+            width="50"
+            height="80"
+          />
+        )}
       </div>
       <div className={style.info}>
         <a
@@ -29,7 +36,7 @@ export const BookItem = ({
           {data.title}
         </a>
         <div className={style.author}>{data.author_name}</div>
-        {data.user_rating !== '0' ? (
+        {data.user_rating && data.user_rating !== '0' ? (
           <div>
             <span className={style.caption}>Моя оценка:</span>
             <Rating avgRating={data.user_rating} />

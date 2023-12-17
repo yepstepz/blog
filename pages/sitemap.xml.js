@@ -1,5 +1,5 @@
 import path from 'path';
-import { getAllPosts } from '../lib/posts';
+import { getAllItems } from '../lib/utils';
 
 function generateSiteMap(posts) {
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -24,7 +24,7 @@ function SiteMap() {
 }
 
 export async function getServerSideProps({ res }) {
-  const posts = getAllPosts(['slug', 'date', 'lastEdit']);
+  const posts = getAllItems(['slug', 'date', 'lastEdit']);
 
   // We generate the XML sitemap with the posts data
   const sitemap = generateSiteMap(posts);

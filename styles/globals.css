@@ -52,6 +52,9 @@
 
   --azure: #f5f6f6;
   --night-rider: #343434;
+
+  --light-gray: #f9f9f9;
+  --dark-gray: #1a1a1a;
 }
 
 html[data-theme='light'] {
@@ -82,6 +85,10 @@ html[data-theme='light'] {
   --highlight-code-highlight: hsl(208, 19%, 82%);
 
   --card-bg: var(--azure);
+
+  --embedded-menu-color: var(--bg-color);
+  --embedded-bg: var(--light-gray);
+  --embedded-item-bg: var(--bg-color);
 }
 
 html[data-theme='dark'] {
@@ -112,6 +119,10 @@ html[data-theme='dark'] {
   --highlight-code-highlight: hsl(208, 19%, 13%);
 
   --card-bg: var(--night-rider);
+
+  --embedded-menu-color: var(--dark-cyan);
+  --embedded-bg: var(--dark-gray);
+  --embedded-item-bg: var(--night-rider);
 }
 
 @import url(./code/theme.css);
@@ -193,10 +204,15 @@ hr {
 
 .df {
   display: flex;
+  display: flex;
 }
 
 .ac {
   align-items: center;
+}
+
+.ln {
+  list-style: none;
 }
 
 .top-menu {

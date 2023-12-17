@@ -12,3 +12,13 @@
   text-decoration: none;
   display: inline-block;
 }
+
+.tagsSm a {
+  padding: 0 var(--default-size);
+  font-size: calc(var(--default-size) * 3.5);
+}
+
+.tagsRight {
+  justify-content: flex-end;
+  left: 0;
+}

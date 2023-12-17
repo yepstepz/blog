@@ -1,9 +1,10 @@
 import Header from '@components/Header';
 import Footer from '@components/Footer';
+// @ts-ignore
 import { MDXProvider } from '@mdx-js/react';
 import Head from 'next/head';
 import cs from 'classnames';
-import { HCard } from 'microformats/h-card';
+import { HCard } from '@components/Partials/microformats/h-card';
 
 import { ThemeProvider } from './ThemeProvider';
 
@@ -15,6 +16,7 @@ export default function Layout({
   type = '',
   url,
   snippetData = '',
+  bgColor = '',
 }) {
   return (
     <MDXProvider>

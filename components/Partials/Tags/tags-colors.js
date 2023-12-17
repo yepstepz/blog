@@ -46,4 +46,11 @@ export const colors = {
       hoverBg: 'var(--light-cyan)',
     },
   },
+  github: {
+    light: {
+      color: 'var(--burnt-orange)',
+      hoverColor: 'var(--white)',
+      hoverBg: 'var(--burnt-orange)',
+    },
+  },
 };
