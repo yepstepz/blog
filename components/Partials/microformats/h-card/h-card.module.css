@@ -3,6 +3,10 @@
   align-items: center;
 }
 
+.author:first-child:not(:last-child) {
+  margin-bottom: calc(var(--default-size) * 5);
+}
+
 .imageWrapper {
   border-radius: 50%;
   overflow: hidden;

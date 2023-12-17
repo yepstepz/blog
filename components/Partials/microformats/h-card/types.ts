@@ -66,6 +66,8 @@ type hCardType = {
 type hCardSettingsType = {
   isAuthor?: boolean;
   visible?: boolean;
+  showCredentials?: boolean;
+  showNickname?: boolean;
 };
 
 export type MicroCardType = hCardType & hCardSettingsType;

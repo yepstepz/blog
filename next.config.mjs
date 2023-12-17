@@ -1,4 +1,5 @@
 import createMDX from '@next/mdx';
+import rehypeInferDescriptionMeta from 'rehype-infer-description-meta';
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,

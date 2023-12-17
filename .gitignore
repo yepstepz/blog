@@ -39,3 +39,9 @@ yarn-error.log\*
 # Local Netlify folder
 
 .netlify
+/.idea/vcs.xml
+/.idea/codeStyles/Project.xml
+/.idea/modules.xml
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/blog.iml
+/.idea/.gitignore

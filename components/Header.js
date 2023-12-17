@@ -28,6 +28,9 @@ export default function Header() {
               <a href="/posts">Все статьи</a>
             </li>
             <li className="top-menu__item top-menu-item">
+              <a href="/notes">Заметки</a>
+            </li>
+            <li className="top-menu__item top-menu-item">
               <a href="/now">Я сейчас</a>
             </li>
             <li className="top-menu__item top-menu-item mobile-theme-switcher">

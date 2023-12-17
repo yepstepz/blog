@@ -6,17 +6,11 @@ import path from 'path';
 import matter from 'gray-matter';
 import remarkGfm from 'remark-gfm';
 import rehypeStarryNight from '@microflash/rehype-starry-night';
-import { HCard } from 'microformats/h-card';
-import { BridgyEndpoints } from 'microformats/bridgy-endpoints';
-import { Star, Rating } from 'components/Partials/Rating';
-import { GithubStar } from 'microformats/u-like-of/github';
-import { TimePublished } from 'microformats/dt-published';
-
-const components = {
-  Star,
-  Rating,
-  GithubStar
-};
+import { HCard } from 'components/Partials/microformats/h-card';
+import { BridgyEndpoints } from 'components/Partials/microformats/bridgy-endpoints';
+import { TimePublished } from 'components/Partials/microformats/dt-published';
+import { noteComponents } from '../../components/Note/components';
+import { NotesContent } from '../../components/Note/notes-content';
 
 export default function Note({
   frontMatter: { title, date, description, image, toMastodon, toGithub },
@@ -25,17 +19,19 @@ export default function Note({
 }) {
   return (
     <Layout title={title} description={description} url={url} image={image}>
-      <article className="note h-entry inner--sm">
-        <HCard isAuthor={true} />
-        <div style={{ display: 'none' }}>
-          <BridgyEndpoints toMastodon={toMastodon} toGithub={toGithub} />
-          <a href={url} className="u-url"></a>
+      <NotesContent className="note h-entry">
+        <div className="inner--sm">
+          <HCard isAuthor={true} />
+          <div style={{ display: 'none' }}>
+            <BridgyEndpoints toMastodon={toMastodon} toGithub={toGithub} />
+            <a href={url} className="u-url"></a>
+          </div>
+          <div className="e-content">
+            <MDXRemote {...mdxSource} components={noteComponents} />
+          </div>
+          <TimePublished date={date} align="right" />
         </div>
-        <div className="e-content">
-          <MDXRemote {...mdxSource} components={components} />
-        </div>
-        <TimePublished date={date} align='right' />
-      </article>
+      </NotesContent>
     </Layout>
   );
 }

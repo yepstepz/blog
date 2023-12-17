@@ -2,7 +2,7 @@ import ArticlesList from '@components/ArticlesList';
 import Layout from '@components/Layout';
 import MainArticle from '@components/MainArticle';
 
-import { getAllPosts } from '../lib/posts';
+import { getAllItems } from '../lib/utils';
 
 export default function Post({ posts }) {
   const mainArticle = posts[0];
@@ -37,7 +37,7 @@ export default function Post({ posts }) {
 }
 
 export async function getStaticProps() {
-  const posts = getAllPosts([
+  const posts = getAllItems([
     'title',
     'description',
     'slug',

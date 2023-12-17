@@ -1,24 +1,24 @@
 import Layout from '@components/Layout';
 import ArticlesList from '@components/ArticlesList';
 
-import { getAllPosts } from 'lib/posts';
+import { getAllItems } from 'lib/utils';
 
-export default function Articles({ posts }) {
+export default function Articles({ items }) {
   return (
     <Layout
       title="Все статьи | Блог yepstepz.io"
       description="Посмотреть все статьи из блога"
       url="https://yepstepz.io/articles"
     >
-      <ArticlesList posts={posts} />
+      <ArticlesList posts={items} />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const posts = getAllPosts(['title', 'description', 'slug', 'tags', 'date']);
+  const items = getAllItems(['title', 'description', 'slug', 'tags', 'date']);
 
   return {
-    props: { posts },
+    props: { items },
   };
 }

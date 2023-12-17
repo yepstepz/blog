@@ -1,4 +1,4 @@
-import { getAllPosts } from '../lib/posts';
+import { getAllItems } from '../lib/utils';
 
 function generateRss(posts) {
   const site_url =
@@ -41,7 +41,7 @@ function Rss() {
 }
 
 export async function getServerSideProps({ res }) {
-  const posts = getAllPosts([
+  const posts = getAllItems([
     'tags',
     'title',
     'description',

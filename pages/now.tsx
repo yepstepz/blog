@@ -1,18 +1,25 @@
 import Layout from '@components/Layout';
+// @ts-ignore
 import { serialize } from 'next-mdx-remote/serialize';
+// @ts-ignore
 import { MDXRemote } from 'next-mdx-remote';
 import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
+// @ts-ignore
 import remarkGfm from 'remark-gfm';
 import { BookItem } from '@components/BookItem';
 import rehypeStarryNight from '@microflash/rehype-starry-night';
-import { HCard } from 'microformats/h-card';
+import { HCard } from '@components/Partials/microformats/h-card';
+// @ts-ignore
+import { getAllNotes } from '../lib/notes.mts';
 
 import { getBooks } from '../lib/books';
+import { Note } from '@components/Note';
 
 const components = {
   BookItem,
+  Note,
 };
 
 export default function Now({
@@ -20,6 +27,7 @@ export default function Now({
   mdxSource,
   lastReadBook,
   currentBook,
+  lastNote,
 }) {
   return (
     <Layout
@@ -40,7 +48,7 @@ export default function Now({
           <MDXRemote
             {...mdxSource}
             components={components}
-            scope={{ lastReadBook, currentBook }}
+            scope={{ lastReadBook, currentBook, lastNote }}
           />
         </div>
       </div>
@@ -64,8 +72,11 @@ export const getStaticProps = async () => {
 
   let lastReadBook = {};
   let currentBook = {};
+  let lastNote = {};
 
   try {
+    lastNote = await getAllNotes().then((res) => res[0]);
+
     await getBooks().then((data) => {
       lastReadBook = JSON.parse(data)?.rss?.channel?.item[0];
     });
@@ -83,6 +94,7 @@ export const getStaticProps = async () => {
       mdxSource,
       lastReadBook,
       currentBook,
+      lastNote,
     },
   };
 };

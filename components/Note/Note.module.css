@@ -1,2 +1,45 @@
-.content {
+.wrapper {
+  font-size: calc(var(--default-size) * 4.5);
+  line-height: 1.6;
+}
+
+.wrapperList {
+  padding-bottom: calc(var(--default-size) * 6);
+  margin-bottom: calc(var(--default-size) * 4);
+}
+
+.wrapperEmbedded {
+  border-left: var(--default-size) solid var(--accent-color);
+  padding-left: calc(var(--default-size) * 6);
+}
+
+.wrapper h2 {
+  margin: 0 0 calc(var(--default-size) * 2) 0;
+  line-height: 1;
+}
+
+.wrapper p {
+  margin: calc(var(--default-size)) 0;
+}
+
+.wrapper blockquote {
+  margin: calc(var(--default-size) * 2) 0;
+}
+
+.wrapper :global(.embedded-object) {
+  margin: calc(var(--default-size) * 3) 0;
+}
+
+.infoWrapper {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  font-size: calc(var(--default-size) * 3.5);
+  justify-content: flex-end;
+  margin-top: calc(var(--default-size) * 4);
+  line-height: 1.2;
+}
+
+.postInfo {
+  padding-right: calc(var(--default-size) * 2);
 }

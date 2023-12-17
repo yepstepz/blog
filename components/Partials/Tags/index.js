@@ -19,9 +19,15 @@ const tagStyles = (tag) =>
     },
   });
 
-export default function Tags({ tags }) {
+export default function Tags({ tags, size, align }) {
   return (
-    <ul className={styles.tags}>
+    <ul
+      className={cn(
+        styles.tags,
+        size === 'sm' ? styles.tagsSm : '',
+        align === 'right' ? styles.tagsRight : ''
+      )}
+    >
       {tags?.map((tag) => (
         <li key={tag} className={cn(styles.tags__item, styles.tag)}>
           <a href={`/tags/${tag}`} {...tagStyles(tag)}>

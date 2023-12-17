@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Tags from '@components/Partials/Tags';
 import { Plate } from '@components/Partials/Plate';
 
-export default function Article({ slug, title, description, tags, published }) {
+function Article({ slug, title, description, tags, published }) {
   return (
     <article>
       <div className="block-info block-info--sm inner--sm">
@@ -25,3 +25,6 @@ export default function Article({ slug, title, description, tags, published }) {
     </article>
   );
 }
+
+export default Article;
+export { Article };
