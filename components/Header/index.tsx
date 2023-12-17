@@ -5,10 +5,15 @@ import styles from './Header.module.css';
 import { ThemeSwitcher } from '../Partials/ThemeSwitcher';
 
 const MenuItem = ({ name, link }) => (
-  <li className={cn('top-menu__item top-menu-item top-menu-item--home', styles.topMenuItem)}>
-    <a href={link}>{ name }</a>
+  <li
+    className={cn(
+      'top-menu__item top-menu-item top-menu-item--home',
+      styles.topMenuItem
+    )}
+  >
+    <a href={link}>{name}</a>
   </li>
-)
+);
 
 export default function Header() {
   return (
@@ -18,12 +23,8 @@ export default function Header() {
           <span className={styles.logoType}>BLOG</span>.yepstepz.io
         </a>
         <div className={styles.secondaryLine}>
-          <nav className={cn(styles.navigation, "main-navigation navigation")}>
-            <ul
-              className={cn(
-                styles.topMenu,
-              )}
-            >
+          <nav className={cn(styles.navigation, 'main-navigation navigation')}>
+            <ul className={cn(styles.topMenu)}>
               <MenuItem name="Main" link="/" />
               <MenuItem name="Посты" link="/posts" />
               <MenuItem name="Заметки" link="/notes" />

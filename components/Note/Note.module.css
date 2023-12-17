@@ -4,7 +4,6 @@
   padding: calc(var(--default-size) * 4) calc(var(--default-size) * 6);
   border-radius: calc(var(--default-size) * 2);
   background: var(--embedded-bg);
-
 }
 
 .wrapperList {

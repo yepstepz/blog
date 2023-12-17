@@ -23,7 +23,10 @@ export default function Layout({
         <Head>
           <title>{title}</title>
           <meta name="description" content={description} key="desc" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
           <meta property="og:title" content={title} />
           {type && <meta property="og:type" content={type} />}
           <meta property="og:url" content={url} />

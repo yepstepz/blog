@@ -11,26 +11,36 @@ import { BridgyEndpoints } from 'components/Partials/microformats/bridgy-endpoin
 import { TimePublished } from 'components/Partials/microformats/dt-published';
 import { noteComponents } from '../../components/Note/components';
 import { NotesContent } from '../../components/Note/notes-content';
+import { PName } from '../../components/Partials/microformats/p-name';
 
 export default function Note({
-  frontMatter: { title, date, description, image, toMastodon, toGithub },
+  frontMatter: {
+    title,
+    date,
+    description,
+    image,
+    toMastodon,
+    toGithub,
+    pName,
+    inReplyTo,
+    replyText,
+  },
   mdxSource,
   url,
 }) {
   return (
     <Layout title={title} description={description} url={url} image={image}>
-      <NotesContent className="note h-entry">
-        <div className="inner--sm">
-          <HCard isAuthor={true} />
-          <div style={{ display: 'none' }}>
-            <BridgyEndpoints toMastodon={toMastodon} toGithub={toGithub} />
-            <a href={url} className="u-url"></a>
-          </div>
-          <div className="e-content">
-            <MDXRemote {...mdxSource} components={noteComponents} />
-          </div>
-          <TimePublished date={date} align="right" />
+      <NotesContent pName={pName} reply={{ inReplyTo, replyText }}>
+        <PName title={pName} />
+        <HCard isAuthor={true} />
+        <div style={{ display: 'none' }}>
+          <BridgyEndpoints toMastodon={toMastodon} toGithub={toGithub} />
+          <a href={url} className="u-url"></a>
         </div>
+        <div className="e-content">
+          <MDXRemote {...mdxSource} components={noteComponents} />
+        </div>
+        <TimePublished date={date} align="right" />
       </NotesContent>
     </Layout>
   );

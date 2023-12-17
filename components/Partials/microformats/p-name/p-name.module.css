@@ -1,0 +1,3 @@
+.title {
+  font-size: calc(var(--default-size) * 5);
+}

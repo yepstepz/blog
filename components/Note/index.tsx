@@ -8,13 +8,25 @@ import { noteComponents } from '@components/Note/components';
 import { HCard } from '@components/Partials/microformats/h-card';
 import { TimePublished } from '@components/Partials/microformats/dt-published';
 import { NotesContent } from '@components/Note/notes-content';
+import { PName } from '@components/Partials/microformats/p-name';
 
-function Note({ slug, date, published, mdxSource, tags, embedded = false }) {
+function Note({
+  slug,
+  date,
+  published,
+  mdxSource,
+  tags,
+  embedded = false,
+  pName = '',
+  inReplyTo = '',
+  replyText = '',
+}) {
   return (
-    <NotesContent embedded={embedded}>
+    <NotesContent embedded={embedded} reply={{ inReplyTo, replyText }}>
       <div className="inner--sm">
         <div className="df ac">{!published && <Plate title="Черновик" />}</div>
       </div>
+      <PName title={pName} />
       <div className="block-content--sm inner--sm">
         <div className={styles.content}>
           <MDXRemote {...mdxSource} components={noteComponents} />
@@ -24,7 +36,7 @@ function Note({ slug, date, published, mdxSource, tags, embedded = false }) {
         <span className={styles.postInfo}>
           <TimePublished date={date} align="right" />
           <Tags tags={tags} size="sm" align="right" />
-          <a href={`/notes/${slug}`}>{`yepstepz.io/notes/${slug}`}</a>
+          <a href={`/notes/${slug}`}>{`/notes/${slug}`}</a>
         </span>
         <HCard showCredentials={false} isAuthor={true} />
       </div>

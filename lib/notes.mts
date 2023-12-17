@@ -6,7 +6,10 @@ import { serialize } from 'next-mdx-remote/serialize';
 import remarkGfm from 'remark-gfm';
 
 export async function getAllNotes() {
-  const items = getAllItems(['slug', 'tags', 'date', 'content'], 'notes');
+  const items = getAllItems(
+    ['slug', 'tags', 'date', 'content', 'pName', 'inReplyTo', 'replyText'],
+    'notes'
+  );
 
   for (let i = 0; i < items.length; i++) {
     const note = items[i];

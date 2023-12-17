@@ -141,7 +141,6 @@ body {
 }
 
 html {
-  color: var(--main-font);
   background-color: var(--bg-color);
 }
 
