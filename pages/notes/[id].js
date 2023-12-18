@@ -31,7 +31,7 @@ export default function Note({
   return (
     <Layout title={title} description={description} url={url} image={image}>
       <NotesContent pName={pName} reply={{ inReplyTo, replyText }}>
-        <PName title={pName} />
+        <PName title={pName} as="h1" />
         <HCard isAuthor={true} />
         <div style={{ display: 'none' }}>
           <BridgyEndpoints toMastodon={toMastodon} toGithub={toGithub} />

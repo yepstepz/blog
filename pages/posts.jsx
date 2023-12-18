@@ -8,7 +8,7 @@ export default function Articles({ items }) {
     <Layout
       title="Все статьи | Блог yepstepz.io"
       description="Посмотреть все статьи из блога"
-      url="https://yepstepz.io/articles"
+      url="https://yepstepz.io/posts"
     >
       <ArticlesList posts={items} />
     </Layout>

@@ -1,0 +1,57 @@
+---
+date: '2023-12-18'
+published: true
+toGithub: true
+tags: ['github']
+pName: "[Silo Request] openlibrary"
+inReplyTo: "https://github.com/snarfed/bridgy/issues"
+replyText: "https://github.com/snarfed/bridgy/issues"
+---
+
+Hi! I want to contribute to brid.gy and add an integration with OpenLibrary.
+
+Would be great to get notifications about the books I read, and since Goodreads deprecated their API,
+the best option could be the [OpenLibrary](https://openlibrary.org/).
+
+The easiest option is to start from the listening part. They do not have any oAuth options right now,
+but API is available for GET option: https://openlibrary.org/developers/api
+
+So what I think:
+
+**Login**
+
+After you login into Brid.gy with your website (indie auth), check profile page from OpenLibrary (OL) that you added to the input.
+for instance, https://openlibrary.org/people/zpetspey is my OL account, and it has my site https://yepstepz.io,
+and I can add
+
+```html
+    ...
+    <a href="https://openlibrary.org/people/zpetspey" rel="me"></a>
+    ...
+```
+
+to my site. It would be enough to show that I want to listen some updates.
+
+**Updates**
+
+There are a few pages that I would possibly crawl to get my updates from:
+
+- `currently-reading`
+- `read`
+- `would like to read`
+
+Bridgy could crawl it from time to time to get updates.
+
+I don't see any eTag on curl -I request, but probably once in a day is ok.
+
+Another interesting feature request could be to fetch `year's goal` and `stats`.
+Would be nice to get that updates from webmention.
+
+**Post**
+
+After crawling and getting updates, bridgy could form a post.
+There is a discussion about some properties here: https://github.com/microformats/h-entry/issues/10,
+so I need to research it further.
+
+What do you think? I also have plans for investigating posting possibility, but wanted to check if this idea is ok with you.
+
