@@ -12,6 +12,7 @@ import { TimePublished } from 'components/Partials/microformats/dt-published';
 import { noteComponents } from '../../components/Note/components';
 import { NotesContent } from '../../components/Note/notes-content';
 import { PName } from '../../components/Partials/microformats/p-name';
+import { USyndication } from '../../components/Partials/microformats/u-syndication';
 
 export default function Note({
   frontMatter: {
@@ -24,6 +25,8 @@ export default function Note({
     pName,
     inReplyTo,
     replyText,
+    syndicatedLink,
+    syndicatedText,
   },
   mdxSource,
   url,
@@ -41,6 +44,12 @@ export default function Note({
           <MDXRemote {...mdxSource} components={noteComponents} />
         </div>
         <TimePublished date={date} align="right" />
+        {syndicatedText && (
+          <USyndication
+            syndicatedLink={syndicatedLink}
+            syndicatedText={syndicatedText}
+          />
+        )}
       </NotesContent>
     </Layout>
   );

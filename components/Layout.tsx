@@ -72,6 +72,11 @@ export default function Layout({
             type="application/rss+xml"
             title="Blog posts by yepstepz | RSS Feed"
           ></link>
+          <link
+            rel="alternate"
+            type="text/mf2+html"
+            href="https://yepstepz.io/notes"
+          />
           {url && <link rel="canonical" href={url} />}
           {snippetData && (
             <script

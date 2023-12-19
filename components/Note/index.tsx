@@ -9,6 +9,7 @@ import { HCard } from '@components/Partials/microformats/h-card';
 import { TimePublished } from '@components/Partials/microformats/dt-published';
 import { NotesContent } from '@components/Note/notes-content';
 import { PName } from '@components/Partials/microformats/p-name';
+import { USyndication } from '@components/Partials/microformats/u-syndication';
 
 function Note({
   slug,
@@ -20,6 +21,8 @@ function Note({
   pName = '',
   inReplyTo = '',
   replyText = '',
+  syndicatedLink = '',
+  syndicatedText = '',
 }) {
   return (
     <NotesContent embedded={embedded} reply={{ inReplyTo, replyText }}>
@@ -35,6 +38,12 @@ function Note({
       <div className={cn('block-links inner--sm', styles.infoWrapper)}>
         <span className={styles.postInfo}>
           <TimePublished date={date} align="right" />
+          {syndicatedLink && (
+            <USyndication
+              syndicatedLink={syndicatedLink}
+              syndicatedText={syndicatedText}
+            />
+          )}
           <Tags tags={tags} size="sm" align="right" />
           <a href={`/notes/${slug}`}>{`/notes/${slug}`}</a>
         </span>

@@ -7,7 +7,17 @@ import remarkGfm from 'remark-gfm';
 
 export async function getAllNotes() {
   const items = getAllItems(
-    ['slug', 'tags', 'date', 'content', 'pName', 'inReplyTo', 'replyText'],
+    [
+      'slug',
+      'tags',
+      'date',
+      'content',
+      'pName',
+      'inReplyTo',
+      'replyText',
+      'syndicatedLink',
+      'syndicatedText',
+    ],
     'notes'
   );
 

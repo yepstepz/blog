@@ -16,7 +16,7 @@ export default function Notes({ items }: Props) {
       description="Короткие заметки для блога. Поддерживают webmentions"
       url="https://yepstepz.io/notes"
     >
-      <div className="block-article inner--sm h-entry">
+      <div className="block-article inner--sm h-feed">
         {items.map((note) => {
           return (
             <li className="ln">
