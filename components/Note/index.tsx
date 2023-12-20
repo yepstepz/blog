@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import { Plate } from '@components/Partials/Plate';
 import Tags from '@components/Partials/Tags';
 // @ts-ignore
 import { MDXRemote } from 'next-mdx-remote';
@@ -14,7 +13,6 @@ import { USyndication } from '@components/Partials/microformats/u-syndication';
 function Note({
   slug,
   date,
-  published,
   mdxSource,
   tags,
   embedded = false,
@@ -26,9 +24,6 @@ function Note({
 }) {
   return (
     <NotesContent embedded={embedded} reply={{ inReplyTo, replyText }}>
-      <div className="inner--sm">
-        <div className="df ac">{!published && <Plate title="Черновик" />}</div>
-      </div>
       <PName title={pName} />
       <div className="block-content--sm inner--sm">
         <div className={styles.content}>

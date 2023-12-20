@@ -11,3 +11,9 @@
   from = "/articles"
   to = "/posts"
   status = 301
+
+[[redirects]]
+    from = "/admin/*"
+    to = "/admin"
+    status = 301
+    force = true
