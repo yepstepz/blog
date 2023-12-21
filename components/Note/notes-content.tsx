@@ -3,13 +3,12 @@ import cn from 'classnames';
 import { InReplyTo } from '@components/Partials/microformats/in-reply-to';
 import { FC, ReactNode } from 'react';
 
+import type { Reply } from '../../types/note.ts';
+
 type Props = {
   children: ReactNode;
   embedded?: boolean;
-  reply?: {
-    inReplyTo?: string;
-    replyText?: string;
-  };
+  reply?: Reply;
 };
 
 export const NotesContent: FC<Props> = ({
@@ -25,7 +24,7 @@ export const NotesContent: FC<Props> = ({
       embedded ? styles.wrapperEmbedded : styles.wrapperList
     )}
   >
-    {reply.inReplyTo && <InReplyTo {...reply} />}
+    {reply?.replyLink && <InReplyTo {...reply} />}
     {children}
   </article>
 );

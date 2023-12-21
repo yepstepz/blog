@@ -1,4 +1,4 @@
-import { defineField } from 'sanity'
+import {defineField} from 'sanity'
 
 export const note = {
   name: 'note',
@@ -7,8 +7,21 @@ export const note = {
   fields: [
     {
       name: 'title',
-      title: 'Title',
-      type: 'string',
+      title: 'Title Settings',
+      type: 'object',
+      fields: [
+        {
+          name: 'name',
+          title: 'Title',
+          type: 'string',
+        },
+        {
+          name: 'visibility',
+          title: 'Show Note Title',
+          type: 'boolean',
+          initialValue: false,
+        },
+      ],
     },
     {
       name: 'content',
@@ -31,16 +44,23 @@ export const note = {
       type: 'datetime',
     },
     {
-      name: 'toMastodon',
-      title: 'Add Note To Mastodon',
-      type: 'boolean',
-      initialValue: false,
-    },
-    {
-      name: 'toGithub',
-      title: 'Add Note To Github',
-      type: 'boolean',
-      initialValue: false,
+      name: 'bridgyEndpoints',
+      title: 'Bridgy Endpoints',
+      type: 'object',
+      fields: [
+        {
+          name: 'toMastodon',
+          title: 'Add Note To Mastodon',
+          type: 'boolean',
+          initialValue: false,
+        },
+        {
+          name: 'toGithub',
+          title: 'Add Note To Github',
+          type: 'boolean',
+          initialValue: false,
+        },
+      ],
     },
     defineField({
       name: 'tags',
@@ -54,5 +74,51 @@ export const note = {
       type: 'reference',
       to: [{type: 'author'}],
     },
+    {
+      name: 'reply',
+      title: 'In Reply To',
+      type: 'object',
+      fields: [
+        {
+          title: 'Link',
+          name: 'replyLink',
+          type: 'string',
+        },
+        {
+          title: 'Text',
+          name: 'replyText',
+          type: 'string',
+        },
+      ],
+    },
+    {
+      name: 'syndicated',
+      title: 'Syndicated Link',
+      type: 'object',
+      fields: [
+        {
+          title: 'Link',
+          name: 'syndicatedLink',
+          type: 'string',
+        },
+        {
+          title: 'Text',
+          name: 'syndicatedText',
+          type: 'string',
+        },
+      ],
+    },
   ],
+  preview: {
+    select: {
+      title: 'title',
+      id: '_id',
+    },
+    prepare(selection) {
+      const {title} = selection
+      return {
+        title: title.name,
+      }
+    },
+  },
 }
