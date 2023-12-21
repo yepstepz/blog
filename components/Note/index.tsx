@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import { Plate } from '@components/Partials/Plate';
 import Tags from '@components/Partials/Tags';
 // @ts-ignore
 import { MDXRemote } from 'next-mdx-remote';
@@ -10,26 +9,21 @@ import { TimePublished } from '@components/Partials/microformats/dt-published';
 import { NotesContent } from '@components/Note/notes-content';
 import { PName } from '@components/Partials/microformats/p-name';
 import { USyndication } from '@components/Partials/microformats/u-syndication';
+import type { NoteItemType, NoteComponentType } from '../../types/note.ts';
 
 function Note({
   slug,
   date,
-  published,
   mdxSource,
   tags,
   embedded = false,
-  pName = '',
-  inReplyTo = '',
-  replyText = '',
-  syndicatedLink = '',
-  syndicatedText = '',
-}) {
+  title = '',
+  reply = {},
+  syndicated = {},
+}: NoteItemType & NoteComponentType) {
   return (
-    <NotesContent embedded={embedded} reply={{ inReplyTo, replyText }}>
-      <div className="inner--sm">
-        <div className="df ac">{!published && <Plate title="Черновик" />}</div>
-      </div>
-      <PName title={pName} />
+    <NotesContent embedded={embedded} reply={reply}>
+      <PName title={title} />
       <div className="block-content--sm inner--sm">
         <div className={styles.content}>
           <MDXRemote {...mdxSource} components={noteComponents} />
@@ -38,12 +32,7 @@ function Note({
       <div className={cn('block-links inner--sm', styles.infoWrapper)}>
         <span className={styles.postInfo}>
           <TimePublished date={date} align="right" />
-          {syndicatedLink && (
-            <USyndication
-              syndicatedLink={syndicatedLink}
-              syndicatedText={syndicatedText}
-            />
-          )}
+          {syndicated?.syndicatedLink && <USyndication {...syndicated} />}
           <Tags tags={tags} size="sm" align="right" />
           <a href={`/notes/${slug}`}>{`/notes/${slug}`}</a>
         </span>

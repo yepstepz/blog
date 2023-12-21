@@ -4,10 +4,10 @@ import { Article } from '../../components/Article';
 
 import { collectAllTags } from '../../lib/tags';
 import { getAllItems } from '../../lib/utils';
-import { getAllNotes } from '../../lib/notes.mts';
+import { getNotesByTag } from '../../lib/notes.mts';
 
 const component = (item) => {
-  switch (item.type) {
+  switch (item.contentType) {
     case 'note': {
       return <Note embedded {...item} />;
     }
@@ -47,7 +47,8 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { id } }) => {
-  const notesProps = await getAllNotes();
+  const notesItems = await getNotesByTag(id);
+
   const postsProps = await getAllItems([
     'title',
     'description',
@@ -56,13 +57,8 @@ export const getStaticProps = async ({ params: { id } }) => {
     'date',
   ]);
 
-  const notesItems = notesProps.map((note) => {
-    note.type = 'note';
-    return note;
-  });
-
   const propsItems = postsProps.map((post) => {
-    post.type = 'post';
+    post.contentType = 'post';
     return post;
   });
 

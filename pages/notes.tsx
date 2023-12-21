@@ -1,12 +1,13 @@
 import Layout from '@components/Layout';
 import { Note } from '@components/Note';
 
-import type { NoteContentType } from '@components/Note/types';
 // @ts-ignore
 import { getAllNotes } from '../lib/notes.mts';
 
+import type { NoteItemType, NoteComponentType } from '../types/note.ts';
+
 type Props = {
-  items: Array<NoteContentType>;
+  items: Array<NoteItemType & NoteComponentType>;
 };
 
 export default function Notes({ items }: Props) {
