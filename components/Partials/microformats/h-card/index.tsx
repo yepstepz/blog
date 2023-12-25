@@ -2,6 +2,7 @@ import cn from 'classnames';
 
 import type { MicroCardType } from './types';
 import styles from './h-card.module.css';
+import Image from 'next/image';
 
 export const HCard: React.FC<MicroCardType> = ({
   pName = 'Tatiana Leonteva',
@@ -12,6 +13,8 @@ export const HCard: React.FC<MicroCardType> = ({
   visible = true,
   showCredentials = true,
   showNickname = true,
+  showSource = false,
+  external = false,
 }) => {
   const computedStyles = { display: 'none' };
   return (
@@ -20,13 +23,18 @@ export const HCard: React.FC<MicroCardType> = ({
       style={visible ? null : computedStyles}
     >
       <div className={styles.imageWrapper}>
-        <img width="48" height="48" className="u-photo" src={uPhoto} />
+        <Image alt="" width="48" height="48" className="u-photo" src={uPhoto} />
       </div>
       <div
         className={styles.credentials}
         style={showCredentials ? null : computedStyles}
       >
-        <a className="u-url" href={uUrl}>
+        <a
+          className="u-url"
+          href={uUrl}
+          target="_blank"
+          rel={external ? 'noopener noreferer' : ''}
+        >
           <div className="p-name">{pName}</div>
         </a>
         <div
@@ -34,6 +42,12 @@ export const HCard: React.FC<MicroCardType> = ({
           style={showNickname ? null : computedStyles}
         >
           {pNickname}
+        </div>
+        <div
+          className={cn(styles.fromUrl)}
+          style={showSource ? null : computedStyles}
+        >
+          {uUrl}
         </div>
       </div>
     </div>

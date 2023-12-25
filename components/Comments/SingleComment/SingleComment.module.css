@@ -1,0 +1,40 @@
+.wrapper {
+  list-style: none;
+
+  margin-bottom: calc(var(--default-size) * 15);
+
+  --image-size: 48px;
+  --padding-from-image: 10px;
+}
+
+.content {
+  margin: 0 calc(var(--image-size) + var(--padding-from-image));
+}
+
+.content p {
+  margin: calc(var(--default-size) * 3) 0;
+  line-height: 1.5;
+}
+
+.content blockquote {
+  margin: calc(var(--default-size) * 3) 0;
+}
+
+.content blockquote p {
+  margin: 0;
+}
+
+.metaline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-right: calc(var(--image-size) + var(--padding-from-image));
+}
+
+.metaline time {
+  color: var(--accent-color);
+}
+
+.postInfo {
+  margin-top: calc(var(--default-size) * 2);
+}
