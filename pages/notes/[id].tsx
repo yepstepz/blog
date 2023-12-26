@@ -78,7 +78,6 @@ export const getStaticProps = async ({
   props: NoteItemType & {
     url: string;
     comments: Array<unknown>;
-    messages: Record<string, string>;
   };
 }> => {
   const note = await client.fetch(querySingleNote(id));
@@ -103,7 +102,6 @@ export const getStaticProps = async ({
       mdxSource,
       url,
       comments,
-      messages: (await import(`../../public/locales/${locale}.json`)).default,
     },
   };
 };
