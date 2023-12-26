@@ -41,15 +41,43 @@
 }
 
 .infoWrapper {
-  text-align: right;
   display: flex;
   align-items: center;
   font-size: calc(var(--default-size) * 4);
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-top: calc(var(--default-size) * 4);
   line-height: 1.2;
 }
 
-.postInfo {
+.postData {
   padding-right: calc(var(--default-size) * 2);
+  text-align: right;
+}
+
+.postInfo {
+  display: flex;
+}
+
+.slug {
+  width: 180px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 900px) {
+  .author {
+    display: none;
+  }
+
+  .infoWrapper {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .postData {
+    padding: 0;
+    padding-top: calc(var(--default-size) * 2);
+  }
 }

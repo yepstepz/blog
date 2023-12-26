@@ -6,3 +6,7 @@
 .timeCaptionRight {
   text-align: right;
 }
+
+.smSize {
+  font-size: calc(var(--default-size) * 3.5);
+}

@@ -10,6 +10,7 @@ import { NotesContent } from '@components/Note/notes-content';
 import { PName } from '@components/Partials/microformats/p-name';
 import { USyndication } from '@components/Partials/microformats/u-syndication';
 import type { NoteItemType, NoteComponentType } from '../../types/note.ts';
+import { Reactions } from '@components/Reactions';
 
 function Note({
   slug,
@@ -18,8 +19,9 @@ function Note({
   tags,
   embedded = false,
   title = '',
-  reply = {},
+  reply,
   syndicated = {},
+  reactions = {},
 }: NoteItemType & NoteComponentType) {
   return (
     <NotesContent embedded={embedded} reply={reply}>
@@ -30,13 +32,23 @@ function Note({
         </div>
       </div>
       <div className={cn('block-links inner--sm', styles.infoWrapper)}>
-        <span className={styles.postInfo}>
-          <TimePublished date={date} align="right" />
-          {syndicated?.syndicatedLink && <USyndication {...syndicated} />}
-          <Tags tags={tags} size="sm" align="right" />
-          <a href={`/notes/${slug}`}>{`/notes/${slug}`}</a>
-        </span>
-        <HCard showCredentials={false} isAuthor={true} />
+        <Reactions reactions={reactions} />
+        <div className={styles.postInfo}>
+          <span className={styles.postData}>
+            <TimePublished date={date} align="right" />
+            {syndicated?.syndicatedLink && <USyndication {...syndicated} />}
+            <Tags tags={tags} size="sm" align="right" />
+            <a
+              className={styles.slug}
+              href={`/notes/${slug}`}
+            >{`/notes/${slug}`}</a>
+          </span>
+          <HCard
+            showCredentials={false}
+            isAuthor={true}
+            className={styles.author}
+          />
+        </div>
       </div>
     </NotesContent>
   );

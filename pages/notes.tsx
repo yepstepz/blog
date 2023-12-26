@@ -5,12 +5,15 @@ import { Note } from '@components/Note';
 import { getAllNotes } from '../lib/notes.mts';
 
 import type { NoteItemType, NoteComponentType } from '../types/note.ts';
+// @ts-ignore
+import { countAllComments, getAllComments } from '../lib/comments.mts';
 
 type Props = {
   items: Array<NoteItemType & NoteComponentType>;
+  countedReactions: Record<string, Record<string, number>>;
 };
 
-export default function Notes({ items }: Props) {
+export default function Notes({ items, countedReactions }: Props) {
   return (
     <Layout
       title="Заметки | Блог yepstepz.io"
@@ -19,9 +22,10 @@ export default function Notes({ items }: Props) {
     >
       <div className="block-article inner--sm h-feed">
         {items.map((note) => {
+          const reactions = countedReactions[note.slug] || {};
           return (
             <li className="ln">
-              <Note {...note} />
+              <Note reactions={reactions} {...note} />
             </li>
           );
         })}
@@ -31,11 +35,15 @@ export default function Notes({ items }: Props) {
 }
 
 export async function getStaticProps() {
-  const items = await getAllNotes();
+  const [items, countedReactions] = await Promise.all([
+    getAllNotes(),
+    countAllComments({ type: 'notes' }),
+  ]);
 
   return {
     props: {
       items,
+      countedReactions,
     },
   };
 }

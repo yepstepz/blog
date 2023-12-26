@@ -5,3 +5,13 @@
   display: inline-block;
   color: var(--page-caption);
 }
+
+@media (max-width: 900px) {
+  .replyWrapper {
+    width: 100%;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

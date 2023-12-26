@@ -13,6 +13,7 @@ import { noteComponents } from '@components/Note/components.ts';
 import { NotesContent } from '@components/Note/notes-content.tsx';
 import { PName } from '@components/Partials/microformats/p-name';
 import { USyndication } from '@components/Partials/microformats/u-syndication';
+import { Comments } from '@components/Comments';
 
 import type { NoteItemType } from '../../types/note';
 // @ts-ignore
@@ -22,6 +23,9 @@ import { client } from '../../studio/client.mts';
 import { querySingleNote } from '../../lib/queries';
 import { parseNote } from '../../lib/parser/parseNote.ts';
 import Tags from '@components/Partials/Tags';
+import type { CommentType } from '../../types/comment.ts';
+// @ts-ignore
+import { getAllComments } from '../../lib/comments.mts';
 
 // TODO: description={description}
 export default function Note({
@@ -33,7 +37,8 @@ export default function Note({
   mdxSource,
   url,
   tags,
-}: NoteItemType & { url: string }) {
+  comments,
+}: NoteItemType & { url: string; comments: Array<CommentType> }) {
   return (
     <Layout title={title} description="" url={url}>
       <NotesContent reply={reply}>
@@ -50,6 +55,7 @@ export default function Note({
         {syndicated?.syndicatedLink && <USyndication {...syndicated} />}
         <Tags tags={tags} size="sm" align="right" />
       </NotesContent>
+      {comments.length !== 0 && <Comments comments={comments} />}
     </Layout>
   );
 }
@@ -67,7 +73,14 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({
   params: { id },
-}): Promise<{ props: NoteItemType & { url: string } }> => {
+  locale,
+}): Promise<{
+  props: NoteItemType & {
+    url: string;
+    comments: Array<unknown>;
+    messages: Record<string, string>;
+  };
+}> => {
   const note = await client.fetch(querySingleNote(id));
   const parsedNote = parseNote(note[0]);
 
@@ -82,11 +95,15 @@ export const getStaticProps = async ({
     },
   });
 
+  const comments = await getAllComments({ type: 'notes', page: id });
+
   return {
     props: {
       ...parsedNote,
       mdxSource,
       url,
+      comments,
+      messages: (await import(`../../public/locales/${locale}.json`)).default,
     },
   };
 };

@@ -1,6 +1,8 @@
 // @ts-ignore
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
+import { CountItem } from '../lib/parser/parseComment.ts';
+
 export type Reply = {
   replyLink?: string;
   replyText?: string;
@@ -50,4 +52,5 @@ export type NoteItemType = {
 
 export type NoteComponentType = {
   embedded: boolean;
+  reactions?: CountItem;
 };
