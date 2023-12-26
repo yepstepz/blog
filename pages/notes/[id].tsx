@@ -55,7 +55,7 @@ export default function Note({
         {syndicated?.syndicatedLink && <USyndication {...syndicated} />}
         <Tags tags={tags} size="sm" align="right" />
       </NotesContent>
-      <Comments comments={comments} />
+      {comments.length !== 0 && <Comments comments={comments} />}
     </Layout>
   );
 }

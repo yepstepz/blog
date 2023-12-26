@@ -24,7 +24,3 @@ type User = {
   photo: string;
   name: string;
 };
-
-export type Response = {
-  data: Array<CommentApiType>;
-};

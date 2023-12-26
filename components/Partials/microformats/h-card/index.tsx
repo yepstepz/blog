@@ -15,11 +15,12 @@ export const HCard: React.FC<MicroCardType> = ({
   showNickname = true,
   showSource = false,
   external = false,
+  className = '',
 }) => {
   const computedStyles = { display: 'none' };
   return (
     <div
-      className={cn('h-card', isAuthor && 'p-author', styles.author)}
+      className={cn('h-card', isAuthor && 'p-author', styles.author, className)}
       style={visible ? null : computedStyles}
     >
       <div className={styles.imageWrapper}>

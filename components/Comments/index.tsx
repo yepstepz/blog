@@ -12,7 +12,9 @@ export const Comments = ({ comments }: Props) => {
   const t = useTranslations();
   return (
     <section>
-      <h3>{t('comments', { count: comments.length })}</h3>
+      <h3 className={styles.header}>
+        {t('comments', { count: comments.length })}
+      </h3>
       <ul className={styles.list}>
         {comments.map((comment) => (
           <SingleComment comment={comment} />
