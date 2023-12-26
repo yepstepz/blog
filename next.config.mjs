@@ -1,11 +1,9 @@
 import createMDX from '@next/mdx';
-import { i18n } from './next-i18n.config.mjs';
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,
 });
 export default withMDX({
-  i18n,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,

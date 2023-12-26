@@ -2,7 +2,6 @@ import '@styles/globals.css';
 import { Analytics } from '@components/Partials/Analytics';
 import type { AppProps } from 'next/app';
 import localFont from 'next/font/local';
-import { NextIntlClientProvider } from 'next-intl';
 
 // Font files can be colocated inside of `app`
 const Inter = localFont({
@@ -34,12 +33,10 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 function Application({ Component, pageProps }: AppProps) {
   return (
-    <NextIntlClientProvider locale={'ru'} messages={pageProps.messages}>
-      <div className={Inter.className}>
-        {isProduction ? <Analytics /> : null}
-        <Component {...pageProps} />
-      </div>
-    </NextIntlClientProvider>
+    <div className={Inter.className}>
+      {isProduction ? <Analytics /> : null}
+      <Component {...pageProps} />
+    </div>
   );
 }
 

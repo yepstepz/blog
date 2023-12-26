@@ -21,7 +21,6 @@
     "glamor": "^2.20.40",
     "gray-matter": "^4.0.3",
     "next": "^14.0.3",
-    "next-intl": "^3.4.0",
     "next-sanity": "^7.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
