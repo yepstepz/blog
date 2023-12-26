@@ -57,6 +57,7 @@
 
   --light-gray: #f9f9f9;
   --dark-gray: #1a1a1a;
+  --gray-80: #cccccc;
 
   --content-width: 760px;
   --header-height: 60px;
@@ -81,6 +82,7 @@ html[data-theme='light'] {
   --read-link-color-active: var(--accent-color);
 
   --page-caption: #656565;
+  --page-caption-border: var(--gray-80);
 
   --toggler-bg: var(--accent-color);
   --toggler-border: var(--accent-color);
@@ -115,6 +117,7 @@ html[data-theme='dark'] {
   --read-link-color-active: var(--accent-color);
 
   --page-caption: var(--main-font);
+  --page-caption-border: var(--gray-80);
 
   --toggler-bg: var(--accent-color);
   --toggler-border: var(--accent-color);

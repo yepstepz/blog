@@ -33,7 +33,12 @@ function Note({
         </div>
       </div>
       <div className={cn('block-links inner--sm', styles.infoWrapper)}>
-        <Reactions reactions={reactions} />
+        {
+          reactions.all > 0 &&
+          <a href={`${url}/#comments`} className={styles.commentsButton}>
+            <Reactions reactions={reactions} />
+          </a>
+        }
         <div className={styles.postInfo}>
           <span className={styles.postData}>
             <TimePublished date={date} align="right" />

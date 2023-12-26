@@ -10,7 +10,7 @@ type Props = {
 export const Comments = ({ comments }: Props) => {
   return (
     <section>
-      <h3 className={styles.header}>
+      <h3 id="comments" className={styles.header}>
         Комментарии: { comments.length }
       </h3>
       <ul className={styles.list}>

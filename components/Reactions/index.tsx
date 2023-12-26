@@ -9,9 +9,9 @@ type Props = {
 export const Reactions = ({ reactions = {} }: Props) => {
   const { replies, likes, all } = reactions;
   return (
-    <ul className={styles.list}>
-      {replies > 0 && <li className={styles.item}>💬 {replies}</li>}
-      {likes > 0 && <li className={styles.item}>❤️ {likes}</li>}
-    </ul>
+    <span className={styles.list}>
+      {replies > 0 && <span className={styles.item}>💬 {replies}</span>}
+      {likes > 0 && <span className={styles.item}>❤️ {likes}</span>}
+    </span>
   );
 };
