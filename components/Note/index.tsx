@@ -23,9 +23,10 @@ function Note({
   syndicated = {},
   reactions = {},
 }: NoteItemType & NoteComponentType) {
+  const url = `/notes/${slug}`;
   return (
     <NotesContent embedded={embedded} reply={reply}>
-      <PName title={title} />
+      <PName as="a" href={url} title={title} />
       <div className="block-content--sm inner--sm">
         <div className={styles.content}>
           <MDXRemote {...mdxSource} components={noteComponents} />
@@ -40,8 +41,8 @@ function Note({
             <Tags tags={tags} size="sm" align="right" />
             <a
               className={styles.slug}
-              href={`/notes/${slug}`}
-            >{`/notes/${slug}`}</a>
+              href={url}
+            >{url}</a>
           </span>
           <HCard
             showCredentials={false}
