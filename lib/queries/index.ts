@@ -1,6 +1,7 @@
 const noteContent = `
     _id,
     title,
+    description,
     "tags": tags[]->  title,
     bridgyEndpoints,
     reply,
