@@ -24,6 +24,11 @@ export const note = {
       ],
     },
     {
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    },
+    {
       name: 'content',
       title: 'Content',
       type: 'markdown',

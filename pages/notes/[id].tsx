@@ -27,7 +27,6 @@ import type { CommentType } from '../../types/comment.ts';
 // @ts-ignore
 import { getAllComments } from '../../lib/comments.mts';
 
-// TODO: description={description}
 export default function Note({
   title,
   date,
@@ -38,9 +37,10 @@ export default function Note({
   url,
   tags,
   comments,
+  description = ''
 }: NoteItemType & { url: string; comments: Array<CommentType> }) {
   return (
-    <Layout title={title} description="" url={url}>
+    <Layout description={description} title={title} url={url}>
       <NotesContent reply={reply}>
         <PName title={title} as="h1" />
         <HCard isAuthor={true} />
@@ -73,7 +73,6 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({
   params: { id },
-  locale,
 }): Promise<{
   props: NoteItemType & {
     url: string;

@@ -23,6 +23,7 @@ export type NotesApiType = {
     name: string;
     visibility: boolean;
   };
+  description: string;
   _updatedAt: string;
   _createdAt: string;
   oldDate: string;
@@ -44,6 +45,7 @@ export type NoteItemType = {
   content: string;
   tags: Array<string>;
   title: string;
+  description: string;
   reply: Reply;
   syndicated: Syndicated;
   bridgyEndpoints: BridgyEndpoints;

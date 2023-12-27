@@ -11,7 +11,7 @@ import { ThemeProvider } from './ThemeProvider';
 export default function Layout({
   children,
   title,
-  description,
+  description = '',
   image = '',
   type = '',
   url,
@@ -22,7 +22,10 @@ export default function Layout({
       <ThemeProvider>
         <Head>
           <title>{title}</title>
-          <meta name="description" content={description} key="desc" />
+          {
+            description &&
+            <meta name="description" content={description} key="desc" />
+          }
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
