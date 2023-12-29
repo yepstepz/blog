@@ -10,6 +10,9 @@ import {
   queryNotesByTag,
 } from './queries/index.ts';
 import { parseNote } from './parser/parseNote.ts';
+import gql from 'graphql-tag';
+
+import * as schema from '../payload/src/generated-schema.graphql';
 
 export async function getAllNotesUrls(route = 'notes') {
   const slugs = await client.fetch(queryAllNotesSlugs);
@@ -36,6 +39,18 @@ async function parseAndSerializeMdx(note) {
 
 export async function getAllNotes() {
   const items = await client.fetch(queryAllNotes);
+
+  const source = await gql`
+    {
+    Notes {
+      docs {
+        content
+      }
+    }
+  }
+  `;
+
+  console.log(source)
 
   const parsedItems = items.map(parseNote);
 

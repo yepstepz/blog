@@ -7,7 +7,8 @@
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "sanity:dev": "cd studio/api && sanity dev"
+    "sanity:dev": "cd studio/api && sanity dev",
+    "payload:dev": "cd payload && yarn dev"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.0",
@@ -32,6 +33,8 @@
     "@sanity/vision": "^3.23.1",
     "@types/node": "^20.9.4",
     "@types/react": "^18.2.38",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
     "next-mdx-remote": "^4.4.1",
     "prettier": "^2.8.8",
     "remark-rehype": "^11.0.0",
