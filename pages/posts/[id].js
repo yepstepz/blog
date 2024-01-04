@@ -9,6 +9,8 @@ import Image from '@components/Partials/Images';
 import Gallery from '@components/Partials/Gallery';
 import { Plate } from '@components/Partials/Plate';
 import rehypeStarryNight from '@microflash/rehype-starry-night';
+import remarkToc from 'remark-toc';
+import rehypeSlug from 'rehype-slug';
 
 const components = {
   Image,
@@ -90,8 +92,8 @@ export const getStaticProps = async ({ params: { id } }) => {
 
   const mdxSource = await serialize(content, {
     mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [rehypeStarryNight],
+      remarkPlugins: [remarkGfm, [remarkToc,{ tight: true, maxDepth: 5}]],
+      rehypePlugins: [rehypeStarryNight, rehypeSlug],
     },
   });
   return {

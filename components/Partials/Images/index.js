@@ -6,7 +6,7 @@ import styles from './Images.module.css';
 export default function (props = {}) {
   const {
     src,
-    aspectRatio = '4/3',
+    aspectRatio,
     flexGrow,
     alt,
     style,
@@ -14,7 +14,7 @@ export default function (props = {}) {
     onClick,
   } = props;
 
-  const widthProps = props.width ? { width: props.width } : { fill: true };
+  const widthProps = props.width ? { width: props.width, height: props.height || 'auto' } : { fill: true };
   const Wrapper = fromList ? 'li' : 'div';
 
   return (

@@ -386,3 +386,16 @@ a,
 a:visited {
   color: var(--accent-color);
 }
+
+table {
+  border-collapse: collapse;
+  white-space: nowrap;
+  overflow-x: scroll;
+  width: 100%;
+  display:block;
+}
+
+td, th {
+  border: thin solid var(--page-caption);
+  padding: calc(var(--default-size) * 2) calc(var(--default-size) * 4);
+}
