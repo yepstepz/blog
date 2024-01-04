@@ -27,13 +27,13 @@ type CountApiData = {
 export type CountData = Record<string, CountItem>;
 
 export type CountItem = {
-  all?: number;
-  replies?: number;
-  likes?: number;
-  reposts?: number;
-  bookmarks?: number;
-  mentions?: number;
-  rsvp?: number;
+  all: number;
+  replies: number;
+  likes: number;
+  reposts: number;
+  bookmarks: number;
+  mentions: number;
+  rsvp: number;
 };
 
 export const transformCountRequest = ({
@@ -42,16 +42,16 @@ export const transformCountRequest = ({
   data: Array<CountApiData>;
 }): CountData => {
   return data.reduce((data, currentValue) => {
-    const slug = currentValue.wmTarget.split('/').at(-1);
+    const slug = currentValue.wmTarget.split('/').at(-1) || '';
 
     const {
-      _all: all,
-      inReplyTo: replies,
-      likeOf: likes,
-      repostOf: reposts,
-      bookmarkOf: bookmarks,
-      mentionOf: mentions,
-      rsvp,
+      _all: all = 0,
+      inReplyTo: replies = 0,
+      likeOf: likes = 0,
+      repostOf: reposts = 0,
+      bookmarkOf: bookmarks = 0,
+      mentionOf: mentions = 0,
+      rsvp = 0,
     } = currentValue._count;
 
     data[slug] = {

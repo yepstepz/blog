@@ -7,11 +7,22 @@ import { getAllNotes } from '../lib/notes.mts';
 import type { NoteItemType, NoteComponentType } from '../types/note.ts';
 // @ts-ignore
 import { countAllComments, getAllComments } from '../lib/comments.mts';
+import { CountItem } from '../lib/parser/parseComment.ts';
 
 type Props = {
   items: Array<NoteItemType & NoteComponentType>;
-  countedReactions: Record<string, Record<string, number>>;
+  countedReactions: Record<string, CountItem>;
 };
+
+const emptyReactions: CountItem = {
+  all: 0,
+  replies: 0,
+  likes: 0,
+  reposts: 0,
+  bookmarks: 0,
+  mentions: 0,
+  rsvp: 0
+}
 
 export default function Notes({ items, countedReactions }: Props) {
   return (
@@ -22,10 +33,10 @@ export default function Notes({ items, countedReactions }: Props) {
     >
       <div className="block-article inner--sm h-feed">
         {items.map((note) => {
-          const reactions = countedReactions[note.slug] || {};
+          const reactions = countedReactions[note.slug] || emptyReactions;
           return (
             <li className="ln">
-              <Note reactions={reactions} {...note} />
+              <Note {...note} reactions={reactions}  />
             </li>
           );
         })}

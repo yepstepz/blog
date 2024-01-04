@@ -11,6 +11,17 @@ import { PName } from '@components/Partials/microformats/p-name';
 import { USyndication } from '@components/Partials/microformats/u-syndication';
 import type { NoteItemType, NoteComponentType } from '../../types/note.ts';
 import { Reactions } from '@components/Reactions';
+import { CountItem } from '../../lib/parser/parseComment.ts';
+
+const emptyReactions: CountItem = {
+  all: 0,
+  replies: 0,
+  likes: 0,
+  reposts: 0,
+  bookmarks: 0,
+  mentions: 0,
+  rsvp: 0
+}
 
 function Note({
   slug,
@@ -21,7 +32,7 @@ function Note({
   title = '',
   reply,
   syndicated = {},
-  reactions = {},
+  reactions = emptyReactions,
 }: NoteItemType & NoteComponentType) {
   const url = `/notes/${slug}`;
   return (

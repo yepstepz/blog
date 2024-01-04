@@ -21,14 +21,14 @@ export const HCard: React.FC<MicroCardType> = ({
   return (
     <div
       className={cn('h-card', isAuthor && 'p-author', styles.author, className)}
-      style={visible ? null : computedStyles}
+      style={visible ? undefined : computedStyles}
     >
       <div className={styles.imageWrapper}>
         <Image alt="" width="48" height="48" className="u-photo" src={uPhoto} />
       </div>
       <div
         className={styles.credentials}
-        style={showCredentials ? null : computedStyles}
+        style={showCredentials ? undefined : computedStyles}
       >
         <a
           className="u-url"
@@ -40,13 +40,13 @@ export const HCard: React.FC<MicroCardType> = ({
         </a>
         <div
           className={cn('p-nickname', styles.nickname)}
-          style={showNickname ? null : computedStyles}
+          style={showNickname ? undefined : computedStyles}
         >
           {pNickname}
         </div>
         <div
           className={cn(styles.fromUrl)}
-          style={showSource ? null : computedStyles}
+          style={showSource ? undefined : computedStyles}
         >
           {uUrl}
         </div>

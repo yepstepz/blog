@@ -6,8 +6,8 @@ type Props = {
   reactions: CountItem;
 };
 
-export const Reactions = ({ reactions = {} }: Props) => {
-  const { replies, likes, all } = reactions;
+export const Reactions = ({ reactions }: Props) => {
+  const { replies, likes } = reactions;
   return (
     <span className={styles.list}>
       {replies > 0 && <span className={styles.item}>💬 {replies}</span>}

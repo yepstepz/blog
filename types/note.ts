@@ -54,5 +54,5 @@ export type NoteItemType = {
 
 export type NoteComponentType = {
   embedded: boolean;
-  reactions?: CountItem;
+  reactions: CountItem;
 };
