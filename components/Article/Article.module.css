@@ -1,0 +1,13 @@
+.shortWrapper {
+  list-style: none;
+  margin: 0;
+  padding: calc(var(--default-size) * 2) 0;
+  text-indent: 1em;
+}
+
+.shortWrapper:before {
+  content: '–';
+  display: inline-block;
+  width: 1em;
+  text-indent: -1em;
+}
