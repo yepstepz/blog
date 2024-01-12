@@ -198,6 +198,14 @@ hr {
   list-style: none;
 }
 
+.m0 {
+  margin: 0;
+}
+
+.p0 {
+  padding: 0;
+}
+
 .headline {
   font-weight: bold;
   line-height: 1.4;
@@ -392,10 +400,11 @@ table {
   white-space: nowrap;
   overflow-x: scroll;
   width: 100%;
-  display:block;
+  display: block;
 }
 
-td, th {
+td,
+th {
   border: thin solid var(--page-caption);
   padding: calc(var(--default-size) * 2) calc(var(--default-size) * 4);
 }

@@ -11,7 +11,7 @@ export const parseNote = ({
   bridgyEndpoints,
   tags,
   _type,
-  description = ''
+  description = '',
 }: NotesApiType): NoteItemType => {
   const customizedData = {
     title: '',
@@ -24,7 +24,7 @@ export const parseNote = ({
     reply: {},
     syndicated: {},
     contentType: _type,
-    description
+    description,
   };
 
   if (title.visibility) {

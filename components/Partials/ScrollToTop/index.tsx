@@ -4,20 +4,17 @@ import { useEffect } from 'react';
 const isBrowser = () => typeof window !== 'undefined'; //The approach recommended by Next.js
 
 export const ScrollToTop = () => {
-
-  useEffect(() => {
-
-  }, []);
+  useEffect(() => {}, []);
   const callback = () => {
     if (!isBrowser()) return;
     // @ts-ignore
     document?.querySelector('#contents').scrollIntoView({
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
-  }
+  };
   return (
     <button type="button" className={styles.scrollerElement} onClick={callback}>
       Up!
     </button>
-  )
-}
+  );
+};

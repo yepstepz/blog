@@ -20,8 +20,8 @@ const emptyReactions: CountItem = {
   reposts: 0,
   bookmarks: 0,
   mentions: 0,
-  rsvp: 0
-}
+  rsvp: 0,
+};
 
 function Note({
   slug,
@@ -44,21 +44,19 @@ function Note({
         </div>
       </div>
       <div className={cn('block-links inner--sm', styles.infoWrapper)}>
-        {
-          reactions.all > 0 &&
+        {reactions.all > 0 && (
           <a href={`${url}/#comments`} className={styles.commentsButton}>
             <Reactions reactions={reactions} />
           </a>
-        }
+        )}
         <div className={styles.postInfo}>
           <span className={styles.postData}>
             <TimePublished date={date} align="right" />
             {syndicated?.syndicatedLink && <USyndication {...syndicated} />}
             <Tags tags={tags} size="sm" align="right" />
-            <a
-              className={styles.slug}
-              href={url}
-            >{url}</a>
+            <a className={styles.slug} href={url}>
+              {url}
+            </a>
           </span>
           <HCard
             showCredentials={false}

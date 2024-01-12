@@ -34,7 +34,7 @@ export const HCard: React.FC<MicroCardType> = ({
           className="u-url"
           href={uUrl}
           target="_blank"
-          rel={external ? 'noopener noreferer' : ''}
+          rel={external ? 'noopener noreferrer' : ''}
         >
           <div className="p-name">{pName}</div>
         </a>

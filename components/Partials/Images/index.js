@@ -4,17 +4,11 @@ import React from 'react';
 import styles from './Images.module.css';
 
 export default function (props = {}) {
-  const {
-    src,
-    aspectRatio,
-    flexGrow,
-    alt,
-    style,
-    fromList,
-    onClick,
-  } = props;
+  const { src, aspectRatio, flexGrow, alt, style, fromList, onClick } = props;
 
-  const widthProps = props.width ? { width: props.width, height: props.height || 'auto' } : { fill: true };
+  const widthProps = props.width
+    ? { width: props.width, height: props.height || 'auto' }
+    : { fill: true };
   const Wrapper = fromList ? 'li' : 'div';
 
   return (

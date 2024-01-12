@@ -28,7 +28,7 @@ export const BookItem = ({
       </div>
       <div className={style.info}>
         <a
-          rel="noopener noreferer"
+          rel="noopener noreferrer"
           target="_blank"
           href={data.link}
           className={style.title}

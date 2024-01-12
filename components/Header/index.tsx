@@ -3,6 +3,7 @@ import cn from 'classnames';
 import styles from './Header.module.css';
 
 import { ThemeSwitcher } from '../Partials/ThemeSwitcher';
+import Link from 'next/link';
 
 const MenuItem = ({ name, link }) => (
   <li
@@ -11,7 +12,9 @@ const MenuItem = ({ name, link }) => (
       styles.topMenuItem
     )}
   >
-    <a href={link}>{name}</a>
+    <Link prefetch={false} href={link}>
+      {name}
+    </Link>
   </li>
 );
 

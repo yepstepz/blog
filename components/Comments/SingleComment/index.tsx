@@ -35,7 +35,7 @@ export const SingleComment = ({ comment }: Props) => {
           <a
             href={url}
             target="_blank"
-            rel="noopener noreferer"
+            rel="noopener noreferrer"
             className="u-url"
           >
             <TimePublished date={published} align="right" showHours size="sm" />

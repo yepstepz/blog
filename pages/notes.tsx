@@ -21,8 +21,8 @@ const emptyReactions: CountItem = {
   reposts: 0,
   bookmarks: 0,
   mentions: 0,
-  rsvp: 0
-}
+  rsvp: 0,
+};
 
 export default function Notes({ items, countedReactions }: Props) {
   return (
@@ -36,7 +36,7 @@ export default function Notes({ items, countedReactions }: Props) {
           const reactions = countedReactions[note.slug] || emptyReactions;
           return (
             <li className="ln">
-              <Note {...note} reactions={reactions}  />
+              <Note {...note} reactions={reactions} />
             </li>
           );
         })}
