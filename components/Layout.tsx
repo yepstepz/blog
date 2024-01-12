@@ -1,3 +1,5 @@
+"use client";
+
 import Header from '@components/Header';
 import Footer from '@components/Footer';
 // @ts-ignore
@@ -22,10 +24,9 @@ export default function Layout({
       <ThemeProvider>
         <Head>
           <title>{title}</title>
-          {
-            description &&
+          {description && (
             <meta name="description" content={description} key="desc" />
-          }
+          )}
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"

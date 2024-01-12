@@ -12,57 +12,7 @@ import rehypeStarryNight from '@microflash/rehype-starry-night';
 import remarkToc from 'remark-toc';
 import rehypeSlug from 'rehype-slug';
 
-const components = {
-  Image,
-  Gallery,
-};
-
-export default function Post({
-  frontMatter: { title, date, description, image, published },
-  mdxSource,
-  url,
-  snippetData,
-}) {
-  return (
-    <Layout
-      title={title}
-      description={description}
-      url={url}
-      image={image}
-      type="article"
-      snippetData={JSON.stringify(snippetData)}
-    >
-      <div className="page">
-        <div className="page__headline block-headline block-headline--center inner--sm">
-          <h1 className="headline headline--main">{title}</h1>
-          <div className="page__caption body--secondary">
-            <span> Пост создан {date}</span>
-            {!published && <Plate title="Черновик" />}
-          </div>
-        </div>
-        <div className="page__content block-article inner--sm">
-          <MDXRemote {...mdxSource} components={components} />
-        </div>
-      </div>
-    </Layout>
-  );
-}
-
-export const getStaticPaths = async () => {
-  const files = fs.readdirSync(path.join('posts'));
-  const paths = files.map((filename) => ({
-    params: {
-      id: filename.replace('.mdx', ''),
-    },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export const getStaticProps = async ({ params: { id } }) => {
+export const getPostById = async (id) => {
   const url = 'https://yepstepz.io/' + path.join('posts', id);
   const markdownWithMeta = fs.readFileSync(
     path.join('posts', id + '.mdx'),
@@ -92,17 +42,16 @@ export const getStaticProps = async ({ params: { id } }) => {
 
   const mdxSource = await serialize(content, {
     mdxOptions: {
-      remarkPlugins: [remarkGfm, [remarkToc,{ tight: true, maxDepth: 5}]],
+      remarkPlugins: [remarkGfm, [remarkToc, { tight: true, maxDepth: 5 }]],
       rehypePlugins: [rehypeStarryNight, rehypeSlug],
     },
   });
   return {
-    props: {
-      frontMatter,
-      id,
-      mdxSource,
-      url,
-      snippetData,
-    },
+    frontMatter,
+    id,
+    mdxSource,
+    url,
+    snippetData,
+    content
   };
-};
+}
