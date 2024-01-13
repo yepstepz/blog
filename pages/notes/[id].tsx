@@ -27,6 +27,8 @@ import type { CommentType } from '../../types/comment.ts';
 // @ts-ignore
 import { getAllComments } from '../../lib/comments.mts';
 
+import { serialize as serializeManually } from '../../lib/serialize';
+
 export default function Note({
   title,
   date,
@@ -37,8 +39,16 @@ export default function Note({
   url,
   tags,
   comments,
-  description = ''
-}: NoteItemType & { url: string; comments: Array<CommentType> }) {
+  description = '',
+  newNote,
+}: NoteItemType & {
+  url: string;
+  comments: Array<CommentType>;
+  newNote: unknown;
+}) {
+  const NewContent = serializeManually(newNote.docs[0].content.root);
+  console.log(NewContent);
+
   return (
     <Layout description={description} title={title} url={url}>
       <NotesContent reply={reply}>
@@ -48,9 +58,10 @@ export default function Note({
           <BridgyEndpoints {...bridgyEndpoints} />
           <a href={url} className="u-url"></a>
         </div>
-        <div className="e-content">
-          <MDXRemote {...mdxSource} components={noteComponents} />
-        </div>
+        <div>{NewContent}</div>
+        {/*<div className="e-content">*/}
+        {/*  <MDXRemote {...mdxSource} components={noteComponents} />*/}
+        {/*</div>*/}
         <TimePublished date={date} align="right" />
         {syndicated?.syndicatedLink && <USyndication {...syndicated} />}
         <Tags tags={tags} size="sm" align="right" />
@@ -80,6 +91,11 @@ export const getStaticProps = async ({
   };
 }> => {
   const note = await client.fetch(querySingleNote(id));
+
+  const newNote = await fetch(
+    'https://payload-railway-postgres-production-5c2f.up.railway.app/api/notes'
+  ).then((res) => res.json());
+
   const parsedNote = parseNote(note[0]);
 
   const { content, slug } = parsedNote;
@@ -101,6 +117,7 @@ export const getStaticProps = async ({
       mdxSource,
       url,
       comments,
+      newNote,
     },
   };
 };
