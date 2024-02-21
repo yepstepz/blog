@@ -369,6 +369,17 @@ hr {
   margin-top: calc(var(--default-size) * 2);
 }
 
+.img__caption {
+  color: var(--page-caption);
+  font-size: calc(var(--default-size) * 4);
+}
+
+figure {
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 sup a,
 .data-footnote-backref {
   font-size: calc(var(--default-size) * 3);
