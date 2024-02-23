@@ -9,8 +9,11 @@ import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkGfm from 'remark-gfm';
 import fs from 'fs';
+import { getAllNotes } from '../lib/notes.mts';
+import { Note } from '@components/Note';
+import Link from 'next/link';
 
-export default function Post({ posts, mdxSource }) {
+export default function Post({ posts, mdxSource, lastNote }) {
   const latestArticles = posts.slice(0, 5);
 
   return (
@@ -27,19 +30,40 @@ export default function Post({ posts, mdxSource }) {
           <MDXRemote {...mdxSource} />
         </div>
       </div>
+      <div className="df ac jcsb" style={{ marginTop: 20 }}>
+        <h2>Последние посты:</h2>
+        <Link className="button" href={`/posts`} prefetch={false}>
+          Все посты
+        </Link>
+      </div>
       <ul className="m0 p0">
         {latestArticles.map(({ slug, date, title }) => {
           return <SmallArticle slug={slug} date={date} title={title} as="li" />;
         })}
       </ul>
+      <div className="df ac jcsb" style={{ marginTop: 20 }}>
+        <h2>Последняя заметка:</h2>
+        <Link className="button" href={`/notes`} prefetch={false}>
+          Все заметки
+        </Link>
+      </div>
+      <Note {...lastNote} embedded />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
+  let lastNote = {};
+
+  try {
+    lastNote = await getAllNotes().then((res) => res[0]);
+  } catch (e) {
+    throw new Error(e);
+  }
+
   const markdownWithMeta = fs.readFileSync(
     join(process.cwd(), 'mdx-landings', 'main.mdx'),
-    'utf-8'
+    'utf-8',
   );
   const { data: frontMatter, content } = matter(markdownWithMeta);
 
@@ -52,6 +76,6 @@ export async function getStaticProps() {
   const posts = getAllItems(['title', 'date', 'slug']);
 
   return {
-    props: { posts, mdxSource },
+    props: { posts, mdxSource, lastNote },
   };
 }

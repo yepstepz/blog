@@ -18,7 +18,7 @@ export const SmallArticle = ({
   return (
     <Tag className={styles.shortWrapper}>
       <Link href={`/posts/${slug}`}>{title}</Link>
-      <span>{date}</span>
+      <span className={styles.date}>{date}</span>
     </Tag>
   );
 };

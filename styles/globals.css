@@ -155,7 +155,7 @@ html {
 }
 
 .content {
-  margin-top: var(--header-height);
+  margin-top: 0.67em;
 }
 
 blockquote {
@@ -192,6 +192,10 @@ hr {
 
 .ac {
   align-items: center;
+}
+
+.jcsb {
+  justify-content: space-between;
 }
 
 .ln {
@@ -247,12 +251,11 @@ hr {
 
 .button {
   display: inline-block;
-  border: 2px solid var(--button-color);
-  padding: calc(var(--default-size) * 4) calc(var(--default-size) * 7);
+  border: thin solid var(--button-color);
+  padding: calc(var(--default-size) * 2) calc(var(--default-size) * 5);
   text-decoration: none;
   line-height: 1;
   font-weight: bold;
-  color: var(--main-font);
 }
 
 .button:hover {
