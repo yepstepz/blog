@@ -92,7 +92,7 @@ export const getStaticProps = async ({ params: { id } }) => {
 
   const mdxSource = await serialize(content, {
     mdxOptions: {
-      remarkPlugins: [remarkGfm, [remarkToc,{ tight: true, maxDepth: 5}]],
+      remarkPlugins: [remarkGfm, [remarkToc, { tight: true, maxDepth: 5 }]],
       rehypePlugins: [rehypeStarryNight, rehypeSlug],
     },
   });
