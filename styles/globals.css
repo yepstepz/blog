@@ -422,3 +422,9 @@ th {
   border: thin solid var(--page-caption);
   padding: calc(var(--default-size) * 2) calc(var(--default-size) * 4);
 }
+
+@media (max-width: 600px) {
+  .content {
+    margin-top: var(--header-height);
+  }
+}

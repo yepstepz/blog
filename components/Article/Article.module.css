@@ -14,3 +14,13 @@
 .date {
   color: var(--page-caption);
 }
+
+@media (max-width: 600px) {
+  .shortWrapper {
+    flex-direction: column-reverse;
+  }
+
+  .date {
+    margin-bottom: calc(var(--default-size) * 2);
+  }
+}

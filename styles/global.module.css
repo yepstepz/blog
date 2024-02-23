@@ -1,0 +1,18 @@
+.titleWithButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: calc(var(--default-size) * 5);
+}
+
+@media (max-width: 600px) {
+  .titleWithButton {
+    align-items: start;
+    flex-direction: column;
+    margin-bottom: calc(var(--default-size) * 2);
+  }
+
+  .titleWithButton h2 {
+    margin-bottom: calc(var(--default-size) * 2);
+  }
+}

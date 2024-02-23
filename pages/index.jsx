@@ -12,6 +12,7 @@ import fs from 'fs';
 import { getAllNotes } from '../lib/notes.mts';
 import { Note } from '@components/Note';
 import Link from 'next/link';
+import styles from '../styles/global.module.css';
 
 export default function Post({ posts, mdxSource, lastNote }) {
   const latestArticles = posts.slice(0, 5);
@@ -30,7 +31,7 @@ export default function Post({ posts, mdxSource, lastNote }) {
           <MDXRemote {...mdxSource} />
         </div>
       </div>
-      <div className="df ac jcsb" style={{ marginTop: 20 }}>
+      <div className={styles.titleWithButton}>
         <h2>Последние посты:</h2>
         <Link className="button" href={`/posts`} prefetch={false}>
           Все посты
@@ -41,7 +42,7 @@ export default function Post({ posts, mdxSource, lastNote }) {
           return <SmallArticle slug={slug} date={date} title={title} as="li" />;
         })}
       </ul>
-      <div className="df ac jcsb" style={{ marginTop: 20 }}>
+      <div className={styles.titleWithButton}>
         <h2>Последняя заметка:</h2>
         <Link className="button" href={`/notes`} prefetch={false}>
           Все заметки
