@@ -37,7 +37,7 @@ export default function Note({
   url,
   tags,
   comments,
-  description = ''
+  description = '',
 }: NoteItemType & { url: string; comments: Array<CommentType> }) {
   return (
     <Layout description={description} title={title} url={url}>
