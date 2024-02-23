@@ -25,7 +25,7 @@ export default function Post({ posts, mdxSource, lastNote }) {
     >
       <div className="page__content h-entry">
         <HCard isAuthor={true} visible={false} />
-        <h1 className="p-name">Привет! Меня зовут Татьяна.</h1>
+        <h1 className="p-name">Привет! Меня зовут <span className="text--violet">Татьяна</span>.</h1>
         <div className="e-content body">
           <MDXRemote {...mdxSource} />
         </div>
