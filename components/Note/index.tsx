@@ -31,6 +31,7 @@ function Note({
   tags,
   embedded = false,
   title = '',
+  titleVisibility,
   reply,
   syndicated = {},
   reactions = emptyReactions,
@@ -38,7 +39,7 @@ function Note({
   const url = `/notes/${slug}`;
   return (
     <NotesContent embedded={embedded} reply={reply}>
-      <PName as="a" href={url} title={title} />
+      { titleVisibility && <PName as="a" href={url} title={title} /> }
       <div className="block-content--sm inner--sm">
         <div className={styles.content}>
           <MDXRemote {...mdxSource} components={noteComponents} />
