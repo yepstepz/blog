@@ -1,4 +1,3 @@
-import Layout from '@components/Layout';
 import { Note } from '@components/Note';
 
 // @ts-ignore
@@ -26,22 +25,16 @@ const emptyReactions: CountItem = {
 
 export default function Notes({ items, countedReactions }: Props) {
   return (
-    <Layout
-      title="Заметки | Блог yepstepz.io"
-      description="Короткие заметки для блога. Поддерживают webmentions"
-      url="https://yepstepz.io/notes"
-    >
-      <div className="block-article inner--sm h-feed">
-        {items.map((note) => {
-          const reactions = countedReactions[note.slug] || emptyReactions;
-          return (
-            <li className="ln">
-              <Note {...note} reactions={reactions} />
-            </li>
-          );
-        })}
-      </div>
-    </Layout>
+    <div className="block-article inner--sm h-feed">
+      {items.map((note) => {
+        const reactions = countedReactions[note.slug] || emptyReactions;
+        return (
+          <li className="ln">
+            <Note {...note} reactions={reactions} />
+          </li>
+        );
+      })}
+    </div>
   );
 }
 
@@ -55,6 +48,11 @@ export async function getStaticProps() {
     props: {
       items,
       countedReactions,
+      meta: {
+        title: "Заметки | Блог yepstepz.io",
+        description: "Короткие заметки для блога. Поддерживают webmentions",
+        url: "https://yepstepz.io/notes"
+      }
     },
   };
 }

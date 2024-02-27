@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import Link from 'next/link';
 import Tags from '@components/Partials/Tags';
 // @ts-ignore
 import { MDXRemote } from 'next-mdx-remote';
@@ -54,9 +55,9 @@ function Note({
             <TimePublished date={date} align="right" />
             {syndicated?.syndicatedLink && <USyndication {...syndicated} />}
             <Tags tags={tags} size="sm" align="right" />
-            <a className={styles.slug} href={url}>
+            <Link className={styles.slug} href={url} prefetch={false}>
               {url}
-            </a>
+            </Link>
           </span>
           <HCard
             showCredentials={false}

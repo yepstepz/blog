@@ -18,33 +18,22 @@ const components = {
 };
 
 export default function Post({
-  frontMatter: { title, date, description, image, published },
+  frontMatter: { title, date, published },
   mdxSource,
-  url,
-  snippetData,
 }) {
   return (
-    <Layout
-      title={title}
-      description={description}
-      url={url}
-      image={image}
-      type="article"
-      snippetData={JSON.stringify(snippetData)}
-    >
-      <div className="page">
-        <div className="page__headline block-headline block-headline--center inner--sm">
-          <h1 className="headline headline--main">{title}</h1>
-          <div className="page__caption body--secondary">
-            <span> Пост создан {date}</span>
-            {!published && <Plate title="Черновик" />}
-          </div>
-        </div>
-        <div className="page__content block-article inner--sm">
-          <MDXRemote {...mdxSource} components={components} />
+    <div className="page">
+      <div className="page__headline block-headline block-headline--center inner--sm">
+        <h1 className="headline headline--main">{title}</h1>
+        <div className="page__caption body--secondary">
+          <span> Пост создан {date}</span>
+          {!published && <Plate title="Черновик" />}
         </div>
       </div>
-    </Layout>
+      <div className="page__content block-article inner--sm">
+        <MDXRemote {...mdxSource} components={components} />
+      </div>
+    </div>
   );
 }
 
@@ -96,6 +85,7 @@ export const getStaticProps = async ({ params: { id } }) => {
       rehypePlugins: [rehypeStarryNight, rehypeSlug],
     },
   });
+
   return {
     props: {
       frontMatter,
@@ -103,6 +93,14 @@ export const getStaticProps = async ({ params: { id } }) => {
       mdxSource,
       url,
       snippetData,
+      meta: {
+        title,
+        description,
+        url,
+        image,
+        type: "article",
+        snippetData: JSON.stringify(snippetData)
+      }
     },
   };
 };

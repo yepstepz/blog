@@ -14,7 +14,8 @@ export const parseNote = ({
   description = '',
 }: NotesApiType): NoteItemType => {
   const customizedData = {
-    title: '',
+    title: title.name,
+    titleVisibility: title.visibility,
     mdxSource: '',
     content,
     slug: slug.current,
@@ -26,10 +27,6 @@ export const parseNote = ({
     contentType: _type,
     description,
   };
-
-  if (title.visibility) {
-    customizedData.title = title.name;
-  }
 
   if (reply?.replyLink) {
     customizedData.reply = reply;

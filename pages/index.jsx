@@ -1,5 +1,3 @@
-import Layout from '@components/Layout';
-
 import { getAllItems } from '../lib/utils';
 import { SmallArticle } from '../components/Article/small-article';
 import { HCard } from '../components/Partials/microformats/h-card';
@@ -18,12 +16,7 @@ export default function Post({ posts, mdxSource, lastNote }) {
   const latestArticles = posts.slice(0, 5);
 
   return (
-    <Layout
-      title="Главная страница | Блог yepstepz.io"
-      description="Пишу про себя, фронтенд и книги."
-      image="/title-image.png"
-      url="https://yepstepz.io"
-    >
+    <>
       <div className="page__content h-entry">
         <HCard isAuthor={true} visible={false} />
         <h1 className="p-name">
@@ -51,7 +44,7 @@ export default function Post({ posts, mdxSource, lastNote }) {
         </Link>
       </div>
       <Note {...lastNote} embedded />
-    </Layout>
+    </>
   );
 }
 
@@ -79,6 +72,16 @@ export async function getStaticProps() {
   const posts = getAllItems(['title', 'date', 'slug']);
 
   return {
-    props: { posts, mdxSource, lastNote },
+    props: {
+      posts,
+      mdxSource,
+      lastNote,
+      meta: {
+        title: "Главная страница | Блог yepstepz.io",
+        description: "Пишу про себя, фронтенд и книги.",
+        image: "/title-image.png",
+        url: "https://yepstepz.io"
+      }
+    },
   };
 }
