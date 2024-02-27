@@ -27,8 +27,11 @@ import type { CommentType } from '../../types/comment.ts';
 // @ts-ignore
 import { getAllComments } from '../../lib/comments.mts';
 
+import type { Meta } from '../../types/common.ts';
+
 export default function Note({
   title,
+  titleVisibility,
   date,
   bridgyEndpoints,
   reply = {},
@@ -37,12 +40,13 @@ export default function Note({
   url,
   tags,
   comments,
-  description = '',
 }: NoteItemType & { url: string; comments: Array<CommentType> }) {
   return (
-    <Layout description={description} title={title} url={url}>
+    <>
       <NotesContent reply={reply}>
-        <PName title={title} as="h1" />
+        {
+          titleVisibility && <PName title={title} as="h1" />
+        }
         <HCard isAuthor={true} />
         <div style={{ display: 'none' }}>
           <BridgyEndpoints {...bridgyEndpoints} />
@@ -56,7 +60,7 @@ export default function Note({
         <Tags tags={tags} size="sm" align="right" />
       </NotesContent>
       {comments.length !== 0 && <Comments comments={comments} />}
-    </Layout>
+    </>
   );
 }
 
@@ -77,6 +81,8 @@ export const getStaticProps = async ({
   props: NoteItemType & {
     url: string;
     comments: Array<unknown>;
+  } & {
+    meta: Meta
   };
 }> => {
   const note = await client.fetch(querySingleNote(id));
@@ -101,6 +107,11 @@ export const getStaticProps = async ({
       mdxSource,
       url,
       comments,
+      meta: {
+        title: parsedNote.title,
+        description: parsedNote.description,
+        url: url,
+      }
     },
   };
 };

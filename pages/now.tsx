@@ -1,4 +1,3 @@
-import Layout from '@components/Layout';
 // @ts-ignore
 import { serialize } from 'next-mdx-remote/serialize';
 // @ts-ignore
@@ -30,29 +29,23 @@ export default function Now({
   lastNote,
 }) {
   return (
-    <Layout
-      title="Now"
-      description="Page about me"
-      url="https://yepstepz.io/now"
-    >
-      <div className="page__content block-article inner--sm h-entry">
-        <HCard isAuthor={true} visible={false} />
-        <h1 className="p-name">Что я делаю сейчас?</h1>
-        <i>
-          Последний раз обновлено:{' '}
-          <time className="dt-published" dateTime={date}>
-            {date}
-          </time>
-        </i>
-        <div className="e-content">
-          <MDXRemote
-            {...mdxSource}
-            components={components}
-            scope={{ lastReadBook, currentBook, lastNote }}
-          />
-        </div>
+    <div className="page__content block-article inner--sm h-entry">
+      <HCard isAuthor={true} visible={false} />
+      <h1 className="p-name">Что я делаю сейчас?</h1>
+      <i>
+        Последний раз обновлено:{' '}
+        <time className="dt-published" dateTime={date}>
+          {date}
+        </time>
+      </i>
+      <div className="e-content">
+        <MDXRemote
+          {...mdxSource}
+          components={components}
+          scope={{ lastReadBook, currentBook, lastNote }}
+        />
       </div>
-    </Layout>
+    </div>
   );
 }
 
@@ -95,6 +88,11 @@ export const getStaticProps = async () => {
       lastReadBook,
       currentBook,
       lastNote,
+      meta: {
+        title: "Now",
+        description: "Page about me",
+        url: "https://yepstepz.io/now"
+      }
     },
   };
 };

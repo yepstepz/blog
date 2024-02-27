@@ -45,6 +45,7 @@ export type NoteItemType = {
   content: string;
   tags: Array<string>;
   title: string;
+  titleVisibility: boolean;
   description: string;
   reply: Reply;
   syndicated: Syndicated;

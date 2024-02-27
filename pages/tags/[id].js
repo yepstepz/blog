@@ -19,17 +19,13 @@ const component = (item) => {
 
 export default function Tag({ items, id }) {
   return (
-    <Layout
-      title={`Статьи по тегу #${id} | Блог yepstepz.io`}
-      description={`Посмотреть все статьи из блога по тегу #${id}`}
-      url={`https://yepstepz.io/tags/${id}`}
-    >
+    <>
       {items.map((item) => (
         <li className="block-article ln" key={item.slug}>
           {component(item)}
         </li>
       ))}
-    </Layout>
+    </>
   );
 }
 
@@ -70,6 +66,11 @@ export const getStaticProps = async ({ params: { id } }) => {
     props: {
       id,
       items,
+      meta: {
+        title: `Статьи по тегу #${id} | Блог yepstepz.io`,
+        description: `Посмотреть все статьи из блога по тегу #${id}`,
+        url: `https://yepstepz.io/tags/${id}`
+      }
     },
   };
 };

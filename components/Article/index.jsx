@@ -19,7 +19,7 @@ function Article({ slug, title, description, tags, published }) {
       </div>
       <div className="block-links inner--sm">
         <span className="read-link">
-          <Link href={`/posts/${slug}`}>Читать далее</Link>
+          <Link href={`/posts/${slug}`} prefetch={false}>Читать далее</Link>
         </span>
       </div>
     </article>
