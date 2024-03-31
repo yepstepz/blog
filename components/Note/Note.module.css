@@ -20,7 +20,7 @@
 }
 
 .wrapperEmbedded {
-  border-left: var(--default-size) solid var(--accent-color);
+  border: 1px dotted var(--page-caption-border);
   padding-left: calc(var(--default-size) * 6);
 }
 
