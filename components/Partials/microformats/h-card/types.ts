@@ -69,6 +69,7 @@ type hCardSettingsType = {
   showCredentials?: boolean;
   showNickname?: boolean;
   showSource?: boolean;
+  showDescription?: boolean;
   external?: boolean;
   className?: string;
 };

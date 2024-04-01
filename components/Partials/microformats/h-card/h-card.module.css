@@ -24,3 +24,7 @@
   color: var(--page-caption);
   font-size: calc(var(--default-size) * 3.5);
 }
+
+.description {
+  font-size: calc(var(--default-size) * 3.5);
+}

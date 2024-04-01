@@ -28,10 +28,6 @@
   line-height: 1;
 }
 
-.wrapper p {
-  margin: calc(var(--default-size)) 0;
-}
-
 .wrapper blockquote {
   margin: calc(var(--default-size) * 2) 0;
 }

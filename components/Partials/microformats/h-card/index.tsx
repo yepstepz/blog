@@ -15,6 +15,7 @@ export const HCard: React.FC<MicroCardType> = ({
   showNickname = true,
   showSource = false,
   external = false,
+  showDescription = false,
   className = '',
 }) => {
   const computedStyles = { display: 'none' };
@@ -49,6 +50,12 @@ export const HCard: React.FC<MicroCardType> = ({
           style={showSource ? undefined : computedStyles}
         >
           {uUrl}
+        </div>
+        <div
+          className={cn('p-note', styles.description)}
+          style={showDescription ? undefined : computedStyles}
+        >
+          Reader, writer, developer. I write in Russian
         </div>
       </div>
     </div>

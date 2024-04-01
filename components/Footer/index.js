@@ -70,7 +70,7 @@ export default function Footer() {
           </li>
         </ul>
         <p className={styles.copyright}>
-          © 2023 — developed by{' '}
+          © 2024 — developed by{' '}
           <a className="text text--violet" href="https://yepstepz.io">
             yepstepz
           </a>
