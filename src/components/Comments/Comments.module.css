@@ -1,0 +1,9 @@
+.header {
+  margin: calc(var(--default-size) * 10) 0;
+}
+
+@media (max-width: 600px) {
+  .list {
+    padding: 0;
+  }
+}

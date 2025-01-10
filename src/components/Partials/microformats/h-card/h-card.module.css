@@ -1,0 +1,30 @@
+.author {
+  display: flex;
+  align-items: center;
+}
+
+.imageWrapper {
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+}
+
+.credentials {
+  padding-left: 10px;
+}
+
+.nickname {
+  color: var(--page-caption);
+  font-size: calc(var(--default-size) * 3.5);
+}
+
+.fromUrl {
+  color: var(--page-caption);
+  font-size: calc(var(--default-size) * 3.5);
+}
+
+.description {
+  font-size: calc(var(--default-size) * 3.5);
+}

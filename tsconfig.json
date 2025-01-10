@@ -8,7 +8,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -23,11 +23,29 @@
       }
     ],
     "paths": {
+      "@root": [
+        "."
+      ],
       "@/*": [
         "./src/*"
       ],
       "@payload-config": [
         "./src/payload.config.ts"
+      ],
+      "@app/*": [
+        "./src/app/*"
+      ],
+      "@collections/*": [
+        "./src/collections/*"
+      ],
+      "@styles/*": [
+        "./src/styles/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@types/*": [
+        "./src/types/*"
       ]
     },
     "target": "ES2022",

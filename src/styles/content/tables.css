@@ -1,0 +1,56 @@
+/* Apply to the table */
+.mdx-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Style for table headers */
+.mdx-table thead th {
+    padding: 12px 15px;
+    background-color: #f8f9fa;
+    text-align: left;
+    color: #495057;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+    font-size: 16px;
+}
+
+/* Style for table rows */
+.mdx-table tbody tr {
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for rows */
+.mdx-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Table cell styling */
+.mdx-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 14px;
+    color: #495057;
+}
+
+/* Zebra striping for rows */
+.mdx-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Styling for table borders */
+.mdx-table th, .mdx-table td {
+    border: 1px solid #ddd;
+}
+
+/* Styling for the entire table wrapper (optional) */
+.mdx-table-wrapper {
+    overflow-x: auto;
+    margin: 20px 0;
+}

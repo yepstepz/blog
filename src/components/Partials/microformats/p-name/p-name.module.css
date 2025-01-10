@@ -1,0 +1,10 @@
+.title {
+  font-size: calc(var(--default-size) * 5);
+  color: var(--main-font);
+  font-weight: bold;
+  display: block;
+}
+
+a.title {
+  color: var(--main-font);
+}

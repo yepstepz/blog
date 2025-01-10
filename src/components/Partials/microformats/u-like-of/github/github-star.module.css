@@ -1,0 +1,8 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.likeOfText {
+  padding-left: calc(var(--default-size));
+}

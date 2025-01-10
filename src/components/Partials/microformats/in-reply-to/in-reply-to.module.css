@@ -1,0 +1,17 @@
+.replyWrapper {
+  font-size: calc(var(--default-size) * 4);
+  font-style: italic;
+  margin-bottom: calc(var(--default-size) * 4);
+  display: inline-block;
+  color: var(--page-caption);
+}
+
+@media (max-width: 900px) {
+  .replyWrapper {
+    width: 100%;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

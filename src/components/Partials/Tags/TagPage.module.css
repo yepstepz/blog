@@ -1,0 +1,24 @@
+.tags {
+  display: flex;
+  list-style: none;
+  position: relative;
+  left: calc(var(--default-size) * 2 * -1);
+  margin: 0;
+  padding: 0;
+}
+
+.tag a {
+  padding: calc(var(--default-size) * 2);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tagsSm a {
+  padding: 0 var(--default-size);
+  font-size: calc(var(--default-size) * 4);
+}
+
+.tagsRight {
+  justify-content: flex-end;
+  left: 0;
+}

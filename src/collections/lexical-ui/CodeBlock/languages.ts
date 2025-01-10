@@ -1,0 +1,22 @@
+export const languages = {
+  bash: 'Bash',
+  css: 'CSS',
+  dockerfile: 'dockerfile',
+  env: 'Environment Variables',
+  graphql: 'GraphQL',
+  html: 'HTML',
+  js: 'JavaScript',
+  json: 'JSON',
+  jsx: 'JSX',
+  plaintext: 'Plain Text',
+  scss: 'SCSS',
+  sh: 'Shell',
+  text: 'Text',
+  ts: 'TypeScript',
+  tsx: 'TSX',
+  vue: 'Vue',
+  yaml: 'YAML',
+  yml: 'YAML',
+  php: 'php',
+  rust: 'rust'
+}

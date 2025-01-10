@@ -1,0 +1,12 @@
+.timeCaption {
+  color: var(--page-caption);
+  font-size: calc(var(--default-size) * 4);
+}
+
+.timeCaptionRight {
+  text-align: right;
+}
+
+.smSize {
+  font-size: calc(var(--default-size) * 3.5);
+}

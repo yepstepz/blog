@@ -1,0 +1,14 @@
+.Plate {
+  padding: var(--default-size);
+  background: var(--page-caption);
+  border-radius: var(--default-size);
+  color: var(--main-font-inverted);
+}
+
+.Plate:last-child {
+  margin-left: calc(var(--default-size) * 4);
+}
+
+.Plate:first-child {
+  margin-right: calc(var(--default-size) * 4);
+}

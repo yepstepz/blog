@@ -1,0 +1,14 @@
+.scrollerElement {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  width: 100px;
+  border: 0;
+  background: var(--magnolia-color);
+  visibility: hidden;
+  z-index: 1;
+}
+
+.scrollerElement:hover {
+  visibility: visible;
+}

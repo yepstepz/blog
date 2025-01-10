@@ -1,0 +1,7 @@
+.wrapper {
+  font-size: calc(var(--default-size) * 4);
+  margin: calc(var(--default-size)) 0;
+  display: block;
+  color: var(--page-caption);
+  text-align: right;
+}
