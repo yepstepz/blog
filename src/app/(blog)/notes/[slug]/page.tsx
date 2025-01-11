@@ -6,6 +6,7 @@ import NoteComponent from '@components/Note';
 import type {Metadata} from "next";
 import {getMdxContent} from "@/lib/getMdxContent";
 import {getMetadata} from "@/lib/getMetadata";
+import Script from "next/script";
 
 export default async function Note({ params } : { params: Promise<{ slug: string }> }) {
   const { slug } = (await params);
@@ -16,8 +17,33 @@ export default async function Note({ params } : { params: Promise<{ slug: string
     return 'empty'
   }
 
+  const note = docs[0];
+
+  const snippetData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: note.title.text,
+    description: note.description,
+    image: `${process.env.HOME_URL}/metadata/image?title=${note.title.text}`,
+    datePublished: note.oldDate || note.createdAt,
+    dateModified: note.updatedAt,
+    author: [
+      {
+        '@type': 'Person',
+        name: 'Tatiana Leonteva',
+      },
+    ],
+  };
+
   return (
+    <>
+      <Script
+        type="application/ld+json"
+        id="snippet-data"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(snippetData) }}
+      />
       <NoteComponent {...docs[0]} comments={comments} />
+    </>
   );
 }
 
@@ -63,10 +89,18 @@ export async function generateStaticParams() {
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
   const { slug } = await params;
   const { docs } = await getNotes({ slug })
+  if (docs.length === 0) {
+    return;
+  }
   const note = docs[0];
-  console.log(docs)
   return getMetadata({
     title: note.title.text,
-    description: note.meta.description
+    description: note.meta.description,
+    alternates: {
+      canonical: `/notes/${slug}`,
+    },
+    openGraph: {
+      type: 'article'
+    }
   })
 }

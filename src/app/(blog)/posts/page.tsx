@@ -23,5 +23,8 @@ export default async function Posts () {
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => getMetadata({
   title: 'Все статьи',
-  description: 'Посмотреть все статьи из блога'
+  description: 'Посмотреть все статьи из блога',
+  alternates: {
+    canonical: `/posts`,
+  }
 })

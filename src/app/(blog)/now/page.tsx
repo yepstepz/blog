@@ -9,7 +9,6 @@ export default async function Now() {
   const { date } = frontmatter;
   return (
     <div className="page__content block-article inner--sm h-entry">
-      <HCard isAuthor={true} visible={false}/>
       <h1 className="p-name">Что я делаю сейчас?</h1>
       <i>
         Последний раз обновлено:{' '}
@@ -24,7 +23,10 @@ export default async function Now() {
   )
 }
 
-export const generateMetadata = async ({ params }): Promise<Metadata> => getMetadata({
-  title: 'Now.sh',
-  description: 'Что я делаю сейчас?'
+export const generateMetadata = async (): Promise<Metadata> => getMetadata({
+  title: 'Nownownow',
+  description: 'Что я делаю сейчас?',
+  alternates: {
+    canonical: `/now`,
+  }
 })

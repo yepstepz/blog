@@ -19,5 +19,8 @@ export default async function TagsPage () {
 
 export const generateMetadata = (): Metadata => getMetadata({
   title: "Теги",
-  description: "Список тегов для постов и заметок"
+  description: "Список тегов для постов и заметок",
+  alternates: {
+    canonical: `/tags`,
+  }
 })

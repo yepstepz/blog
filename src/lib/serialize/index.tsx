@@ -18,7 +18,7 @@ export const serialize = (node, props?: { url?: string }, limit = Infinity) => {
         {children.map((child) => serialize(child))}
         {
           isFinite(limit) && node.children.length > limit &&
-            <Link href={props?.url || ''}>Читать далее...</Link>
+            <Link key={props?.url} href={props?.url || ''}>Читать далее...</Link>
         }
       </>
     )

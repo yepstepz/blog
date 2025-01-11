@@ -35,11 +35,13 @@ const Notes: CollectionConfig = {
   },
   hooks: {
     afterChange: [
-      ({ doc, operation, previousDoc }) => {
+      ({ doc }) => {
+      if (doc.slug !== null) {
         const path = `/notes/${doc.slug}`
 
         revalidatePath(`/notes/${doc.slug}`)
         revalidatePath('/notes');
+      }
 
         // return doc
       }

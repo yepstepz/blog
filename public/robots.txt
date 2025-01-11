@@ -1,4 +1,9 @@
-Sitemap: https://yepstepz.io/sitemap.xml
-
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: http://localhost:3000
+
+# Sitemaps
+Sitemap: http://localhost:3000/sitemap.xml

@@ -45,6 +45,9 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
   const description = `Все статьи и посты по тегу ${slug}`;
   return getMetadata({
     title: `Тег ${slug}`,
-    description
+    description,
+    alternates: {
+      canonical: `/tags/${slug}`,
+    }
   })
 }

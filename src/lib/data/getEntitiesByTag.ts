@@ -24,6 +24,7 @@ export const getEntitiesByTag = async ({ tag }) => {
     return res
   }, []);
 
+  // @ts-ignore
   const res = [...notes, ...filteredPosts];
 
   return res;

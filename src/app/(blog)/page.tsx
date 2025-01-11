@@ -20,12 +20,15 @@ export default async function Page() {
     sort: ['-oldDate', '-createdAt']
   })
 
-  const lastNote = notes.docs[0];
+  let lastNote;
+
+  if (notes?.docs?.length) {
+    lastNote = notes.docs[0];
+  }
 
   return (
     <>
       <div className="page__content h-entry">
-        <HCard isAuthor={true} visible={false} />
         <h1 className="p-name">
           Привет! Меня зовут <span className="text--violet">Татьяна</span>.
         </h1>
@@ -50,12 +53,17 @@ export default async function Page() {
           Все заметки
         </Link>
       </div>
-      <Note {...lastNote} embedded />
+      {
+        lastNote && <Note {...lastNote} embedded />
+      }
     </>
   );
 }
 
 export const generateMetadata = (): Metadata => getMetadata({
   title: "Главная страница",
-  description: "Пишу про себя, фронтенд и книги."
+  description: "Пишу про себя, фронтенд и книги.",
+  alternates: {
+    canonical: `/`,
+  }
 })
