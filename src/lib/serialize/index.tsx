@@ -52,8 +52,22 @@ export const serialize = (node, props?: { url?: string }, limit = Infinity) => {
     return null;
   }
 
+  if (type.startsWith("h")) {
+    const Heading = node.tag;
+    return <Heading>{serialize(node.children)}</Heading>
+  }
+
   if (type === 'paragraph') {
     return <p style={styles}>{serialize(node.children)}</p>;
+  }
+
+  if (type === 'list') {
+    const ListType = node.tag;
+    return <ListType>{serialize(node.children)}</ListType>
+  }
+
+  if (type === 'listitem') {
+    return <li>{serialize(node.children)}</li>
   }
 
   if (type === 'link') {
