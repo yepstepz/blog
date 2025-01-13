@@ -54,7 +54,7 @@ export default async function Page() {
         </Link>
       </div>
       {
-        lastNote && <Note {...lastNote} embedded />
+        lastNote && <Note {...lastNote} embedded limit={5} />
       }
     </>
   );

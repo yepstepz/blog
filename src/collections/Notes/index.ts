@@ -41,6 +41,7 @@ const Notes: CollectionConfig = {
 
         revalidatePath(`/notes/${doc.slug}`)
         revalidatePath('/notes');
+        revalidatePath('/');
       }
 
         // return doc
