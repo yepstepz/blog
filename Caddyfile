@@ -1,0 +1,3 @@
+yepstepz.io {
+  reverse_proxy blog:3000
+}

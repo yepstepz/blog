@@ -1,19 +1,16 @@
-version: '3'
-
 services:
   blog:
-    image: node:18-alpine
-    ports:
-      - '3000:3000'
-    volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm dev"
-    depends_on:
-      - postgres
-    env_file:
-      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile  # Reference your Next.js Dockerfile
+    container_name: blog
+    restart: always
+    env_file: .env
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    expose:
+      - "3000"  # Expose port 3000 for internal communication
     networks:
       - blognetwork
 
@@ -31,6 +28,20 @@ services:
     networks:
       - blognetwork
 
+  caddy_for_blog:
+    image: caddy
+    container_name: caddy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - blognetwork
+
 networks:
   blognetwork:
     driver: bridge
@@ -39,3 +50,5 @@ volumes:
   data:
   pgdata:
   node_modules:
+  caddy_data:
+  caddy_config:
