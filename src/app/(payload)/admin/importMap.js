@@ -23,6 +23,7 @@ import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0
 import { BlocksFeatureClient as BlocksFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { default as default_e48d4d062947870de5a9d760192d3962 } from '@collections/lexical-ui/CodeBlock/CodeFields'
 import { codeConverterClient as codeConverterClient_b1bf312c4c56e8c49703cfbd57821fbd } from '@collections/lexical-ui/CodeBlock/converterClient'
+import { CollectionCards as CollectionCards_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
 
 export const importMap = {
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
@@ -49,5 +50,6 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#BlocksFeatureClient": BlocksFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@collections/lexical-ui/CodeBlock/CodeFields#default": default_e48d4d062947870de5a9d760192d3962,
-  "@collections/lexical-ui/CodeBlock/converterClient#codeConverterClient": codeConverterClient_b1bf312c4c56e8c49703cfbd57821fbd
+  "@collections/lexical-ui/CodeBlock/converterClient#codeConverterClient": codeConverterClient_b1bf312c4c56e8c49703cfbd57821fbd,
+  "@payloadcms/ui/rsc#CollectionCards": CollectionCards_ab83ff7e88da8d3530831f296ec4756a
 }

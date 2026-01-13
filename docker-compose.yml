@@ -21,8 +21,6 @@ services:
     image: postgres:latest
     volumes:
      - pgdata:/var/lib/postgresql/data
-    ports:
-      - "5433:5432" # Map to a different host port to avoid conflicts
     env_file:
       - .env
     networks:
@@ -49,6 +47,5 @@ networks:
 volumes:
   data:
   pgdata:
-  node_modules:
   caddy_data:
   caddy_config:

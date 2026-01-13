@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import styles from '@styles/global.module.css';
-import { HCard } from "@components/Partials/microformats/h-card";
 import { getPosts } from "@/lib/data/getPosts";
 import { SmallArticle } from "@components/Article/small-article";
 import { getPayload } from "payload";
@@ -18,7 +17,7 @@ export default async function Page() {
   const notes = await payload.find({
     collection: 'notes',
     sort: ['-oldDate', '-createdAt']
-  })
+  });
 
   let lastNote;
 
