@@ -7,6 +7,8 @@ import type { Note } from '@/../payload-types';
 import type {Metadata} from "next";
 import {getMetadata} from "@/lib/getMetadata";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Note() {
   const data =  await getNotes();
   const reactions = await getReactions({ type: 'notes'});

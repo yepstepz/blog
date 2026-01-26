@@ -10,6 +10,8 @@ import type { Metadata } from 'next';
 import MainPage from '@/mdx-landings/main.mdx';
 import { getMetadata } from "@/lib/getMetadata";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Page() {
   const articles = await getPosts();
   const latestArticles = articles.slice(0, 5);

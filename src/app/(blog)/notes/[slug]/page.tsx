@@ -4,9 +4,10 @@ import { getPayload, PaginatedDocs } from 'payload';
 
 import NoteComponent from '@components/Note';
 import type {Metadata} from "next";
-import {getMdxContent} from "@/lib/getMdxContent";
 import {getMetadata} from "@/lib/getMetadata";
 import Script from "next/script";
+
+export const dynamic = 'force-dynamic';
 
 export default async function Note({ params } : { params: Promise<{ slug: string }> }) {
   const { slug } = (await params);
@@ -70,20 +71,6 @@ async function getComments({ type, slug }) {
   const { data } = await response.json();
 
   return data;
-}
-
-// @ts-ignore
-export async function generateStaticParams() {
-  const payload = await getPayload({ config })
-  const notes = await payload.find({
-    collection: 'notes'
-  });
-
-  const mappedNotes = notes.docs.map(({ slug }) => ({
-    slug
-  }))
-
-  return mappedNotes
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {

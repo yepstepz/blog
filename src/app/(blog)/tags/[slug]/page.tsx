@@ -1,9 +1,10 @@
-import { getTags } from "@/lib/data/getTags";
 import { getEntitiesByTag } from "@/lib/data/getEntitiesByTag";
 import NoteComponent from "@components/Note";
 import Article from "@components/Article";
 import type {Metadata} from "next";
 import {getMetadata} from "@/lib/getMetadata";
+
+export const dynamic = 'force-dynamic';
 
 const renderEntity = (entity) => {
   if (entity.type === 'post') {
@@ -33,11 +34,6 @@ export default async function Page({
       </ul>)
 
   // ...
-}
-
-export async function generateStaticParams() {
-  const tags = await getTags();
-  return [...tags].map((tag) => ({slug: tag}))
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
